@@ -1,58 +1,43 @@
-// ---------- Typing animation (I am ...)
+// -------- Roles Typing Animation --------
 const roles = [
   "Project Manager",
   "Program Manager",
   "Agile Coach",
   "Product Manager",
-  "AI/ ML Enthusiast",
+  "AI/ML Enthusiast",
   "Father"
 ];
-let r = 0, c = 0, node = null;
-document.addEventListener('DOMContentLoaded', () => {
-  node = document.getElementById('typed-role');
-  type();
-  revealOnScroll();
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
-function type(){
-  const current = roles[r];
-  if(c < current.length){
-    node.textContent += current[c++];
-    setTimeout(type, 90);
-  }else{
-    setTimeout(erase, 1200);
+
+let roleIndex = 0;
+let charIndex = 0;
+let currentRole = "";
+let isDeleting = false;
+const roleElement = document.getElementById("roles");
+
+function typeEffect() {
+  if (isDeleting) {
+    currentRole = roles[roleIndex].substring(0, charIndex--);
+  } else {
+    currentRole = roles[roleIndex].substring(0, charIndex++);
   }
-}
-function erase(){
-  if(c > 0){
-    node.textContent = node.textContent.slice(0, -1);
-    c--;
-    setTimeout(erase, 45);
-  }else{
-    r = (r + 1) % roles.length;
-    setTimeout(type, 350);
+
+  roleElement.innerHTML = `<span>${currentRole}</span>`;
+
+  let typingSpeed = isDeleting ? 80 : 120;
+
+  if (!isDeleting && charIndex === roles[roleIndex].length) {
+    typingSpeed = 1500; // Pause before deleting
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+    typingSpeed = 500; // Pause before typing next role
   }
+
+  setTimeout(typeEffect, typingSpeed);
 }
 
-// ---------- Reveal on scroll
-function revealOnScroll(){
-  const els = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('visible'); }
-    });
-  }, {threshold: .25});
-  els.forEach(el => io.observe(el));
-}
-
-// ---------- Smooth scroll offset for sticky header
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if(target){
-      e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 64;
-      window.scrollTo({top: y, behavior:'smooth'});
-    }
-  });
+// Start animation after DOM loads
+document.addEventListener("DOMContentLoaded", () => {
+  typeEffect();
 });

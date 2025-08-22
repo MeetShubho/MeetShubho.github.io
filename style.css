@@ -128,14 +128,23 @@ nav ul li a.active {
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: all 1s ease;
 }
 
 .timeline-item.left {
   left: 0;
+  transform: translateX(-100px);
 }
 
 .timeline-item.right {
   left: 55%;
+  transform: translateX(100px);
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .timeline-item h3 {
@@ -273,7 +282,12 @@ nav ul li a.active {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeIn 1s forwards;
+  transition: all 1s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes fadeIn {

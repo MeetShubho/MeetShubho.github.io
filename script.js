@@ -1,43 +1,71 @@
-// -------- Roles Typing Animation --------
-const roles = [
-  "Project Manager",
-  "Program Manager",
-  "Agile Coach",
-  "Product Manager",
-  "AI/ML Enthusiast",
-  "Father"
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let currentRole = "";
-let isDeleting = false;
-const roleElement = document.getElementById("roles");
-
-function typeEffect() {
-  if (isDeleting) {
-    currentRole = roles[roleIndex].substring(0, charIndex--);
-  } else {
-    currentRole = roles[roleIndex].substring(0, charIndex++);
-  }
-
-  roleElement.innerHTML = `<span>${currentRole}</span>`;
-
-  let typingSpeed = isDeleting ? 80 : 120;
-
-  if (!isDeleting && charIndex === roles[roleIndex].length) {
-    typingSpeed = 1500; // Pause before deleting
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-    typingSpeed = 500; // Pause before typing next role
-  }
-
-  setTimeout(typeEffect, typingSpeed);
-}
-
-// Start animation after DOM loads
+// =============================
+// Rotating Roles on Home Page
+// =============================
 document.addEventListener("DOMContentLoaded", () => {
-  typeEffect();
+  const roles = [
+    "Project Manager",
+    "Program Manager",
+    "Agile Coach",
+    "Product Manager",
+    "AI/ML Enthusiast",
+    "Father"
+  ];
+
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingSpeed = 100;
+  const erasingSpeed = 50;
+  const delayBetweenRoles = 1500;
+  const roleElement = document.querySelector(".role-highlight");
+
+  function typeRole() {
+    if (!roleElement) return; // If element not found, skip
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      roleElement.textContent = currentRole.substring(0, charIndex--);
+      if (charIndex < 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeRole, typingSpeed);
+        return;
+      }
+    } else {
+      roleElement.textContent = currentRole.substring(0, charIndex++);
+      if (charIndex > currentRole.length) {
+        isDeleting = true;
+        setTimeout(typeRole, delayBetweenRoles);
+        return;
+      }
+    }
+
+    setTimeout(typeRole, isDeleting ? erasingSpeed : typingSpeed);
+  }
+
+  typeRole();
 });
+
+// =============================
+// Scroll Animations
+// =============================
+window.addEventListener("scroll", () => {
+  const fadeElements = document.querySelectorAll(".fade-in");
+  fadeElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
+      el.style.transition = "all 1s ease";
+    }
+  });
+
+  const timelineItems = document.querySelectorAll(".timeline-item");
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      item.classList.add("show");
+    }
+  });
+});
+

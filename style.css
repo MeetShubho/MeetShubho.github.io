@@ -1,89 +1,179 @@
-/* -------- Base -------- */
-:root{
+/* -------- Base Variables -------- */
+:root {
   --bg-dark: #0b0f17;
   --bg-light: #121826;
   --text: #ffffff;
-  --accent: #FFD400; /* roles color */
+  --accent: #FFD400; /* Yellow for roles */
   --muted: #9aa3b2;
-  --glass: rgba(0,0,0,.35);
+  --glass: rgba(0, 0, 0, 0.6);
+  --transition: 0.3s ease;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  color: var(--text);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
   background: var(--bg-dark);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-/* Containers */
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-/* -------- Header / Nav -------- */
-.site-header{
-  position: sticky; top:0; z-index: 50;
-  background: rgba(10,12,20,.6);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
+/* -------- Navbar -------- */
+.navbar {
+  width: 100%;
+  background: var(--bg-light);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:700;color:#fff;text-decoration:none}
-.nav-links{list-style:none;display:flex;gap:20px}
-.nav-links a{color:#fff;text-decoration:none;opacity:.9;transition:opacity .2s, color .2s}
-.nav-links a:hover{opacity:1;color:var(--accent)}
 
-/* -------- Hero -------- */
-.hero{
+.navbar .container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+}
+
+/* -------- Hero Section -------- */
+.hero {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  min-height: calc(100vh - 64px);
-  display:grid;place-items:center;
-  background-image:
-    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
-    url('assets/profile-bg.jpg');
-  background-size:cover;background-position:center;
 }
-.overlay{position:absolute;inset:0;background:radial-gradient(80% 60% at 50% 40%, transparent, rgba(0,0,0,.6))}
-.hero-inner{position:relative;text-align:center;padding:60px 0}
-.name{font-size: clamp(2rem, 4vw, 3.5rem);font-weight:800;letter-spacing:.5px;margin-bottom:10px}
-.roles{font-size: clamp(1.25rem, 2.4vw, 2rem);font-weight:600}
-.iam{color:#fff;margin-right:.35rem}
-#typed-role{color:var(--accent);border-right:2px solid var(--accent);padding-right:4px}
 
-/* Social */
-.social{margin-top:18px;display:flex;gap:18px;justify-content:center}
-.social a{color:#fff;font-size:1.4rem;opacity:.9;transition:transform .2s, color .2s, opacity .2s}
-.social a:hover{color:var(--accent);transform:translateY(-2px);opacity:1}
+.hero .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--glass);
+}
 
-/* -------- Sections -------- */
-.section{padding:80px 0;background:var(--bg-light)}
-.section.alt{background: #0f1422}
-.section-title{font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom:18px;color:var(--accent)}
-.lead{color:#e5e7eb;max-width:900px;margin:0 auto;font-size:1.05rem}
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: var(--text);
+  z-index: 2;
+}
 
-/* Cards for career/education */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
-.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.25);display:flex;gap:12px;padding:14px;align-items:flex-start}
-.card-logo{width:72px;height:72px;object-fit:contain;background:rgba(255,255,255,.04);border-radius:12px;padding:8px}
-.card-body h3{font-size:1.05rem;margin-bottom:6px}
-.card-body .muted{color:var(--muted);font-size:.9rem;margin-bottom:8px}
-.card-body ul{padding-left:16px}
-.card-body li{margin-bottom:6px;color:#e8eaee}
+.hero-content .name {
+  font-size: 3rem;
+  font-weight: bold;
+}
 
-/* Timeline for certifications */
-.timeline{display:grid;gap:22px;margin-top:28px}
-.timeline-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px;display:grid;grid-template-columns:90px 1fr;align-items:center;gap:16px}
-.timeline-item img{width:80px;height:80px;object-fit:contain;background:rgba(255,255,255,.04);border-radius:12px;padding:8px}
-.timeline-item .date{color:var(--muted);font-weight:600}
+.hero-content .roles {
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
 
-/* Footer */
-.footer{background:#0b0f17;padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+.hero-content .roles span {
+  color: var(--accent);
+}
 
-/* -------- Animations -------- */
-.reveal{opacity:0; transform: translateY(22px); transition: all .6s ease}
-.reveal.visible{opacity:1; transform: translateY(0)}
+.social-icons {
+  margin-top: 20px;
+}
 
-/* Small screens */
-@media (max-width:600px){
-  .timeline-item{grid-template-columns:70px 1fr}
-  .card{flex-direction:row}
+.social-icons a {
+  color: var(--text);
+  margin: 0 15px;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  color: var(--accent);
+}
+
+/* -------- Timeline Section (for Career & Certifications) -------- */
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px 0;
+  max-width: 900px;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background: var(--accent);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timeline-item {
+  padding: 20px;
+  position: relative;
+  width: 50%;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-item .content {
+  padding: 20px;
+  background: var(--bg-light);
+  border-radius: 10px;
+  position: relative;
+}
+
+.timeline-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

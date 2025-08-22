@@ -177,3 +177,77 @@ body {
     transform: translateY(0);
   }
 }
+/* About Page Styling */
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 10%;
+  gap: 50px;
+  background: linear-gradient(135deg, #0b0f17, #1c1f2b);
+  color: white;
+  min-height: 80vh;
+}
+
+.about-left {
+  flex: 1;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+.about-right {
+  flex: 2;
+  animation: fadeInUp 1s ease;
+}
+
+.about-right h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #FFD400;
+}
+
+.about-right p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.about-buttons .btn {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 12px 20px;
+  background: #FFD400;
+  color: #0b0f17;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.about-buttons .btn:hover {
+  background: #ffb700;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

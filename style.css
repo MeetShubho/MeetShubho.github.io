@@ -1,0 +1,121 @@
+/* ---------- Base ---------- */
+:root{
+  --bg-dark: #0b0f17;
+  --bg-light: #121826;
+  --text: #ffffff;
+  --accent: #FFD400; /* roles color */
+  --muted: #9aa3b2;
+  --glass: rgba(0,0,0,0.35);
+}
+
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; }
+body{
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg-dark);
+  scroll-behavior: smooth;
+}
+
+/* ---------- Header ---------- */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 100;
+}
+.logo{ font-weight: 800; letter-spacing: 0.5px; }
+.site-nav a{
+  color: var(--text); text-decoration: none; margin-left: 18px; font-weight: 600;
+}
+.site-nav a:hover{ color: var(--accent); }
+
+/* ---------- Sections ---------- */
+main section{ min-height: 100vh; padding: 92px 20px 40px; }
+.container{ max-width: 1000px; margin: 0 auto; }
+
+.panel-dark{ background: var(--bg-dark); }
+.panel-light{ background: var(--bg-light); }
+
+/* ---------- Hero ---------- */
+.hero{
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.70) 100%),
+    url('assets/profile-bg.jpg') center/cover no-repeat fixed;
+}
+.hero-overlay{
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.hero-inner{ position: relative; z-index: 1; padding: 0 20px; }
+.name{ font-size: clamp(28px, 6vw, 64px); margin: 0 0 12px; }
+.tagline{ font-size: clamp(18px, 3.2vw, 28px); margin: 0; }
+.iam{ color: #ffffff; }
+.typing{
+  color: var(--accent);
+  border-right: 2px solid var(--accent);
+  white-space: nowrap; overflow: hidden;
+}
+
+/* socials */
+.socials{
+  display: flex; gap: 20px; justify-content: center; align-items: center;
+  margin-top: 22px;
+}
+.socials a{ font-size: 26px; color: #fff; }
+.socials a:hover{ color: var(--accent); }
+
+/* ---------- About ---------- */
+#about h2, #career h2, #education h2, #certifications h2, #more h2{
+  font-size: clamp(24px, 3.4vw, 36px);
+  margin: 0 0 14px;
+}
+#about p{ color: #e5e7eb; line-height: 1.7; }
+
+/* ---------- Certifications Timeline ---------- */
+.timeline{
+  position: relative; max-width: 1000px; margin: 20px auto 0; padding: 20px 0 60px;
+}
+.timeline::after{
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 4px; background: rgba(255,212,0,0.35); transform: translateX(-50%);
+}
+.timeline-item{
+  position: relative; width: 50%; padding: 14px;
+  opacity: 0; transform: translateY(30px) scale(0.98);
+  transition: all 600ms ease;
+}
+.timeline-item.visible{
+  opacity: 1; transform: translateY(0) scale(1);
+}
+.timeline-item.left{ left: 0; }
+.timeline-item.right{ left: 50%; }
+.timeline-content{
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  padding: 16px 18px; border-radius: 14px; backdrop-filter: blur(4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.cert-head{ display: flex; align-items: center; gap: 12px; }
+.cert-head img{ width: 52px; height: 52px; object-fit: contain; background: #fff; border-radius: 8px; padding: 6px; }
+.cert-meta h3{ margin: 0; font-size: 18px; color: var(--accent); }
+.cert-meta .date{ margin: 2px 0 0; color: var(--muted); }
+
+/* responsive */
+@media (max-width: 800px){
+  .timeline::after{ left: 12px; transform: none; }
+  .timeline-item, .timeline-item.right, .timeline-item.left{
+    left: 0; width: 100%; padding-left: 38px;
+  }
+}
+/* ---------- Footer ---------- */
+.site-footer{ text-align: center; padding: 24px 12px; background: #0a0e15; color: #9aa3b2; }

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subhabrata Chattopadhyay — Portfolio</title>
+  <meta name="description" content="Portfolio website for Subhabrata Chattopadhyay — Product & Program Management." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS3+E7l+5wQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Subhabrata</div>
+    <nav class="site-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About Me</a>
+      <a href="#career">Professional Career</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#more">More</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <h1 class="name">Subhabrata Chattopadhyay</h1>
+        <h2 class="tagline">
+          <span class="iam">I am&nbsp;</span><span id="roles" class="typing"></span>
+        </h2>
+        <div class="socials">
+          <a aria-label="LinkedIn" href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a aria-label="GitHub" href="https://github.com/your-username" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i>
+          </a>
+          <a aria-label="Email" href="mailto:subhabratachattopadhyay07@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a aria-label="Phone" href="tel:+919552534043">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+      </div>
+      <!-- subtle overlay to ensure text readability but keep image visible -->
+      <div class="hero-overlay"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="panel panel-dark">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          I’m a delivery-first leader with 15+ years spanning project, program, and PMO leadership across banking and technology.
+          I help cross-functional teams ship outcomes: on-time delivery improvements, multi-million–dollar savings, and better stakeholder experience.
+          My superpowers: pragmatic governance, ruthless prioritization, risk control, and people coaching.
+        </p>
+        <p>
+          I’ve led Agile adoptions at scale (Scrum, Kanban, SAFe), coached Scrum Masters and Product Owners, and built reporting/OKR cadences that make value flow visible.
+          Recently, I’ve been leaning into product thinking—customer discovery, problem framing, and measurable outcomes—while exploring how AI/ML can unlock smarter roadmaps.
+        </p>
+        <p>
+          Certifications: PMP, PMI-ACP, ICP-ACC, SAFe Agilist, PSM I, PSPO I. Open to Product Management and Product Leadership roles.
+        </p>
+      </div>
+    </section>
+
+    <!-- CAREER (placeholder for now) -->
+    <section id="career" class="panel panel-light">
+      <div class="container">
+        <h2>Professional Career</h2>
+        <p>Coming soon: highlights, impact metrics, and select case studies.</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION (placeholder for now) -->
+    <section id="education" class="panel panel-dark">
+      <div class="container">
+        <h2>Education</h2>
+        <ul class="edu-list">
+          <li><strong>B.Tech (IT)</strong> — (Add your institute) </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="panel panel-light">
+      <div class="container">
+        <h2>Certifications</h2>
+        <div class="timeline" id="certTimeline">
+          <!-- Items are generated in JS for animation control -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MORE (placeholder) -->
+    <section id="more" class="panel panel-dark">
+      <div class="container">
+        <h2>More</h2>
+        <p>Reserved for blog, talks, downloads, or experiments.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Subhabrata Chattopadhyay</div>
+  </footer>
+
+  <script>
+    // Typed roles (I am ...)
+    const roles = [
+      "Project Manager",
+      "Program Manager",
+      "Agile Coach",
+      "Product Manager",
+      "AI/ ML Enthusiast",
+      "Father"
+    ];
+    let roleIndex = 0, charIndex = 0, deleting = false;
+    const typingSpeed = 120, eraseSpeed = 60, pause = 1000;
+    function typeLoop() {
+      const el = document.getElementById("roles");
+      const word = roles[roleIndex];
+      if (!deleting && charIndex <= word.length) {
+        el.textContent = word.slice(0, charIndex++);
+        return setTimeout(typeLoop, typingSpeed);
+      }
+      if (!deleting && charIndex > word.length) {
+        deleting = true;
+        return setTimeout(typeLoop, pause);
+      }
+      if (deleting && charIndex >= 0) {
+        el.textContent = word.slice(0, charIndex--);
+        return setTimeout(typeLoop, eraseSpeed);
+      }
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(typeLoop, typingSpeed);
+    }
+    document.addEventListener("DOMContentLoaded", typeLoop);
+
+    // Certifications timeline data + animation
+    const certs = [
+      {
+        title: "Project Management Professional (PMP®)",
+        date: "Jun 2014",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Project_Management_Institute_logo.svg"
+      },
+      {
+        title: "PMI Agile Certified Practitioner (PMI-ACP®)",
+        date: "May 2019",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/f/f5/PMI_logo.svg"
+      },
+      {
+        title: "ICAgile Certified Professional – Agile Coaching (ICP-ACC)",
+        date: "Jun 2021",
+        logo: "https://static1.smartbear.co/smartbearbrand/media/images/logos/ICAgile.png"
+      },
+      {
+        title: "SAFe® Agilist (Leading SAFe)",
+        date: "Aug 2021",
+        logo: "https://scaledagile.com/wp-content/uploads/2022/06/SAFe-Agilist-Logo.png"
+      },
+      {
+        title: "Professional Scrum Master I (PSM I)",
+        date: "Jul 2022",
+        logo: "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/PSM%20I%20Badge.png"
+      },
+      {
+        title: "Professional Scrum Product Owner I (PSPO I)",
+        date: "Oct 2024",
+        logo: "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/PSPO%20I%20Badge.png"
+      }
+    ];
+    const timeline = document.getElementById("certTimeline");
+    certs.forEach((c, i) => {
+      const item = document.createElement("div");
+      item.className = "timeline-item " + (i % 2 === 0 ? "left" : "right");
+      item.innerHTML = `
+        <div class="timeline-content">
+          <div class="cert-head">
+            <img src="${c.logo}" alt="${c.title} logo" />
+            <div class="cert-meta">
+              <h3>${c.title}</h3>
+              <p class="date">${c.date}</p>
+            </div>
+          </div>
+        </div>`;
+      timeline.appendChild(item);
+    });
+
+    // Pop-in on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll(".timeline-item").forEach(el => io.observe(el));
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

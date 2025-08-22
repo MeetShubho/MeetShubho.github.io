@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Subhabrata Chattopadhyay - Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <h1 class="logo">Subhabrata</h1>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html#home" class="active">Home</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="career.html">Professional Career</a></li>
         <li><a href="education.html">Education</a></li>
         <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" style="background-image: url('assets/images/profile-bg.jpg');">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1 class="name">Subhabrata Chattopadhyay</h1>
-      <h2 class="roles">I am <span id="typed-role"></span></h2>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/subhabrata-chattopadhyay" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/meetshubho" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+919876543210"><i class="fas fa-phone"></i></a>
-      </div>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <h1>Subhabrata Chattopadhyay</h1>
+    <h2>I am <span class="role-highlight"></span></h2>
+
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <img src="assets/icons/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/meetshubho" target="_blank">
+        <img src="assets/icons/github.png" alt="GitHub">
+      </a>
+      <a href="mailto:subhabratachattopadhyay07@gmail.com">
+        <img src="assets/icons/email.png" alt="Email">
+      </a>
+      <a href="tel:+919552534043">
+        <img src="assets/icons/phone.png" alt="Phone">
+      </a>
     </div>
   </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Subhabrata Chattopadhyay | Portfolio</p>
+  </footer>
+
 </body>
 </html>

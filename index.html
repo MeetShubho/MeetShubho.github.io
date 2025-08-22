@@ -3,205 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subhabrata Chattopadhyay — Portfolio</title>
-  <meta name="description" content="Portfolio website for Subhabrata Chattopadhyay — Product & Program Management." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS3+E7l+5wQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Subhabrata Chattopadhyay | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome via CDN (no kit needed) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Navbar -->
   <header class="site-header">
-    <div class="logo">Subhabrata</div>
-    <nav class="site-nav">
-      <a href="#home">Home</a>
-      <a href="#about">About Me</a>
-      <a href="#career">Professional Career</a>
-      <a href="#education">Education</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#more">More</a>
+    <nav class="container nav">
+      <a href="#home" class="logo">Subhabrata</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#career">Professional Career</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#more">More</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="hero-inner">
-        <h1 class="name">Subhabrata Chattopadhyay</h1>
-        <h2 class="tagline">
-          <span class="iam">I am&nbsp;</span><span id="roles" class="typing"></span>
-        </h2>
-        <div class="socials">
-          <a aria-label="LinkedIn" href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank" rel="noopener">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a aria-label="GitHub" href="https://meetshubho.github.io/" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i>
-          </a>
-          <a aria-label="Email" href="mailto:subhabratachattopadhyay07@gmail.com">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a aria-label="Phone" href="tel:+919552534043">
-            <i class="fas fa-phone"></i>
-          </a>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="container hero-inner">
+      <h1 class="name">Subhabrata Chattopadhyay</h1>
+      <h2 class="roles"> <span class="iam">I am</span> <span id="typed-role"></span></h2>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/subhabrata-chattopadhyay/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/meetshubho" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:subhabratachattopadhyay07@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="tel:+919552534043" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="lead">
+        Dynamic Senior Project Manager with 15+ years of experience driving Agile transformations, enterprise delivery,
+        and multi-million-dollar programs across banking and technology. I’m transitioning into Product Management and
+        Product Leadership roles, with a focus on measurable impact, governance, and customer value.
+      </p>
+    </div>
+  </section>
+
+  <!-- Career -->
+  <section id="career" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Professional Career</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <img src="assets/logos/hsbc.png" alt="HSBC logo" class="card-logo" />
+          <div class="card-body">
+            <h3>HSBC Bank — IT Project Manager</h3>
+            <p class="muted">Sep 2019 – Present · Pune</p>
+            <ul>
+              <li>Managed a $3.5M portfolio across 10–15 projects; improved on‑time delivery by 22%.</li>
+              <li>Led cloud modernization (.NET Core, Angular, React) and risk/compliance governance.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img src="assets/logos/sungardas.png" alt="Sungard AS logo" class="card-logo" />
+          <div class="card-body">
+            <h3>Sungard Availability Services — Project Manager IV</h3>
+            <p class="muted">Sep 2018 – Sep 2019</p>
+            <ul>
+              <li>Drove delivery transformation; $500K annual savings and +40% Agile adherence.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img src="assets/logos/nice.png" alt="NICE Ltd logo" class="card-logo" />
+          <div class="card-body">
+            <h3>NICE Systems Ltd. — Technical Project Manager</h3>
+            <p class="muted">Jun 2016 – Sep 2018</p>
+            <ul>
+              <li>Managed $2.5M+ yearly Agile deliveries; enabled 38% EBITDA growth.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img src="assets/logos/kpit.png" alt="KPIT logo" class="card-logo" />
+          <div class="card-body">
+            <h3>KPIT Ltd. — Scrum Master</h3>
+            <p class="muted">May 2015 – Jun 2016</p>
+            <ul>
+              <li>Reduced cycle time by 26% and improved team throughput.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img src="assets/logos/techmahindra.png" alt="Tech Mahindra logo" class="card-logo" />
+          <div class="card-body">
+            <h3>Tech Mahindra Ltd. — Technical Lead</h3>
+            <p class="muted">Oct 2008 – May 2015</p>
+            <ul>
+              <li>Delivered telecom transformation projects with 90%+ CSAT and zero cost overruns.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <img src="assets/logos/leibniz.png" alt="Leibniz University Hannover logo" class="card-logo" />
+          <div class="card-body">
+            <h3>Leibniz University Hannover — MBA</h3>
+            <p class="muted">Jul 2012 – Aug 2013 · Hannover, Germany</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img src="assets/logos/rgpv.png" alt="Rajiv Gandhi Technical University (RGPV) logo" class="card-logo" />
+          <div class="card-body">
+            <h3>Rajiv Gandhi Technical University — B.E., Electronics & Communication</h3>
+            <p class="muted">Sep 2004 – Jun 2008 · India</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <span class="date">Oct 2024</span>
+          <img src="assets/logos/scrumorg.png" alt="Scrum.org logo" />
+          <h3>PSPO I — Professional Scrum Product Owner</h3>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="date">Jul 2022</span>
+          <img src="assets/logos/scrumorg.png" alt="Scrum.org logo" />
+          <h3>PSM I — Professional Scrum Master</h3>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="date">Aug 2021</span>
+          <img src="assets/logos/safe.png" alt="Scaled Agile logo" />
+          <h3>Certified SAFe Agilist</h3>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="date">Jun 2021</span>
+          <img src="assets/logos/icagile.png" alt="ICAgile logo" />
+          <h3>ICP‑ACC — Agile Coaching</h3>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="date">May 2019</span>
+          <img src="assets/logos/pmi.png" alt="PMI logo" />
+          <h3>PMI‑ACP — Agile Certified Practitioner</h3>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="date">Jun 2014</span>
+          <img src="assets/logos/pmi.png" alt="PMI logo" />
+          <h3>PMP — Project Management Professional</h3>
         </div>
       </div>
-      <!-- subtle overlay to ensure text readability but keep image visible -->
-      <div class="hero-overlay"></div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="panel panel-dark">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I’m a delivery-first leader with 15+ years spanning project, program, and PMO leadership across banking and technology.
-          I help cross-functional teams ship outcomes: on-time delivery improvements, multi-million–dollar savings, and better stakeholder experience.
-          My superpowers: pragmatic governance, ruthless prioritization, risk control, and people coaching.
-        </p>
-        <p>
-          I’ve led Agile adoptions at scale (Scrum, Kanban, SAFe), coached Scrum Masters and Product Owners, and built reporting/OKR cadences that make value flow visible.
-          Recently, I’ve been leaning into product thinking—customer discovery, problem framing, and measurable outcomes—while exploring how AI/ML can unlock smarter roadmaps.
-        </p>
-        <p>
-          Certifications: PMP, PMI-ACP, ICP-ACC, SAFe Agilist, PSM I, PSPO I. Open to Product Management and Product Leadership roles.
-        </p>
-      </div>
-    </section>
-
-    <!-- CAREER (placeholder for now) -->
-    <section id="career" class="panel panel-light">
-      <div class="container">
-        <h2>Professional Career</h2>
-        <p>Coming soon: highlights, impact metrics, and select case studies.</p>
-      </div>
-    </section>
-
-    <!-- EDUCATION (placeholder for now) -->
-    <section id="education" class="panel panel-dark">
-      <div class="container">
-        <h2>Education</h2>
-        <ul class="edu-list">
-          <li><strong>B.Tech (IT)</strong> — (Add your institute) </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="panel panel-light">
-      <div class="container">
-        <h2>Certifications</h2>
-        <div class="timeline" id="certTimeline">
-          <!-- Items are generated in JS for animation control -->
-        </div>
-      </div>
-    </section>
-
-    <!-- MORE (placeholder) -->
-    <section id="more" class="panel panel-dark">
-      <div class="container">
-        <h2>More</h2>
-        <p>Reserved for blog, talks, downloads, or experiments.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Subhabrata Chattopadhyay</div>
+  <!-- Footer -->
+  <footer id="more" class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Subhabrata Chattopadhyay · Built with ❤️ + Vibe Coding</p>
+    </div>
   </footer>
 
-  <script>
-    // Typed roles (I am ...)
-    const roles = [
-      "Project Manager",
-      "Program Manager",
-      "Agile Coach",
-      "Product Manager",
-      "AI/ ML Enthusiast",
-      "Father"
-    ];
-    let roleIndex = 0, charIndex = 0, deleting = false;
-    const typingSpeed = 120, eraseSpeed = 60, pause = 1000;
-    function typeLoop() {
-      const el = document.getElementById("roles");
-      const word = roles[roleIndex];
-      if (!deleting && charIndex <= word.length) {
-        el.textContent = word.slice(0, charIndex++);
-        return setTimeout(typeLoop, typingSpeed);
-      }
-      if (!deleting && charIndex > word.length) {
-        deleting = true;
-        return setTimeout(typeLoop, pause);
-      }
-      if (deleting && charIndex >= 0) {
-        el.textContent = word.slice(0, charIndex--);
-        return setTimeout(typeLoop, eraseSpeed);
-      }
-      deleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      setTimeout(typeLoop, typingSpeed);
-    }
-    document.addEventListener("DOMContentLoaded", typeLoop);
-
-    // Certifications timeline data + animation
-    const certs = [
-      {
-        title: "Project Management Professional (PMP®)",
-        date: "Jun 2014",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Project_Management_Institute_logo.svg"
-      },
-      {
-        title: "PMI Agile Certified Practitioner (PMI-ACP®)",
-        date: "May 2019",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/f/f5/PMI_logo.svg"
-      },
-      {
-        title: "ICAgile Certified Professional – Agile Coaching (ICP-ACC)",
-        date: "Jun 2021",
-        logo: "https://static1.smartbear.co/smartbearbrand/media/images/logos/ICAgile.png"
-      },
-      {
-        title: "SAFe® Agilist (Leading SAFe)",
-        date: "Aug 2021",
-        logo: "https://scaledagile.com/wp-content/uploads/2022/06/SAFe-Agilist-Logo.png"
-      },
-      {
-        title: "Professional Scrum Master I (PSM I)",
-        date: "Jul 2022",
-        logo: "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/PSM%20I%20Badge.png"
-      },
-      {
-        title: "Professional Scrum Product Owner I (PSPO I)",
-        date: "Oct 2024",
-        logo: "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/PSPO%20I%20Badge.png"
-      }
-    ];
-    const timeline = document.getElementById("certTimeline");
-    certs.forEach((c, i) => {
-      const item = document.createElement("div");
-      item.className = "timeline-item " + (i % 2 === 0 ? "left" : "right");
-      item.innerHTML = `
-        <div class="timeline-content">
-          <div class="cert-head">
-            <img src="${c.logo}" alt="${c.title} logo" />
-            <div class="cert-meta">
-              <h3>${c.title}</h3>
-              <p class="date">${c.date}</p>
-            </div>
-          </div>
-        </div>`;
-      timeline.appendChild(item);
-    });
-
-    // Pop-in on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll(".timeline-item").forEach(el => io.observe(el));
-
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

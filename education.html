@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Education - Subhabrata Chattopadhyay</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <h1 class="logo">Subhabrata</h1>
-      <ul class="nav-links">
+  <header>
+    <nav>
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="career.html">Professional Career</a></li>
         <li><a href="education.html" class="active">Education</a></li>
         <li><a href="certifications.html">Certifications</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <!-- Education Section -->
-  <section class="section">
-    <div class="container">
-      <h1 class="section-title">Education</h1>
+  <section class="education">
+    <h1 style="text-align:center; margin-bottom:40px; color:var(--accent);">
+      Education
+    </h1>
 
-      <div class="cards">
+    <div class="education-container">
 
-        <!-- MBA -->
-        <article class="card reveal">
-          <img src="assets/logos/leibniz.png" alt="Leibniz University Hannover logo" class="card-logo" />
-          <div class="card-body">
-            <h3>Master of Business Administration (MBA)</h3>
-            <p class="muted">Leibniz University, Hannover, Germany</p>
-            <p class="muted">July 2012 – August 2013</p>
-          </div>
-        </article>
-
-        <!-- B.E. -->
-        <article class="card reveal">
-          <img src="assets/logos/rgpv.png" alt="Rajiv Gandhi Technical University logo" class="card-logo" />
-          <div class="card-body">
-            <h3>Bachelor of Engineering — Electronics &amp; Communication</h3>
-            <p class="muted">Rajiv Gandhi Technical University (RGTU / RGPV), India</p>
-            <p class="muted">September 2004 – June 2008</p>
-          </div>
-        </article>
-
+      <!-- Leibniz University -->
+      <div class="edu-card fade-in">
+        <img src="assets/logos/leibniz.png" alt="Leibniz University" class="edu-logo">
+        <h3>Master of Business Administration (MBA)</h3>
+        <p><strong>Leibniz University, Hannover, Germany</strong></p>
+        <p class="edu-duration">July 2012 – August 2013</p>
+        <p>Specialized in global business strategy & management.</p>
       </div>
+
+      <!-- Rajiv Gandhi Technical University -->
+      <div class="edu-card fade-in">
+        <img src="assets/logos/rgpv.png" alt="RGTU" class="edu-logo">
+        <h3>Bachelor of Engineering (Electronics & Communication)</h3>
+        <p><strong>Rajiv Gandhi Technical University, India</strong></p>
+        <p class="edu-duration">September 2004 – June 2008</p>
+        <p>Built strong foundation in technology, systems & engineering principles.</p>
+      </div>
+
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Subhabrata Chattopadhyay | All Rights Reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

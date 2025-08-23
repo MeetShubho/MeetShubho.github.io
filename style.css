@@ -67,7 +67,7 @@ nav ul li a.active {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('assets/profile-bg.jpg') center/cover no-repeat fixed;
+  background: url('assets/bg/profile-bg.png') center/cover no-repeat fixed;
 }
 
 .hero h1 {

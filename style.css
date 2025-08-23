@@ -90,13 +90,12 @@ nav ul li a.active {
 .social-icons a img {
   width: 30px;
   margin: 0 10px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s, filter 0.3s;
+  filter: none; /* Make icons visible by default */
+  transition: transform 0.3s;
 }
 
 .social-icons a img:hover {
-  transform: scale(1.2);
-  filter: brightness(1) invert(0);
+  transform: scale(1.2); /* Slight enlarge on hover */
 }
 
 /* ========================

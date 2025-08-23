@@ -1,4 +1,4 @@
-/* ========================
+ /* ========================
    Global Styles
 ======================== */
 :root {
@@ -67,7 +67,7 @@ nav ul li a.active {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('assets/bg/profile-bg.png') center/cover no-repeat fixed;
+  background: url('assets/bg/profile-bg.jpg') center/cover no-repeat fixed;
 }
 
 .hero h1 {
@@ -90,12 +90,13 @@ nav ul li a.active {
 .social-icons a img {
   width: 30px;
   margin: 0 10px;
-  filter: none; /* Make icons visible by default */
-  transition: transform 0.3s;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s, filter 0.3s;
 }
 
 .social-icons a img:hover {
-  transform: scale(1.2); /* Slight enlarge on hover */
+  transform: scale(1.2);
+  filter: brightness(1) invert(0);
 }
 
 /* ========================

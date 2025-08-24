@@ -354,24 +354,24 @@ html {
 }
 
 .hero-content {
-  position: relative;
+  position: relative;       /* ensures it's above overlay */
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   z-index: 2;
-  display: flex;              /* added */
-  flex-direction: column;     /* added */
-  align-items: center;        /* added */
-  gap: 1rem;                  /* added for spacing */
 }
-@media (max-width: 600px) {
-  .hero-content {
-    padding: 0 1rem;          /* keep spacing on small screens */
-  }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .hero h2 {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
 }
 
 /* Social Icons */
@@ -401,4 +401,10 @@ html {
   color: var(--primary);
   transform: scale(1.15);
   box-shadow: 0 0 15px var(--accent);
+}
+
+@media (max-width: 600px) {
+  .hero-content {
+    padding: 0 1rem;
+  }
 }

@@ -1,18 +1,20 @@
 /* ========================
-   Root Variables
+   Global Variables
 ======================== */
 :root {
-  --bg-color: #f5f5f5;
-  --primary: #333;
-  --secondary: #444;
-  --accent: #0078ff;
-  --text-color: #222;
-  --card-bg: #fff;
-  --border-color: #ddd;
+  --primary: #0a192f;
+  --secondary: #112240;
+  --accent: #64ffda;
+  --text-color: #ccd6f6;
+  --muted: #8892b0;
+  --card-bg: #1c2e4a;
+  --border-radius: 12px;
+  --transition: all 0.3s ease-in-out;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ========================
-   Global Styles
+   Global Reset & Base
 ======================== */
 * {
   margin: 0;
@@ -21,78 +23,133 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg-color);
+  font-family: var(--font-main);
+  background-color: var(--primary);
   color: var(--text-color);
   line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: #fff;
 }
 
 /* ========================
    Navbar
 ======================== */
 header {
-  background: var(--primary);
-  padding: 12px 0;
+  background: var(--secondary);
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header nav ul {
-  list-style: none;
+nav ul {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
+  list-style: none;
 }
 
-header nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
+nav ul li a {
+  color: var(--text-color);
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
 }
 
-header nav ul li a:hover,
-header nav ul li a.active {
+nav ul li a.active,
+nav ul li a:hover {
   color: var(--accent);
 }
 
-/* ========================
-   Section Headings
-======================== */
-section h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--secondary);
+nav ul li a.active::after,
+nav ul li a:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
 }
 
 /* ========================
-   Timeline Container
+   Sections
+======================== */
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 15px;
+}
+
+/* ========================
+   Footer
+======================== */
+footer {
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  background: var(--secondary);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ========================
+   Cards
+======================== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================
+   Timeline (Career & Education)
 ======================== */
 .timeline {
   position: relative;
-  max-width: 900px;
-  margin: auto;
-  padding: 20px 0;
+  margin: 30px 0;
+  padding-left: 50px;
 }
 
 .timeline::after {
-  content: "";
+  content: '';
   position: absolute;
-  width: 3px;
-  background: var(--accent);
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -1.5px;
+  margin-left: -1px;
+  width: 2px;
+  background-color: var(--accent);
 }
 
-/* Timeline Items */
 .timeline-item {
-  padding: 20px;
   position: relative;
-  background: var(--card-bg);
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
   width: 45%;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
   margin-bottom: 40px;
 }
 
@@ -105,23 +162,19 @@ section h1 {
 }
 
 .timeline-item h3 {
-  color: var(--secondary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: var(--accent);
 }
 
 .timeline-item p {
-  margin: 0;
+  color: var(--muted);
 }
 
-/* ========================
-   Footer
-======================== */
-footer {
-  text-align: center;
-  padding: 15px;
-  margin-top: 50px;
-  background: var(--primary);
-  color: #fff;
+.cert-date {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: var(--accent);
 }
 
 /* ========================
@@ -130,10 +183,10 @@ footer {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
+  animation: fadeIn 0.8s forwards;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -141,61 +194,112 @@ footer {
 }
 
 /* ========================
-   Responsive Timeline
+   Media Queries
 ======================== */
 @media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
   .timeline::after {
-    left: 20px;           /* move center line to the left on mobile */
-    margin-left: 0;
-  }
-
-  .timeline-item,
-  .timeline-item.left,
-  .timeline-item.right {
-    width: auto;
-    left: 0;
-    transform: none !important; /* prevent slide-in offsets on small screens */
-    margin-left: 50px;          /* space from the mobile line */
-    padding: 16px 16px 16px 20px;
-  }
-
-  /* Education: keep dots aligned with the mobile line */
-  .education .timeline-item .dot {
     left: 20px;
-    transform: translate(-50%, -50%);
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    margin-left: 40px;
   }
 }
 
 /* ========================
-   Education Enhancements ONLY
-   - small circular dots on the vertical line
-   - logo + text row, vertically centered
+   Certifications Page
 ======================== */
+.certifications .card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-/* Small circle marker on the line (place a <span class="dot"></span> inside each education .timeline-item) */
+.certifications .card h3 {
+  margin: 0;
+}
+
+.certifications .card span {
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+/* ========================
+   About Me Page
+======================== */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+}
+
+.about p {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about img {
+    margin: auto;
+  }
+}
+
+/* ========================
+   Smooth Scroll
+======================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   APPENDED: Education Specific Styles (logos + dots)
+   ============================================================ */
+
+/* Small circle marker sitting on the vertical timeline line */
 .education .timeline-item .dot {
   position: absolute;
-  top: 24px;                 /* sits roughly at the card header line */
+  top: 24px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--accent);
-  border: 3px solid var(--card-bg); /* ring to separate from the line */
+  border: 3px solid var(--card-bg);
   z-index: 1;
 }
 
-/* Logo + text row */
+/* Row: circular logo + text, vertically centered */
 .education .edu-content {
   display: flex;
-  align-items: center;  /* vertical centering of text vs logo */
+  align-items: center;
   gap: 14px;
 }
 
-/* Circular logos */
 .education .edu-logo {
-  width: 48px;               /* small circles */
+  width: 48px;
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
@@ -203,7 +307,6 @@ footer {
   flex-shrink: 0;
 }
 
-/* Text next to logos */
 .education .edu-content h3 {
   margin: 0;
   font-size: 1.05rem;
@@ -221,4 +324,12 @@ footer {
   margin-top: 4px;
   font-size: 0.9rem;
   color: var(--accent);
+}
+
+/* Keep dot aligned to the mobile line position */
+@media (max-width: 768px) {
+  .education .timeline-item .dot {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
 }

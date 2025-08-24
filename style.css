@@ -276,8 +276,6 @@ html {
 /* ============================================================
    APPENDED: Education Specific Styles (logos + dots)
    ============================================================ */
-
-/* Small circle marker sitting on the vertical timeline line */
 .education .timeline-item .dot {
   position: absolute;
   top: 24px;
@@ -291,7 +289,6 @@ html {
   z-index: 1;
 }
 
-/* Row: circular logo + text, vertically centered */
 .education .edu-content {
   display: flex;
   align-items: center;
@@ -326,7 +323,6 @@ html {
   color: var(--accent);
 }
 
-/* Keep dot aligned to the mobile line position */
 @media (max-width: 768px) {
   .education .timeline-item .dot {
     left: 20px;
@@ -373,21 +369,31 @@ html {
   margin-bottom: 25px;
 }
 
+/* Social Icons */
 .social-icons {
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .social-icons a {
-  color: white;
-  font-size: 28px;
-  transition: color 0.3s ease, transform 0.3s ease;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--text-color);
+  font-size: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
 }
 
 .social-icons a:hover {
-  color: var(--accent);
-  transform: scale(1.2);
+  background: var(--accent);
+  color: var(--primary);
+  transform: scale(1.15);
+  box-shadow: 0 0 15px var(--accent);
 }
-

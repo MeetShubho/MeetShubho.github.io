@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (charIndex < 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
+        charIndex = 0; // reset index when switching roles
         setTimeout(typeRole, typingSpeed);
         return;
       }
@@ -76,5 +77,3 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-
-

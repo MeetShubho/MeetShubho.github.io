@@ -130,21 +130,29 @@ footer {
 ======================== */
 .timeline {
   position: relative;
-  margin: 30px 0;
-  padding-left: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
 }
 
+.timeline h1 {
+  margin-bottom: 60px; /* extra space before line starts */
+}
+
+/* The vertical line */
 .timeline::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: 120px; /* starts below title */
   bottom: 0;
   left: 50%;
-  margin-left: -1px;
-  width: 2px;
+  transform: translateX(-50%);
+  width: 3px;
   background-color: var(--accent);
 }
 
+/* Timeline items */
 .timeline-item {
   position: relative;
   width: 45%;
@@ -152,14 +160,17 @@ footer {
   background: var(--card-bg);
   border-radius: var(--border-radius);
   margin-bottom: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .timeline-item.left {
   left: 0;
+  text-align: right;
 }
 
 .timeline-item.right {
   left: 55%;
+  text-align: left;
 }
 
 .timeline-item h3 {
@@ -169,6 +180,28 @@ footer {
 
 .timeline-item p {
   color: var(--muted);
+}
+
+/* Circular markers */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px var(--primary);
+  z-index: 1;
+}
+
+.timeline-item.left::before {
+  right: -12px;
+}
+
+.timeline-item.right::before {
+  left: -12px;
 }
 
 .cert-date {
@@ -205,12 +238,18 @@ footer {
 
   .timeline::after {
     left: 20px;
+    transform: none;
   }
 
   .timeline-item {
     width: 100%;
     left: 0 !important;
     margin-left: 40px;
+    text-align: left;
+  }
+
+  .timeline-item::before {
+    left: -2px;
   }
 }
 

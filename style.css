@@ -408,3 +408,29 @@ html {
     padding: 0 1rem;
   }
 }
+
+/* ============================================================
+   APPENDED: Contact Page - Font Based Social Icons (Centered)
+   ============================================================ */
+.contact .social-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* centered */
+}
+
+.contact .social-icons a {
+  font-size: 1.8rem; /* proportional crisp size */
+  color: var(--text-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+  background: none;
+  width: auto;
+  height: auto;
+  box-shadow: none;
+}
+
+.contact .social-icons a:hover {
+  transform: scale(1.2);
+  color: var(--accent);
+}

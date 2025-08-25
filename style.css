@@ -509,3 +509,10 @@ html {
   justify-content: center;
   height: 100%;
 }
+
+/* ============================================================
+   Certifications Timeline Override
+============================================================ */
+.cert-timeline .timeline-item::before {
+  display: none; /* prevent duplicate markers on certifications */
+}

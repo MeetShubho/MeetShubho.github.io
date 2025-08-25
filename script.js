@@ -3,12 +3,12 @@
 // =============================
 document.addEventListener("DOMContentLoaded", () => {
   const roles = [
-    "Project Manager",
-    "Program Manager",
-    "Agile Coach",
-    "Product Manager",
-    "AI/ML Enthusiast",
-    "Father"
+    "a Project Manager",
+    "a Program Manager",
+    "an Agile Coach", // fixed grammar here
+    "a Product Manager",
+    "an AI/ML Enthusiast",
+    "a Father"
   ];
 
   let roleIndex = 0;
@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const erasingSpeed = 50;
   const delayBetweenRoles = 1500;
   const roleElement = document.querySelector(".role-highlight");
+
+  // Create blinking cursor
+  const cursor = document.createElement("span");
+  cursor.classList.add("cursor");
+  cursor.textContent = "|";
+  if (roleElement) {
+    roleElement.insertAdjacentElement("afterend", cursor);
+  }
 
   function typeRole() {
     if (!roleElement) return; // If element not found, skip
@@ -68,4 +76,5 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
 

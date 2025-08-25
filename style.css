@@ -376,7 +376,7 @@ html {
 }
 
 /* Highlighted Roles */
-.role {
+.role-highlight {
   color: var(--highlight);
   font-size: 2rem;
   font-weight: 600;

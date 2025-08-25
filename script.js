@@ -1,4 +1,4 @@
-// =============================
+// ============================= 
 // Rotating Roles on Home Page
 // =============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,20 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const delayBetweenRoles = 1500;
   const roleElement = document.querySelector(".role-highlight");
 
-  // Create blinking cursor
-  const cursor = document.createElement("span");
-  cursor.classList.add("cursor");
-  cursor.textContent = "|";
-  if (roleElement) {
-    roleElement.insertAdjacentElement("afterend", cursor);
-  }
-
   function typeRole() {
     if (!roleElement) return; // If element not found, skip
     const currentRole = roles[roleIndex];
 
     if (isDeleting) {
-      roleElement.textContent = currentRole.substring(0, charIndex--);
+      roleElement.textContent = currentRole.substring(0, charIndex--) + "|";
       if (charIndex < 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
@@ -41,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
     } else {
-      roleElement.textContent = currentRole.substring(0, charIndex++);
+      roleElement.textContent = currentRole.substring(0, charIndex++) + "|";
       if (charIndex > currentRole.length) {
         isDeleting = true;
         setTimeout(typeRole, delayBetweenRoles);

@@ -1,4 +1,4 @@
-/* ========================
+/* ======================== 
    Global Variables
 ======================== */
 :root {
@@ -249,7 +249,8 @@ footer {
   }
 
   .timeline-item::before {
-    left: -2px;
+    left: -32px; /* FIXED alignment */
+    right: auto;
   }
 }
 

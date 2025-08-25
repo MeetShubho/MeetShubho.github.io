@@ -434,3 +434,22 @@ html {
   transform: scale(1.2);
   color: var(--accent);
 }
+
+.role-highlight {
+  color: yellow;
+  font-size: 1.4em; /* slightly bigger */
+  font-weight: bold;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: yellow;
+  font-weight: bold;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}

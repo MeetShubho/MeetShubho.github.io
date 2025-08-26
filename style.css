@@ -515,3 +515,122 @@ html {
 .cert-timeline .cert-item::before {
   display: none; /* prevent duplicate markers on certifications */
 }
+/* ============================================================
+   Certifications Timeline (Dedicated Styling)
+============================================================ */
+.cert-hero {
+  text-align: center;
+  padding: 50px 20px 30px;
+  background: var(--secondary);
+  color: white;
+}
+
+.cert-hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: var(--highlight);
+  background: none !important; /* remove accidental white patch */
+  padding: 0;
+}
+
+.cert-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  overflow: visible;
+  padding: 40px 20px;
+}
+
+/* Vertical line for cert timeline */
+.cert-timeline::after {
+  content: "";
+  position: absolute;
+  top: 60px;  /* start below heading */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: var(--highlight);
+  border-radius: 999px;
+  z-index: 0;
+}
+
+/* Certification items */
+.cert-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+}
+
+.cert-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.cert-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+.cert-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.cert-date {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--highlight);
+  margin-bottom: 5px;
+}
+
+.cert-title {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.cert-org {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Yellow circular markers */
+.cert-point {
+  position: absolute;
+  top: 30px;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 18px;
+  height: 18px;
+  background: var(--highlight);
+  border: 3px solid var(--card-bg);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Responsive for certifications timeline */
+@media (max-width: 820px) {
+  .cert-item {
+    width: 100%;
+    left: 0 !important;
+    text-align: left;
+    padding-left: 60px;
+    padding-right: 25px;
+  }
+
+  .cert-timeline::after {
+    left: 20px;
+    transform: none;
+  }
+
+  .cert-point {
+    left: 20px !important;
+    transform: none !important;
+  }
+}
+

@@ -422,19 +422,18 @@ html {
   font-weight: 600;
 }
 
-/* Blinking Cursor */
-.cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1.2em;
-  background: var(--highlight);
-  margin-left: 4px;
-  animation: blink 0.8s infinite;
+/* NEW: Blinking Cursor handled via pseudo-element */
+.role-highlight::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+  color: var(--highlight);
 }
 
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* Social Icons */

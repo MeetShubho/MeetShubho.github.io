@@ -291,3 +291,34 @@ html {
     width: auto;
   }
 }
+
+/* ========================
+   Certifications Scroll Reveal
+======================== */
+.cert-item {
+  opacity: 0; /* start hidden */
+  transition: all 0.8s ease-out;
+}
+
+.cert-item.left {
+  transform: translateX(-50px); /* slide from left */
+}
+
+.cert-item.right {
+  transform: translateX(50px); /* slide from right */
+}
+
+.cert-item.show {
+  opacity: 1;
+  transform: translateX(0); /* reveal in place */
+}
+
+/* Disable sliding on small screens */
+@media (max-width: 820px) {
+  .cert-item,
+  .cert-item.left,
+  .cert-item.right {
+    transform: translateX(0);
+    opacity: 1; /* ensure visible */
+  }
+}

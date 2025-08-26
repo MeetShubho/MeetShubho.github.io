@@ -1,4 +1,4 @@
-// ============================= 
+// =============================  
 // Rotating Roles on Home Page
 // =============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentRole = roles[roleIndex];
 
     if (isDeleting) {
-      roleElement.textContent = currentRole.substring(0, charIndex--) + "|";
+      roleElement.textContent = currentRole.substring(0, charIndex--);
       if (charIndex < 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
     } else {
-      roleElement.textContent = currentRole.substring(0, charIndex++) + "|";
+      roleElement.textContent = currentRole.substring(0, charIndex++);
       if (charIndex > currentRole.length) {
         isDeleting = true;
         setTimeout(typeRole, delayBetweenRoles);

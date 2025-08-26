@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Scroll Animations
 // =============================
 window.addEventListener("scroll", () => {
+  // Fade-in animations
   const fadeElements = document.querySelectorAll(".fade-in");
   fadeElements.forEach(el => {
     const rect = el.getBoundingClientRect();
@@ -61,7 +62,17 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  const certItems = document.querySelectorAll(".timeline-item");
+  // Timeline items (experience/education)
+  const timelineItems = document.querySelectorAll(".timeline-item");
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      item.classList.add("show");
+    }
+  });
+
+  // Certification items (certifications.html)
+  const certItems = document.querySelectorAll(".certification-item");
   certItems.forEach(item => {
     const rect = item.getBoundingClientRect();
     if (rect.top < window.innerHeight - 50) {

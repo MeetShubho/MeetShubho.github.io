@@ -137,14 +137,14 @@ footer {
 }
 
 .timeline h1 {
-  margin-bottom: 60px; /* extra space before line starts */
+  margin-bottom: 60px;
 }
 
-/* The vertical line */
+/* Vertical line */
 .timeline::after {
   content: '';
   position: absolute;
-  top: 120px; /* starts below title */
+  top: 120px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -249,7 +249,7 @@ footer {
   }
 
   .timeline-item::before {
-    left: -32px; /* FIXED alignment */
+    left: -32px;
     right: auto;
   }
 }
@@ -315,7 +315,7 @@ html {
 }
 
 /* ============================================================
-   APPENDED: Education Specific Styles (logos + dots)
+   Education Specific Styles (logos + dots)
 ============================================================ */
 .education .timeline-item .dot {
   position: absolute;
@@ -422,7 +422,6 @@ html {
   font-weight: 600;
 }
 
-/* NEW: Blinking Cursor handled via pseudo-element */
 .role-highlight::after {
   content: "|";
   animation: blink 0.7s infinite;
@@ -510,150 +509,24 @@ html {
 }
 
 /* ============================================================
-   Certifications Timeline Override
+   Certifications Timeline
 ============================================================ */
-.cert-timeline .cert-item::before {
-  display: none; /* prevent duplicate markers on certifications */
-}
-/* ============================================================
-   Certifications Timeline (Dedicated Styling)
-============================================================ */
-.cert-hero {
-  text-align: center;
-  padding: 50px 20px 30px;
-  background: var(--secondary);
-  color: white;
-}
-
-.cert-hero h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  color: var(--highlight);
-  background: none !important; /* remove accidental white patch */
-  padding: 0;
-}
-
-.cert-timeline {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  overflow: visible;
-  padding: 40px 20px;
-}
-
-/* Vertical line for cert timeline */
-.cert-timeline::after {
-  content: "";
-  position: absolute;
-  top: 60px;  /* start below heading */
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  background: var(--highlight);
-  border-radius: 999px;
-  z-index: 0;
-}
-
-/* Certification items */
-.cert-item {
-  position: relative;
-  width: 50%;
-  padding: 20px 40px;
-}
-
-.cert-item.left {
-  left: 0;
-  text-align: right;
-}
-
-.cert-item.right {
-  left: 50%;
-  text-align: left;
-}
-
-.cert-content {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  position: relative;
-  z-index: 1;
-}
-
-.cert-date {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: var(--highlight);
-  margin-bottom: 5px;
-}
-
-.cert-title {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: var(--text-color);
-}
-
-.cert-org {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* Yellow circular markers */
-.cert-point {
-  position: absolute;
-  top: 30px;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 18px;
-  height: 18px;
-  background: var(--highlight);
-  border: 3px solid var(--card-bg);
-  border-radius: 50%;
-  z-index: 2;
-}
-
-/* Responsive for certifications timeline */
-@media (max-width: 820px) {
-  .cert-item {
-    width: 100%;
-    left: 0 !important;
-    text-align: left;
-    padding-left: 60px;
-    padding-right: 25px;
-  }
-
-  .cert-timeline::after {
-    left: 20px;
-    transform: none;
-  }
-
-  .cert-point {
-    left: 20px !important;
-    transform: none !important;
-  }
-}
-/* ============================================================
-   CERTIFICATIONS — final fixes (append to end of style.css)
-   - contains floats
-   - continuous vertical line
-   - prevents dots/cards from overlapping
-============================================================ */
-
 .cert-timeline {
   position: relative;
   max-width: 1100px;
   margin: 20px auto 80px;
   padding: 40px 20px;
-  display: flow-root;            /* contains floated .cert-item children */
+  display: flow-root;
   box-sizing: border-box;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
-/* vertical line that spans all items */
+/* vertical line for cert timeline */
 .cert-timeline::after {
   content: "";
   position: absolute;
-  top: 60px;                     /* start below the page heading */
+  top: 60px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -663,25 +536,20 @@ html {
   z-index: 0;
 }
 
-/* each cert item (50% columns) */
+/* cert items */
 .cert-item {
+  display: inline-block;
   position: relative;
   width: 50%;
   padding: 18px 30px;
   box-sizing: border-box;
-  float: left;                   /* keep alternating layout but contained */
-  clear: none;
-  opacity: 1;                    /* optional: turn off reveal to test layout */
-  transform: none;
+  vertical-align: top;
 }
 
-/* left / right column behavior */
-.cert-item.left  { margin-left: 0;         text-align: right; padding-right: 60px; }
-.cert-item.right { margin-left: 50%;       text-align: left;  padding-left: 60px; }
+.cert-item.left { margin-left: 0; text-align: right; padding-right: 60px; }
+.cert-item.right { margin-left: 50%; text-align: left; padding-left: 60px; }
 
-/* the card inside each item */
-.cert-card,
-.cert-content {
+.cert-card, .cert-content {
   display: inline-flex;
   align-items: center;
   gap: 18px;
@@ -691,16 +559,14 @@ html {
   border-radius: 12px;
   backdrop-filter: blur(6px);
   box-shadow: 0 18px 40px rgba(3,6,14,0.6);
-  z-index: 1;                      /* keep above the vertical line */
-  max-width: calc(50% - 110px);    /* keep card narrower than its column to avoid overlap */
+  z-index: 1;
+  max-width: calc(50% - 110px);
   width: auto;
   box-sizing: border-box;
 }
 
-/* logo sizing */
 .cert-logo { width: 72px; height: 72px; object-fit: contain; border-radius: 10px; flex: 0 0 72px; }
 
-/* dot that sits on the vertical line */
 .cert-point {
   position: absolute;
   top: 34px;
@@ -716,40 +582,40 @@ html {
   pointer-events: none;
 }
 
-/* make sure the timeline line is behind content */
-.cert-timeline::after { z-index: 0; }
-.cert-card, .cert-content { z-index: 1; }
-
-/* small layout/spacing helpers */
 .cert-meta h3 { margin: 0 0 6px; color: var(--accent); }
 .cert-meta p { margin: 0; color: var(--muted); }
 
-/* responsive: single-column flow on smaller screens */
+/* Responsive Horizontal Scroll */
 @media (max-width: 820px) {
-  .cert-item,
-  .cert-item.left,
-  .cert-item.right {
-    width: 100%;
-    float: none;
-    margin-left: 0 !important;
-    text-align: left;
-    padding-left: 72px;             /* space for vertical line & dot */
-    padding-right: 20px;
+  .cert-timeline {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 20px;
   }
 
   .cert-timeline::after {
-    left: 24px;
-    transform: none;
-    top: 40px;
+    display: none;
   }
 
-  .cert-point {
-    left: 24px !important;
-    transform: none !important;
+  .cert-item {
+    display: inline-block;
+    width: auto;
+    min-width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: none;
+    text-align: left;
+    padding: 10px;
   }
 
   .cert-card, .cert-content {
-    max-width: calc(100% - 110px);
-    width: auto;
+    max-width: 280px;
+  }
+
+  .cert-point {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
   }
 }

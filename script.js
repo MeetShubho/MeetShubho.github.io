@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const roles = [
     "a Project Manager",
     "a Program Manager",
-    "an Agile Coach", // fixed grammar here
+    "an Agile Coach",
     "a Product Manager",
     "an AI/ML Enthusiast",
     "a Father"
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const roleElement = document.querySelector(".role-highlight");
 
   function typeRole() {
-    if (!roleElement) return; // If element not found, skip
+    if (!roleElement) return;
     const currentRole = roles[roleIndex];
 
     if (isDeleting) {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (charIndex < 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        charIndex = 0; // reset index when switching roles
+        charIndex = 0;
         setTimeout(typeRole, typingSpeed);
         return;
       }
@@ -62,18 +62,9 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  // Timeline items (experience/education)
-  const timelineItems = document.querySelectorAll(".timeline-item");
-  timelineItems.forEach(item => {
-    const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50) {
-      item.classList.add("show");
-    }
-  });
-
-  // Certification items (certifications.html)
-  const certItems = document.querySelectorAll(".certification-item");
-  certItems.forEach(item => {
+  // Timeline items (career, education, certifications, etc.)
+  const scrollItems = document.querySelectorAll(".timeline-item, .cert-item");
+  scrollItems.forEach(item => {
     const rect = item.getBoundingClientRect();
     if (rect.top < window.innerHeight - 50) {
       item.classList.add("show");

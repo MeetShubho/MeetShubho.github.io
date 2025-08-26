@@ -45,6 +45,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   typeRole();
+
+  // =============================
+  // Certifications Scroll Reveal
+  // =============================
+  const certItems = document.querySelectorAll(".cert-item");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1
+  };
+
+  const revealCertItem = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(revealCertItem, observerOptions);
+  certItems.forEach(item => observer.observe(item));
 });
 
 // =============================

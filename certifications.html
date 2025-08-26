@@ -15,14 +15,11 @@
 
     .cert-hero { text-align:center; margin-bottom: 40px; }
     .cert-hero h1 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: var(--accent);
       margin-bottom: 8px;
       position: relative;
       z-index: 2;
-      display: inline-block;
-      background: #fff; /* hides timeline line behind */
-      padding: 0 12px;
     }
     .cert-hero p { color: var(--muted); margin:0 0 12px; }
 
@@ -35,7 +32,7 @@
       content: "";
       position: absolute;
       left: 50%;
-      top: 0;
+      top: 40px; /* starts below the title */
       bottom: 0;
       width: 6px;
       background: linear-gradient(180deg, rgba(255,212,0,0.95), rgba(255,180,0,0.8));
@@ -84,19 +81,21 @@
     .cert-point {
       position: absolute;
       left: 50%;
-      top: 36px;
-      width: 24px;
-      height: 24px;
+      top: 32px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: linear-gradient(135deg,#fff,#ffd400);
-      border: 4px solid rgba(0,0,0,0.45);
-      box-shadow: 0 4px 18px rgba(255,180,0,0.18);
+      border: 3px solid var(--secondary);
+      box-shadow: 0 4px 14px rgba(255,180,0,0.18);
       transform: translateX(-50%);
       z-index: 2;
     }
 
     @media (max-width: 820px) {
-      .cert-item, .cert-item.left, .cert-item.right { width: 100%; padding: 12px 20px; text-align: left; float:none; }
+      .cert-item, .cert-item.left, .cert-item.right {
+        width: 100%; padding: 12px 20px; text-align: left; float:none;
+      }
       .cert-item.left .cert-card, .cert-item.right .cert-card { width: 100%; justify-content:flex-start; }
       .cert-timeline::after { left: 12px; transform: none; }
       .cert-point { left: 12px; transform:none; }
@@ -121,7 +120,6 @@
   <main class="cert-wrapper">
     <header class="cert-hero">
       <h1>Certifications</h1>
-      <p>A curated timeline of certifications from my professional journey.</p>
     </header>
 
     <section class="cert-timeline" aria-label="Certifications timeline">
@@ -130,7 +128,7 @@
       <div class="cert-item left">
         <div class="cert-point"></div>
         <div class="cert-card">
-          <img class="cert-logo" src="assets/logos/pmi.png" alt="PMI logo - PMP" />
+          <img class="cert-logo" src="assets/logos/pmp.png" alt="PMI logo - PMP" />
           <div class="cert-meta">
             <h3>Project Management Professional (PMP)</h3>
             <p>Project Management Institute (PMI) — <strong>June 2014</strong></p>
@@ -142,7 +140,7 @@
       <div class="cert-item right">
         <div class="cert-point"></div>
         <div class="cert-card">
-          <img class="cert-logo" src="assets/logos/pmi.png" alt="PMI logo - PMI-ACP" />
+          <img class="cert-logo" src="assets/logos/pmi-acp.png" alt="PMI logo - PMI-ACP" />
           <div class="cert-meta">
             <h3>Agile Certified Practitioner (PMI-ACP)</h3>
             <p>Project Management Institute (PMI) — <strong>May 2019</strong></p>
@@ -154,7 +152,7 @@
       <div class="cert-item left">
         <div class="cert-point"></div>
         <div class="cert-card">
-          <img class="cert-logo" src="assets/logos/icagile.png" alt="ICAgile logo - ICP-ACC" />
+          <img class="cert-logo" src="assets/logos/icp-acc.png" alt="ICAgile logo - ICP-ACC" />
           <div class="cert-meta">
             <h3>ICAgile Certified Professional — Agile Coaching (ICP-ACC)</h3>
             <p>ICAgile — <strong>June 2021</strong></p>
@@ -178,7 +176,7 @@
       <div class="cert-item left">
         <div class="cert-point"></div>
         <div class="cert-card">
-          <img class="cert-logo" src="assets/logos/scrumorg.png" alt="Scrum.org logo - PSM I" />
+          <img class="cert-logo" src="assets/logos/psm.png" alt="Scrum.org logo - PSM I" />
           <div class="cert-meta">
             <h3>Professional Scrum Master I (PSM-1)</h3>
             <p>Scrum.org — <strong>July 2022</strong></p>
@@ -190,7 +188,7 @@
       <div class="cert-item right">
         <div class="cert-point"></div>
         <div class="cert-card">
-          <img class="cert-logo" src="assets/logos/scrumorg.png" alt="Scrum.org logo - PSPO I" />
+          <img class="cert-logo" src="assets/logos/pspo.png" alt="Scrum.org logo - PSPO I" />
           <div class="cert-meta">
             <h3>Professional Scrum Product Owner I (PSPO-1)</h3>
             <p>Scrum.org — <strong>October 2024</strong></p>

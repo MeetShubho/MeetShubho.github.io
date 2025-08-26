@@ -512,6 +512,6 @@ html {
 /* ============================================================
    Certifications Timeline Override
 ============================================================ */
-.cert-timeline .timeline-item::before {
+.cert-timeline .cert-item::before {
   display: none; /* prevent duplicate markers on certifications */
 }

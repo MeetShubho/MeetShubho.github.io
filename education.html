@@ -6,8 +6,8 @@
   <title>Education - Subhabrata Chattopadhyay</title>
 
   <!-- Page-specific CSS + Font Awesome -->
-  <link rel="stylesheet" href="Education.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="education.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
     </nav>
   </header>
 
-  <!-- content -->
+  <!-- Content -->
   <main class="edu-wrapper">
     <!-- Page Title -->
     <header class="edu-hero">
@@ -37,26 +37,30 @@
 
       <!-- MBA -->
       <div class="edu-item left">
-        <div class="edu-date">2012</div>
+        <div class="edu-date">2012–2013</div>
         <div class="edu-card">
           <div class="edu-header">
-            <img class="edu-logo" src="assets/logos/leibniz.png" alt="Leibniz University logo" />
-            <h3>Leibniz University, Hannover, Germany</h3>
+            <img class="edu-logo" src="assets/logos/leibniz.png" alt="Leibniz University" />
+            <div>
+              <h3>Leibniz University, Hannover, Germany</h3>
+              <p>Master of Business Administration (MBA)</p>
+            </div>
           </div>
-          <p>Master of Business Administration (MBA)</p>
           <p class="edu-full-date">July 2012 – August 2013</p>
         </div>
       </div>
 
       <!-- BE -->
       <div class="edu-item right">
-        <div class="edu-date">2004</div>
+        <div class="edu-date">2004–2008</div>
         <div class="edu-card">
           <div class="edu-header">
-            <img class="edu-logo" src="assets/logos/rgpv.png" alt="RGPV University logo" />
-            <h3>Rajiv Gandhi Technical University, India</h3>
+            <img class="edu-logo" src="assets/logos/rgpv.png" alt="Rajiv Gandhi Technical University" />
+            <div>
+              <h3>Rajiv Gandhi Technical University, India</h3>
+              <p>Bachelor of Engineering (Electronics & Communication)</p>
+            </div>
           </div>
-          <p>Bachelor of Engineering (Electronics & Communication)</p>
           <p class="edu-full-date">September 2004 – June 2008</p>
         </div>
       </div>
@@ -72,20 +76,21 @@
     </p>
   </footer>
 
-  <!-- animations -->
+  <!-- Scroll Animations -->
   <script>
-    const eduItems = document.querySelectorAll('.edu-item');
+    const items = document.querySelectorAll('.edu-item');
+    const timelineLine = document.querySelector('.edu-timeline::before');
 
-    const eduObserver = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
-          eduObserver.unobserve(entry.target);
+          observer.unobserve(entry.target); // animate once
         }
       });
     }, { threshold: 0.2 });
 
-    eduItems.forEach(item => eduObserver.observe(item));
+    items.forEach(item => observer.observe(item));
   </script>
 </body>
 </html>

@@ -120,6 +120,21 @@
   <!-- scripts -->
   <script src="script.js" defer></script>
   <script src="diagnostic.js" defer></script>
+  <script>
+  const items = document.querySelectorAll('.cert-item');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target); // animate once
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+</script>
+
 </body>
 </html>
 

@@ -33,6 +33,7 @@
 
     <!-- Vertical Timeline -->
     <section class="cert-timeline">
+      <div class="timeline-line"></div> <!-- animated vertical line -->
 
       <!-- PMP -->
       <div class="cert-item left">
@@ -118,23 +119,37 @@
   </footer>
 
   <!-- scripts -->
-  <script src="script.js" defer></script>
-  <script src="diagnostic.js" defer></script>
   <script>
+  // Card + date animations
   const items = document.querySelectorAll('.cert-item');
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
-        observer.unobserve(entry.target); // animate once
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
 
   items.forEach(item => observer.observe(item));
-</script>
 
+  // Timeline line drawing
+  const timeline = document.querySelector('.cert-timeline');
+  const line = document.querySelector('.timeline-line');
+
+  window.addEventListener('scroll', () => {
+    const rect = timeline.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const totalHeight = rect.height;
+      const visibleHeight = Math.min(windowHeight - rect.top, totalHeight);
+      const percentage = Math.max(0, visibleHeight / totalHeight);
+
+      line.style.height = (percentage * 100) + "%";
+    }
+  });
+  </script>
 </body>
 </html>
-

@@ -14,7 +14,7 @@ body {
 
 /* Navbar */
 .navbar {
-  background: linear-gradient(90deg, #0078d7, #6a11cb);
+  background: linear-gradient(90deg, #6a11cb, #0078d7);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -67,7 +67,7 @@ body {
   display: block;
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, #0078d7, #6a11cb);
+  background: linear-gradient(90deg, #6a11cb, #0078d7);
   margin: 1rem auto 0;
   border-radius: 3px;
 }
@@ -88,7 +88,7 @@ body {
   transform: translateX(-50%);
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #0078d7, #6a11cb);
+  background: linear-gradient(180deg, #6a11cb, #0078d7);
   opacity: 0;
   animation: growLine 2s forwards;
 }
@@ -170,19 +170,27 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%) scale(0.8);
-  width: 70px;
-  height: 70px;
-  background: #0078d7;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #6a11cb, #0078d7);
   color: #fff;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   opacity: 0;
   transition: all 0.6s ease-out;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.edu-date i {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
 }
 
 .edu-item.show .edu-date {
@@ -192,11 +200,11 @@ body {
 }
 
 .edu-item.left .edu-date {
-  right: -35px;
+  right: -40px;
 }
 
 .edu-item.right .edu-date {
-  left: -35px;
+  left: -40px;
 }
 
 /* Bounce Animation */
@@ -214,7 +222,16 @@ body {
   padding: 1.5rem;
   margin-top: 3rem;
   font-size: 0.9rem;
-  border-top: 4px solid #0078d7;
+  border-top: 4px solid #6a11cb;
+}
+
+.footer a {
+  color: #ffdd57;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive */

@@ -1,0 +1,146 @@
+/* Certifications Page Styles */
+
+/* Wrapper */
+.cert-wrapper {
+  padding: 2rem;
+  text-align: center;
+}
+
+.cert-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Horizontal Scroll Container */
+.cert-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2rem;
+}
+
+.cert-timeline {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 auto;
+  width: max-content;
+}
+
+/* Horizontal Line */
+.cert-timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to right, #ff9800, #f44336, #9c27b0, #3f51b5, #009688);
+  border-radius: 3px;
+  z-index: 0;
+}
+
+/* Certification Items */
+.cert-item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 280px;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+/* Circle on the line */
+.cert-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border: 4px solid #ff9800;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Certification Card Base */
+.cert-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Alternate Positioning */
+.cert-item:nth-child(odd) .cert-card {
+  margin-top: -120px; /* Above line */
+}
+
+.cert-item:nth-child(even) .cert-card {
+  margin-top: 40px; /* Below line */
+}
+
+/* Logo & Title */
+.cert-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cert-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.cert-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Certification Date */
+.cert-date {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cert-item {
+    width: 240px;
+    margin: 0 1rem;
+  }
+  .cert-item:nth-child(odd) .cert-card {
+    margin-top: -90px;
+  }
+  .cert-item:nth-child(even) .cert-card {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cert-hero h1 {
+    font-size: 2rem;
+  }
+  .cert-item {
+    width: 200px;
+  }
+  .cert-card h3 {
+    font-size: 1rem;
+  }
+}

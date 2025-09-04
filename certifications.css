@@ -1,12 +1,54 @@
 /* ===============================
-   Certifications Page Styling
+   Global Reset & Base
    =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Wrapper */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #f9fafc;
+}
+
+/* ===============================
+   Navbar
+   =============================== */
+.navbar {
+  background: #0078d7;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffdd57;
+}
+
+/* ===============================
+   Certifications Wrapper
+   =============================== */
 .cert-wrapper {
   padding: 2rem;
   text-align: center;
-  background: #f9fafc;
   min-height: 100vh;
 }
 
@@ -25,30 +67,30 @@
   display: block;
   width: 80px;
   height: 4px;
-  background: #0078d7; /* Accent underline */
+  background: #0078d7;
   margin: 0.8rem auto 0;
   border-radius: 2px;
 }
 
-/* Horizontal Scroll Wrapper */
+/* ===============================
+   Timeline Layout
+   =============================== */
 .cert-scroll-wrapper {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 1rem 0;
 }
 
-/* Timeline Container */
 .cert-timeline {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: relative;
   padding: 2rem 0;
-  border-bottom: 3px solid #0078d7; /* Horizontal line */
+  border-bottom: 3px solid #0078d7;
   min-width: max-content;
 }
 
-/* Certification Item */
 .cert-item {
   flex: 0 0 auto;
   width: 250px;
@@ -57,7 +99,6 @@
   position: relative;
 }
 
-/* Certification Card */
 .cert-card {
   display: flex;
   flex-direction: column;
@@ -65,7 +106,6 @@
   justify-content: flex-start;
 }
 
-/* Logo + Title */
 .cert-header {
   display: flex;
   flex-direction: column;
@@ -78,6 +118,7 @@
   height: 60px;
   object-fit: contain;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
 .cert-header h3 {
@@ -88,21 +129,19 @@
   margin: 0;
 }
 
-/* Date (below timeline) */
 .cert-date {
   font-size: 0.9rem;
   color: #555;
   font-weight: 500;
   margin-top: 1rem;
   position: relative;
-  top: 1.5rem; /* pushes below line */
+  top: 1.5rem; /* below timeline */
 }
 
-/* Connector Dot */
 .cert-item::before {
   content: "";
   position: absolute;
-  bottom: -1.15rem; /* sits on horizontal line */
+  bottom: -1.15rem;
   left: 50%;
   transform: translateX(-50%);
   width: 16px;
@@ -114,7 +153,7 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
-/* Hover effect for cards */
+/* Hover Effects */
 .cert-card:hover h3 {
   color: #0078d7;
   transition: color 0.3s ease;
@@ -122,10 +161,33 @@
 
 .cert-card:hover .cert-logo {
   transform: scale(1.1);
-  transition: transform 0.3s ease;
 }
 
-/* Scrollbar Styling */
+/* ===============================
+   Footer
+   =============================== */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #ffdd57;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   Scrollbar Styling
+   =============================== */
 .cert-scroll-wrapper::-webkit-scrollbar {
   height: 10px;
 }
@@ -140,3 +202,21 @@
   border-radius: 10px;
 }
 
+/* ===============================
+   Responsive Design
+   =============================== */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cert-item {
+    width: 200px;
+    margin: 0 1rem;
+  }
+
+  .cert-hero h1 {
+    font-size: 2rem;
+  }
+}

@@ -80,6 +80,7 @@ body {
   padding: 2rem 0;
 }
 
+/* Static line background (faint) */
 .cert-timeline::before {
   content: "";
   position: absolute;
@@ -88,7 +89,20 @@ body {
   transform: translateX(-50%);
   width: 4px;
   height: 100%;
+  background: rgba(0,0,0,0.1);
+}
+
+/* Animated line overlay */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 0;
   background: linear-gradient(180deg, #0078d7, #6a11cb);
+  border-radius: 2px;
+  transition: height 0.2s ease-out;
 }
 
 /* Items */
@@ -96,7 +110,7 @@ body {
   position: relative;
   width: 50%;
   padding: 2rem 2.5rem;
-  opacity: 0; /* hidden until scrolled into view */
+  opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease-out;
 }

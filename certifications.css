@@ -96,6 +96,14 @@ body {
   position: relative;
   width: 50%;
   padding: 2rem 2.5rem;
+  opacity: 0; /* hidden until scrolled into view */
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.cert-item.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cert-item.left {
@@ -132,6 +140,11 @@ body {
   width: 40px;
   height: 40px;
   object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.cert-logo:hover {
+  transform: scale(1.15);
 }
 
 .cert-card h3 {
@@ -149,7 +162,7 @@ body {
 .cert-date {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0.8);
   width: 60px;
   height: 60px;
   background: #6a11cb;
@@ -161,6 +174,14 @@ body {
   align-items: center;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+.cert-item.show .cert-date {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  animation: bounceIn 0.8s ease;
 }
 
 .cert-item.left .cert-date {
@@ -169,6 +190,13 @@ body {
 
 .cert-item.right .cert-date {
   left: -30px;
+}
+
+/* Bounce Keyframes */
+@keyframes bounceIn {
+  0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
+  60% { transform: translateY(-50%) scale(1.2); opacity: 1; }
+  100% { transform: translateY(-50%) scale(1); }
 }
 
 /* Footer */

@@ -11,16 +11,17 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #222;
-  background: #f9fafc;
+  background: #f4f7fb;
 }
 
 /* ===============================
    Navbar
    =============================== */
 .navbar {
-  background: #0078d7;
+  background: linear-gradient(90deg, #0078d7, #005bb5);
   padding: 1rem 2rem;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .navbar ul {
@@ -47,29 +48,33 @@ body {
    Certifications Wrapper
    =============================== */
 .cert-wrapper {
-  padding: 2rem;
+  padding: 3rem 2rem;
   text-align: center;
   min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafc, #eef3f9);
 }
 
 /* Hero Title */
 .cert-hero h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
 }
 
 .cert-hero h1::after {
   content: "";
   display: block;
-  width: 80px;
-  height: 4px;
-  background: #0078d7;
-  margin: 0.8rem auto 0;
-  border-radius: 2px;
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, #0078d7, #00c6ff);
+  margin: 1rem auto 0;
+  border-radius: 3px;
 }
 
 /* ===============================
@@ -84,26 +89,36 @@ body {
 .cert-timeline {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 2rem 0;
-  border-bottom: 3px solid #0078d7;
   min-width: max-content;
+  border-bottom: 4px solid transparent;
+  background-image: linear-gradient(90deg, #0078d7, #00c6ff);
+  background-repeat: no-repeat;
+  background-size: 100% 4px;
+  background-position: bottom;
 }
 
 .cert-item {
   flex: 0 0 auto;
-  width: 250px;
+  width: 260px;
   margin: 0 1.5rem;
   text-align: center;
   position: relative;
 }
 
 .cert-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .cert-header {
@@ -114,43 +129,42 @@ body {
 }
 
 .cert-logo {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   transition: transform 0.3s ease;
 }
 
 .cert-header h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: #222;
+  color: #333;
   line-height: 1.4;
   margin: 0;
 }
 
 .cert-date {
   font-size: 0.9rem;
-  color: #555;
+  color: #666;
   font-weight: 500;
   margin-top: 1rem;
-  position: relative;
-  top: 1.5rem; /* below timeline */
 }
 
+/* Timeline Dot */
 .cert-item::before {
   content: "";
   position: absolute;
-  bottom: -1.15rem;
+  bottom: -1.35rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background: #0078d7;
   border: 3px solid #fff;
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
 /* Hover Effects */
@@ -160,7 +174,7 @@ body {
 }
 
 .cert-card:hover .cert-logo {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 /* ===============================
@@ -198,7 +212,7 @@ body {
 }
 
 .cert-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: #0078d7;
+  background: linear-gradient(180deg, #0078d7, #00c6ff);
   border-radius: 10px;
 }
 
@@ -212,11 +226,11 @@ body {
   }
 
   .cert-item {
-    width: 200px;
+    width: 220px;
     margin: 0 1rem;
   }
 
   .cert-hero h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }

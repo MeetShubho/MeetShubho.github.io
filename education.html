@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Education - Subhabrata Chattopadhyay</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Page-specific CSS + Font Awesome -->
+  <link rel="stylesheet" href="education.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
   <!-- Navbar -->
   <header>
-    <nav>
+    <nav class="navbar">
+      <div class="nav-brand">Subhabrata</div>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
@@ -21,46 +25,67 @@
     </nav>
   </header>
 
-  <!-- Education Section -->
-  <section class="education">
-    <h1 style="text-align:center; margin-bottom:40px; color:var(--accent);">
-      Education
-    </h1>
+  <!-- content -->
+  <main class="edu-wrapper">
+    <!-- Page Title -->
+    <header class="edu-hero">
+      <h1>Education</h1>
+    </header>
 
-    <div class="timeline">
+    <!-- Vertical Timeline -->
+    <section class="edu-timeline">
 
       <!-- MBA -->
-      <div class="timeline-item right fade-in">
-        <div class="edu-content">
-          <img src="assets/logos/leibniz.png" alt="Leibniz University" class="edu-logo">
-          <div>
+      <div class="edu-item left">
+        <div class="edu-date">2012</div>
+        <div class="edu-card">
+          <div class="edu-header">
+            <img class="edu-logo" src="assets/logos/leibniz.png" alt="Leibniz University logo" />
             <h3>Leibniz University, Hannover, Germany</h3>
-            <p>Master of Business Administration (MBA)</p>
-            <span class="cert-date">July 2012 – August 2013</span>
           </div>
+          <p>Master of Business Administration (MBA)</p>
+          <p class="edu-full-date">July 2012 – August 2013</p>
         </div>
       </div>
 
       <!-- BE -->
-      <div class="timeline-item left fade-in">
-        <div class="edu-content">
-          <img src="assets/logos/rgpv.png" alt="Rajiv Gandhi Technical University" class="edu-logo">
-          <div>
+      <div class="edu-item right">
+        <div class="edu-date">2004</div>
+        <div class="edu-card">
+          <div class="edu-header">
+            <img class="edu-logo" src="assets/logos/rgpv.png" alt="RGPV University logo" />
             <h3>Rajiv Gandhi Technical University, India</h3>
-            <p>Bachelor of Engineering (Electronics & Communication)</p>
-            <span class="cert-date">September 2004 – June 2008</span>
           </div>
+          <p>Bachelor of Engineering (Electronics & Communication)</p>
+          <p class="edu-full-date">September 2004 – June 2008</p>
         </div>
       </div>
 
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Subhabrata Chattopadhyay | All Rights Reserved</p>
+  <footer class="footer">
+    <p>&copy; 2025 Subhabrata Chattopadhyay | 
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
+      <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+    </p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- animations -->
+  <script>
+    const eduItems = document.querySelectorAll('.edu-item');
+
+    const eduObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          eduObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    eduItems.forEach(item => eduObserver.observe(item));
+  </script>
 </body>
 </html>

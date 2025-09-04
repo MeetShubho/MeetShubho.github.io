@@ -79,13 +79,12 @@
   <!-- Scroll Animations -->
   <script>
     const items = document.querySelectorAll('.edu-item');
-    const timelineLine = document.querySelector('.edu-timeline::before');
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
-          observer.unobserve(entry.target); // animate once
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });

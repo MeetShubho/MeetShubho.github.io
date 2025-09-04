@@ -31,66 +31,78 @@
       <h1>Certifications</h1>
     </header>
 
-    <!-- Timeline -->
+    <!-- Vertical Timeline -->
     <section class="cert-timeline">
 
       <!-- PMP -->
-      <div class="cert-item left" data-date="June 2014">
+      <div class="cert-item left">
+        <div class="cert-date">2014</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/pmp.png" alt="PMI logo - PMP" />
             <h3>Project Management Professional (PMP)</h3>
           </div>
+          <p class="cert-full-date">June 2014</p>
         </div>
       </div>
 
       <!-- PMI-ACP -->
-      <div class="cert-item right" data-date="May 2019">
+      <div class="cert-item right">
+        <div class="cert-date">2019</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/pmi-acp.png" alt="PMI logo - PMI-ACP" />
             <h3>Agile Certified Practitioner (PMI-ACP)</h3>
           </div>
+          <p class="cert-full-date">May 2019</p>
         </div>
       </div>
 
       <!-- ICP-ACC -->
-      <div class="cert-item left" data-date="June 2021">
+      <div class="cert-item left">
+        <div class="cert-date">2021</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/icp-acc.png" alt="ICAgile logo - ICP-ACC" />
             <h3>ICAgile Certified Professional — Agile Coaching (ICP-ACC)</h3>
           </div>
+          <p class="cert-full-date">June 2021</p>
         </div>
       </div>
 
       <!-- SAFe -->
-      <div class="cert-item right" data-date="August 2021">
+      <div class="cert-item right">
+        <div class="cert-date">2021</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/safe.png" alt="SAFe logo - Agilist" />
             <h3>Certified SAFe Agilist</h3>
           </div>
+          <p class="cert-full-date">August 2021</p>
         </div>
       </div>
 
       <!-- PSM I -->
-      <div class="cert-item left" data-date="July 2022">
+      <div class="cert-item left">
+        <div class="cert-date">2022</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/psm.png" alt="Scrum.org logo - PSM I" />
             <h3>Professional Scrum Master I (PSM-1)</h3>
           </div>
+          <p class="cert-full-date">July 2022</p>
         </div>
       </div>
 
       <!-- PSPO I -->
-      <div class="cert-item right" data-date="October 2024">
+      <div class="cert-item right">
+        <div class="cert-date">2024</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/pspo.png" alt="Scrum.org logo - PSPO I" />
             <h3>Professional Scrum Product Owner I (PSPO-1)</h3>
           </div>
+          <p class="cert-full-date">October 2024</p>
         </div>
       </div>
 
@@ -106,21 +118,8 @@
   </footer>
 
   <!-- scripts -->
-  <script>
-    // Reveal on scroll with bounce
-    const items = document.querySelectorAll('.cert-item');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    items.forEach(item => {
-      observer.observe(item);
-    });
-  </script>
+  <script src="script.js" defer></script>
+  <script src="diagnostic.js" defer></script>
 </body>
 </html>
+

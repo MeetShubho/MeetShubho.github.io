@@ -1,62 +1,62 @@
-/* ============================
-   Certifications Page Styles
-   ============================ */
+/* ============ Certifications Page Styles ============ */
 
-/* Wrapper */
+/* Wrapper & Page Title */
 .cert-wrapper {
   padding: 2rem;
   text-align: center;
 }
-
-/* Page title */
 .cert-hero h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: #222 !important; /* override any muted global color */
 }
 
-/* Scroll wrapper (for smaller screens) */
+/* Horizontal Scroll Area */
 .cert-scroll-wrapper {
   overflow-x: auto;
   padding-bottom: 1rem;
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
 }
 .cert-scroll-wrapper::-webkit-scrollbar {
-  height: 8px;
-}
-.cert-scroll-wrapper::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  height: 6px;
 }
 .cert-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-.cert-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgba(100, 149, 237, 0.6);
+  border-radius: 3px;
 }
 
-/* Timeline container */
+/* Timeline Layout */
 .cert-timeline {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
-  min-height: 250px;
-  border-top: 3px solid #3498db;
+  min-height: 260px;
   padding: 2rem 0;
-  gap: 3rem;
+  gap: 2rem;
 }
 
-/* Each certification item */
+/* Horizontal Line */
+.cert-timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  right: 1rem;
+  height: 4px;
+  background: #3f51b5;
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* Each Certification Item */
 .cert-item {
   flex: 0 0 auto;
-  width: 220px;
+  width: 200px;
   position: relative;
   text-align: center;
 }
 
-/* Point on the timeline */
+/* Dot on Timeline */
 .cert-item::before {
   content: "";
   position: absolute;
@@ -65,98 +65,89 @@
   transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
-  background-color: #3498db;
+  background: white;
+  border: 4px solid #3f51b5;
   border-radius: 50%;
-  border: 3px solid #fff;
   z-index: 2;
 }
 
-/* Certification card (holds logo + name + date) */
+/* Certification Card Container */
 .cert-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.cert-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-/* Logo + Title */
+/* Alternate Positioning Above/Below Line */
+.cert-item:nth-child(odd) .cert-card {
+  margin-bottom: 3rem; /* pulls it above */
+}
+.cert-item:nth-child(even) .cert-card {
+  margin-top: 3rem; /* pushes it below */
+}
+
+/* Logo & Title */
 .cert-header {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 .cert-header img.cert-logo {
   width: 60px;
-  height: 60px;
-  object-fit: contain;
+  height: auto;
   margin-bottom: 0.5rem;
 }
 .cert-header h3 {
   font-size: 1rem;
   font-weight: 600;
-  color: #222;
+  color: #1a1a1a;
   line-height: 1.2;
+  margin: 0;
 }
 
-/* Date */
+/* Certification Date */
 .cert-date {
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #555;
+  color: #444;
 }
 
-/* Alternate positioning */
-.cert-item:nth-child(odd) .cert-card {
-  margin-bottom: 3.5rem; /* Push upward for odd items */
-}
-.cert-item:nth-child(even) .cert-card {
-  margin-top: 3.5rem; /* Push downward for even items */
-}
-
-/* Responsiveness */
+/* Responsive Breakpoints */
 @media (max-width: 1024px) {
-  .cert-timeline {
-    gap: 2rem;
-  }
   .cert-item {
-    width: 200px;
-  }
-  .cert-header h3 {
-    font-size: 0.95rem;
+    width: 180px;
   }
 }
 @media (max-width: 768px) {
-  .cert-wrapper {
-    padding: 1rem;
-  }
   .cert-hero h1 {
     font-size: 2rem;
   }
   .cert-item {
-    width: 180px;
+    width: 160px;
   }
   .cert-header img.cert-logo {
     width: 50px;
-    height: 50px;
   }
   .cert-header h3 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
   .cert-date {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }
 @media (max-width: 480px) {
-  .cert-timeline {
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-  }
   .cert-item {
-    width: 150px;
+    width: 140px;
   }
   .cert-header img.cert-logo {
     width: 45px;
-    height: 45px;
   }
   .cert-header h3 {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   .cert-date {
     font-size: 0.75rem;

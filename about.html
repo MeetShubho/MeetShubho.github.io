@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me — Subhabrata Chattopadhyay</title>
-  <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Subhabrata Chattopadhyay</title>
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+  <!-- Navbar -->
   <header>
-    <nav class="navbar">
-      <div class="nav-brand">Subhabrata</div>
+    <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About Me</a></li>
@@ -21,72 +22,97 @@
     </nav>
   </header>
 
-  <main class="about-wrapper">
-    <header class="about-hero">
-      <h1>About Me</h1>
-      <h2>Why I’m not your vanilla Project / Program / Product Manager</h2>
-    </header>
+  <!-- About Section -->
+  <section class="about">
+    <h1 class="section-title">About Me</h1>
+    <h2 class="section-subtitle">Why I’m not your vanilla Project / Program / Product Manager</h2>
 
-    <div class="story-card fade-in">
-      <i class="fa-solid fa-code story-icon"></i>
-      <p>I began as a <strong>developer</strong>, so I'm fluent in the language of technology—not just by title, but by heart.</p>
+    <div class="timeline">
+
+      <!-- Intro -->
+      <div class="timeline-item left fade-in">
+        <div class="about-content">
+          <i class="fa-solid fa-pen-nib icon"></i>
+          <div>
+            <h3>I didn’t start my career with Gantt charts and stand-up meetings…</h3>
+            <p>
+              I began as a <strong>developer</strong>, which gave me a solid grounding in technology. Over time, 
+              I added layers — working as a <strong>Business Analyst</strong> to understand customer mindsets, 
+              completing my <strong>MBA</strong> to see the bigger business picture, and stepping into project 
+              management across both <strong>Waterfall and Agile frameworks</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="timeline-item right fade-in">
+        <div class="about-content">
+          <i class="fa-solid fa-certificate icon"></i>
+          <div>
+            <h3>Learning & Growing</h3>
+            <p>
+              Along the way, I’ve earned certifications like <strong>PMP, PMI-ACP, PSM-I, PSPO-I, 
+              SAFe Agilist, ICP-ACC</strong> and <strong>AWS</strong>.  
+              Each milestone sharpened my skills and expanded my toolkit, helping me grow into a 
+              <strong>versatile leader</strong> who bridges <strong>technology, business, and people</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diverse Experience -->
+      <div class="timeline-item left fade-in">
+        <div class="about-content">
+          <i class="fa-solid fa-briefcase icon"></i>
+          <div>
+            <h3>Diverse Experience</h3>
+            <p>
+              My career has spanned <strong>Telecom, Infotainment, RPA, Product Development, 
+              Infrastructure, Banking, and Finance</strong>.  
+              I’ve never shied away from wearing different hats, and each experience has 
+              reinforced my ability to <strong>adapt, lead, and deliver impact across domains</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Leadership -->
+      <div class="timeline-item right fade-in">
+        <div class="about-content">
+          <i class="fa-solid fa-lightbulb icon"></i>
+          <div>
+            <h3>Reinvention & Product Leadership</h3>
+            <p>
+              Today, I am reinventing myself again — pursuing the 
+              <strong>Executive Program in Product Management from IIT Guwahati</strong>, 
+              while also exploring <strong>AI/ML</strong>.  
+              My journey isn’t about sticking to one box — it’s about <strong>evolving</strong> and 
+              building <strong>products that inspire confidence and create real impact</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Images -->
+      <div class="timeline-item left fade-in">
+        <div class="about-content images-card">
+          <i class="fa-solid fa-image icon"></i>
+          <div class="about-images">
+            <img src="assets/SubhabrataChattopadhyay_ProjectManager.png" alt="Profile Picture" class="about-pic">
+            <img src="assets/Subhbarata_Work.jpg" alt="Secondary Picture" class="about-pic">
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="story-card fade-in">
-      <i class="fa-solid fa-briefcase story-icon"></i>
-      <p>Armed with an <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>, I learned how to translate business needs into strategic execution.</p>
-    </div>
-
-    <div class="story-card fade-in">
-      <i class="fa-solid fa-award story-icon"></i>
-      <p>My credentials (PMP, PMI-ACP, PSM-1, PSPO-1, SAFe Agilist, ICP-ACC, AWS) were more than badges—they shaped how I understand leadership, agility, and delivering value.</p>
-    </div>
-
-    <div class="story-card fade-in">
-      <i class="fa-solid fa-project-diagram story-icon"></i>
-      <p>I’ve delivered in both <strong>Waterfall and Agile environments</strong>, and across industries like Telecom, RPA, Banking, and Infrastructure—staying domain-agnostic and resilient.</p>
-    </div>
-
-    <div class="story-card fade-in">
-      <i class="fa-solid fa-graduation-cap story-icon"></i>
-      <p>Today, I’m stepping into <strong>Product Leadership</strong>—currently advancing through the <strong>IIT Guwahati Executive Program in Product Management</strong>.</p>
-    </div>
-
-    <div class="story-card fade-in highlight">
-      <i class="fa-solid fa-rocket story-icon"></i>
-      <p>I reinvent myself through curiosity—now exploring AI/ML—and I’m not just managing projects, I’m building impact.</p>
-    </div>
-
-    <div class="about-images">
-      <img src="assets/SubhabrataChattopadhyay_ProjectManager.png" alt="Subhabrata Chattopadhyay" class="profile-pic" />
-      <img src="assets/Subhabrata_Work.jpg" alt="Subhabrata at work" class="secondary-pic" />
-    </div>
-
-    <div class="about-buttons">
-      <a href="assets/Subhabrata_PM.pdf" class="btn" download><i class="fa fa-download"></i> Download Resume</a>
-      <a href="contact.html" class="btn"><i class="fa fa-envelope"></i> Contact Me</a>
-    </div>
-  </main>
-
-  <footer class="footer">
-    <p>© 2025 Subhabrata Chattopadhyay | 
-       <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </p>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Subhabrata Chattopadhyay | All Rights Reserved</p>
   </footer>
 
-  <script>
-    const cards = document.querySelectorAll('.fade-in');
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    cards.forEach(c => io.observe(c));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-

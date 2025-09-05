@@ -28,37 +28,49 @@
     <h2>Why I am not your vanilla Project / Program / Product Manager</h2>
   </section>
 
-  <!-- Content -->
-  <main class="about-wrapper">
+  <!-- Timeline -->
+  <main class="timeline">
 
-    <div class="about-card fade-in">
+    <div class="timeline-item fade-in left">
       <div class="about-icon"><i class="fa-solid fa-code"></i></div>
-      <p>I began my career as a <strong>developer</strong>, which means I deeply understand the technical backbone of every project I manage.</p>
+      <div class="timeline-content">
+        <p>I began my career as a <strong>developer</strong>, which means I deeply understand the technical backbone of every project I manage.</p>
+      </div>
     </div>
 
-    <div class="about-card fade-in">
+    <div class="timeline-item fade-in right">
       <div class="about-icon"><i class="fa-solid fa-briefcase"></i></div>
-      <p>With an <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>, I connect the dots between business goals and user needs seamlessly.</p>
+      <div class="timeline-content">
+        <p>With an <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>, I connect the dots between business goals and user needs seamlessly.</p>
+      </div>
     </div>
 
-    <div class="about-card fade-in">
+    <div class="timeline-item fade-in left">
       <div class="about-icon"><i class="fa-solid fa-diagram-project"></i></div>
-      <p>I have delivered projects in both <strong>Waterfall and Agile</strong> frameworks — adapting and thriving in diverse environments.</p>
+      <div class="timeline-content">
+        <p>I have delivered projects in both <strong>Waterfall and Agile</strong> frameworks — adapting and thriving in diverse environments.</p>
+      </div>
     </div>
 
-    <div class="about-card fade-in">
+    <div class="timeline-item fade-in right">
       <div class="about-icon"><i class="fa-solid fa-globe"></i></div>
-      <p>From <strong>Telecom to Banking, RPA to Infrastructure</strong>, I am <strong>domain-agnostic</strong>, always ready to step into new industries.</p>
+      <div class="timeline-content">
+        <p>From <strong>Telecom to Banking, RPA to Infrastructure</strong>, I am <strong>domain-agnostic</strong>, always ready to step into new industries.</p>
+      </div>
     </div>
 
-    <div class="about-card fade-in">
+    <div class="timeline-item fade-in left">
       <div class="about-icon"><i class="fa-solid fa-hat-wizard"></i></div>
-      <p>I’ve worn multiple hats — Project Manager, Program Manager, Agile Coach, and now transitioning into <strong>Product Leadership</strong>.</p>
+      <div class="timeline-content">
+        <p>I’ve worn multiple hats — Project Manager, Program Manager, Agile Coach, and now transitioning into <strong>Product Leadership</strong>.</p>
+      </div>
     </div>
 
-    <div class="about-card fade-in highlight">
+    <div class="timeline-item fade-in right highlight">
       <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
-      <p>I believe in <strong>reinventing myself</strong>. That’s why I’m exploring <strong>AI/ML</strong> while continuously sharpening my leadership journey.</p>
+      <div class="timeline-content">
+        <p>I believe in <strong>reinventing myself</strong>. That’s why I’m exploring <strong>AI/ML</strong> while continuously sharpening my leadership journey.</p>
+      </div>
     </div>
 
     <div class="about-buttons">
@@ -69,6 +81,7 @@
         <i class="fa fa-envelope"></i> Contact Me
       </a>
     </div>
+
   </main>
 
   <!-- Footer -->
@@ -87,12 +100,12 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.animation = "fadeInUp 0.9s ease forwards";
-          observer.unobserve(entry.target); // animate once
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });
 
-    faders.forEach(card => observer.observe(card));
+    faders.forEach(item => observer.observe(item));
   </script>
 </body>
 </html>

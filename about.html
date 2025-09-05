@@ -22,67 +22,62 @@
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="about-hero">
-    <h1>About Me</h1>
-    <h2>Why I am not your vanilla Project / Program / Product Manager</h2>
+  <!-- About Section -->
+  <section class="about-container">
+    <div class="about-left">
+      <img src="assets/SubhabrataChattopadhyay_ProjectManager.jpg" 
+           alt="Subhabrata Chattopadhyay" class="profile-pic">
+      <img src="assets/Subhabrata_Work.jpg" 
+           alt="Subhabrata at work" class="secondary-pic">
+    </div>
+
+    <div class="about-right">
+      <h1>About Me</h1>
+      <h2>Why I am not your vanilla Project / Program / Product Manager</h2>
+
+      <p>
+        My journey in technology started as a <strong>developer</strong>, giving me a deep appreciation 
+        for how things work under the hood. Over time, I combined this technical foundation with 
+        business acumen gained through my <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>. 
+        This unique blend allows me to connect technology with strategy and user needs effortlessly.
+      </p>
+
+      <p>
+        Along my professional journey, I have earned certifications like <strong>PMP, PMI-ACP, PSM I, 
+        PSPO I, SAFe Agilist, ICP-ACC, and AWS</strong>. Each of these has not only sharpened my 
+        knowledge but also shaped the way I approach leadership, agility, and delivering value.
+      </p>
+
+      <p>
+        I’ve led initiatives across <strong>Waterfall and Agile frameworks</strong>, and my work has spanned 
+        industries from <strong>Telecom and Infotainment to Banking, Finance, RPA, Infrastructure, 
+        and Product Development</strong>. Being <strong>domain-agnostic</strong> has made me adaptable, always ready 
+        to wear different hats and step into new challenges.
+      </p>
+
+      <p>
+        Today, I’m actively transitioning into <strong>Product Leadership</strong>. I believe in continuous reinvention, 
+        which is why I am pursuing the <strong>Executive Program in Product Management from IIT Guwahati</strong>. 
+        This complements my hands-on leadership experience and fuels my vision to build products that matter — 
+        ones that inspire confidence and solve real problems.
+      </p>
+
+      <p>
+        Beyond work, I’m an <strong>AI/ML enthusiast</strong> who loves exploring how technology transforms business 
+        and society. And at home, I’m a proud <strong>father</strong>, constantly inspired by the curiosity 
+        and wonder of my little one.
+      </p>
+
+      <div class="about-buttons">
+        <a href="assets/Subhabrata_PM.pdf" class="btn" download>
+          <i class="fa fa-download"></i> Download Resume
+        </a>
+        <a href="contact.html" class="btn">
+          <i class="fa fa-envelope"></i> Contact Me
+        </a>
+      </div>
+    </div>
   </section>
-
-  <!-- Timeline -->
-  <main class="timeline">
-
-    <div class="timeline-item fade-in left">
-      <div class="about-icon"><i class="fa-solid fa-code"></i></div>
-      <div class="timeline-content">
-        <p>I began my career as a <strong>developer</strong>, which means I deeply understand the technical backbone of every project I manage.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item fade-in right">
-      <div class="about-icon"><i class="fa-solid fa-briefcase"></i></div>
-      <div class="timeline-content">
-        <p>With an <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>, I connect the dots between business goals and user needs seamlessly.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item fade-in left">
-      <div class="about-icon"><i class="fa-solid fa-diagram-project"></i></div>
-      <div class="timeline-content">
-        <p>I have delivered projects in both <strong>Waterfall and Agile</strong> frameworks — adapting and thriving in diverse environments.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item fade-in right">
-      <div class="about-icon"><i class="fa-solid fa-globe"></i></div>
-      <div class="timeline-content">
-        <p>From <strong>Telecom to Banking, RPA to Infrastructure</strong>, I am <strong>domain-agnostic</strong>, always ready to step into new industries.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item fade-in left">
-      <div class="about-icon"><i class="fa-solid fa-hat-wizard"></i></div>
-      <div class="timeline-content">
-        <p>I’ve worn multiple hats — Project Manager, Program Manager, Agile Coach, and now transitioning into <strong>Product Leadership</strong>.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item fade-in right highlight">
-      <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
-      <div class="timeline-content">
-        <p>I believe in <strong>reinventing myself</strong>. That’s why I’m exploring <strong>AI/ML</strong> while continuously sharpening my leadership journey.</p>
-      </div>
-    </div>
-
-    <div class="about-buttons">
-      <a href="assets/Subhabrata_PM.pdf" class="btn" download>
-        <i class="fa fa-download"></i> Download Resume
-      </a>
-      <a href="contact.html" class="btn">
-        <i class="fa fa-envelope"></i> Contact Me
-      </a>
-    </div>
-
-  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -92,20 +87,5 @@
       </a>
     </p>
   </footer>
-
-  <!-- Scroll Animation Script -->
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = "fadeInUp 0.9s ease forwards";
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    faders.forEach(item => observer.observe(item));
-  </script>
 </body>
 </html>

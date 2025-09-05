@@ -197,3 +197,39 @@ section {
   60% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); }
 }
+/* Subhead stylization */
+.subhead.stylized {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: #0f62fe;
+}
+
+.subhead.stylized i {
+  color: #42a5f5;
+  font-size: 1.2rem;
+}
+
+.subhead.stylized .arrow {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Value proposition */
+.value-prop {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.value-prop .highlight {
+  background: linear-gradient(135deg, #0f62fe, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}

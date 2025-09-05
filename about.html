@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me - Subhabrata Chattopadhyay</title>
-
-  <!-- Page-specific CSS + Font Awesome -->
-  <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <!-- Navbar -->
@@ -24,61 +22,45 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="about-hero">
-    <div class="hero-content">
-      <h1>About Me</h1>
-      <h2>Why I’m not your vanilla Project / Program / Product Manager</h2>
-    </div>
+    <h1>About Me</h1>
+    <h2>Why I am not your vanilla Project / Program / Product Manager</h2>
   </section>
 
-  <!-- Storytelling Section -->
+  <!-- Content -->
   <main class="about-wrapper">
+
     <div class="about-card fade-in">
-      <i class="fa-solid fa-code about-icon"></i>
-      <p>
-        My journey didn’t start with Gantt charts — it began with <strong>writing code</strong>.  
-        As a developer, I learned the mindset it takes to build technology that lasts,  
-        and that foundation has shaped everything I’ve done since.
-      </p>
+      <div class="about-icon"><i class="fa-solid fa-code"></i></div>
+      <p>I began my career as a <strong>developer</strong>, which means I deeply understand the technical backbone of every project I manage.</p>
     </div>
 
     <div class="about-card fade-in">
-      <i class="fa-solid fa-briefcase about-icon"></i>
-      <p>
-        I then pursued an <strong>MBA in Hannover</strong> and worked as a Business Analyst.  
-        This gave me a deep appreciation for both the <em>business lens</em> and the  
-        <em>user’s perspective</em> — helping me bridge strategy and execution seamlessly.
-      </p>
+      <div class="about-icon"><i class="fa-solid fa-briefcase"></i></div>
+      <p>With an <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>, I connect the dots between business goals and user needs seamlessly.</p>
     </div>
 
     <div class="about-card fade-in">
-      <i class="fa-solid fa-diagram-project about-icon"></i>
-      <p>
-        Over the years, I’ve led projects in both <strong>Waterfall and Agile frameworks</strong>,  
-        across domains like <strong>Telecom, Infotainment, RPA, Product Development, Infrastructure, Banking, and Finance</strong>.  
-        Each experience has made me more adaptable and domain-agnostic.
-      </p>
+      <div class="about-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <p>I have delivered projects in both <strong>Waterfall and Agile</strong> frameworks — adapting and thriving in diverse environments.</p>
     </div>
 
     <div class="about-card fade-in">
-      <i class="fa-solid fa-arrows-rotate about-icon"></i>
-      <p>
-        Reinvention is my constant. I’ve worn many hats — Project Manager, Program Manager,  
-        Agile Coach, Product Owner — and now I’m <strong>self-learning AI/ML</strong> to  
-        transition into <strong>Product Leadership</strong>.
-      </p>
+      <div class="about-icon"><i class="fa-solid fa-globe"></i></div>
+      <p>From <strong>Telecom to Banking, RPA to Infrastructure</strong>, I am <strong>domain-agnostic</strong>, always ready to step into new industries.</p>
+    </div>
+
+    <div class="about-card fade-in">
+      <div class="about-icon"><i class="fa-solid fa-hat-wizard"></i></div>
+      <p>I’ve worn multiple hats — Project Manager, Program Manager, Agile Coach, and now transitioning into <strong>Product Leadership</strong>.</p>
     </div>
 
     <div class="about-card fade-in highlight">
-      <i class="fa-solid fa-lightbulb about-icon"></i>
-      <p>
-        I’m not just a manager. I’m a <strong>builder, learner, and connector</strong> who thrives  
-        at the intersection of <em>technology, business, and people</em>.
-      </p>
+      <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
+      <p>I believe in <strong>reinventing myself</strong>. That’s why I’m exploring <strong>AI/ML</strong> while continuously sharpening my leadership journey.</p>
     </div>
 
-    <!-- Buttons -->
     <div class="about-buttons">
       <a href="assets/Subhabrata_PM.pdf" class="btn" download>
         <i class="fa fa-download"></i> Download Resume
@@ -91,12 +73,26 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2025 Subhabrata Chattopadhyay | 
-      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
-      <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+    <p>© 2025 Subhabrata Chattopadhyay | 
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
     </p>
   </footer>
 
-  <script src="script.js" defer></script>
+  <!-- Scroll Animation Script -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = "fadeInUp 0.9s ease forwards";
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    }, { threshold: 0.2 });
+
+    faders.forEach(card => observer.observe(card));
+  </script>
 </body>
 </html>

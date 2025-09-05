@@ -1,211 +1,98 @@
-/* =========================
-   About Page Styles
-   ========================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Subhabrata Chattopadhyay</title>
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">Subhabrata</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Me</a></li>
+        <li><a href="career.html">Professional Career</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
 
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <!-- Hero -->
+  <section class="about-hero">
+    <h1>About Me</h1>
+    <h2>Why I am not your vanilla Project / Program / Product Manager</h2>
+  </section>
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #fdfdfd;
-  color: #333;
-  line-height: 1.6;
-}
+  <!-- Content -->
+  <main class="about-wrapper">
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    <div class="about-card fade-in">
+      <div class="about-icon"><i class="fa-solid fa-code"></i></div>
+      <p>I began my career as a <strong>developer</strong>, which means I deeply understand the technical backbone of every project I manage.</p>
+    </div>
 
-.navbar .nav-brand {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #444;
-}
+    <div class="about-card fade-in">
+      <div class="about-icon"><i class="fa-solid fa-briefcase"></i></div>
+      <p>With an <strong>MBA</strong> and experience as a <strong>Business Analyst</strong>, I connect the dots between business goals and user needs seamlessly.</p>
+    </div>
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
+    <div class="about-card fade-in">
+      <div class="about-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <p>I have delivered projects in both <strong>Waterfall and Agile</strong> frameworks — adapting and thriving in diverse environments.</p>
+    </div>
 
-.navbar ul li a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
+    <div class="about-card fade-in">
+      <div class="about-icon"><i class="fa-solid fa-globe"></i></div>
+      <p>From <strong>Telecom to Banking, RPA to Infrastructure</strong>, I am <strong>domain-agnostic</strong>, always ready to step into new industries.</p>
+    </div>
 
-.navbar ul li a:hover,
-.navbar ul li a.active {
-  color: #6a11cb;
-}
+    <div class="about-card fade-in">
+      <div class="about-icon"><i class="fa-solid fa-hat-wizard"></i></div>
+      <p>I’ve worn multiple hats — Project Manager, Program Manager, Agile Coach, and now transitioning into <strong>Product Leadership</strong>.</p>
+    </div>
 
-/* Hero Section */
-.about-hero {
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  color: #fff;
-  text-align: center;
-  padding: 4rem 2rem;
-}
+    <div class="about-card fade-in highlight">
+      <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
+      <p>I believe in <strong>reinventing myself</strong>. That’s why I’m exploring <strong>AI/ML</strong> while continuously sharpening my leadership journey.</p>
+    </div>
 
-.about-hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  animation: fadeInDown 1s ease;
-}
+    <div class="about-buttons">
+      <a href="assets/Subhabrata_PM.pdf" class="btn" download>
+        <i class="fa fa-download"></i> Download Resume
+      </a>
+      <a href="contact.html" class="btn">
+        <i class="fa fa-envelope"></i> Contact Me
+      </a>
+    </div>
+  </main>
 
-.about-hero h2 {
-  font-size: 1.6rem;
-  font-weight: 400;
-  opacity: 0.9;
-  animation: fadeInUp 1.2s ease;
-}
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Subhabrata Chattopadhyay | 
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+    </p>
+  </footer>
 
-/* About Content Wrapper */
-.about-wrapper {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
+  <!-- Scroll Animation Script -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = "fadeInUp 0.9s ease forwards";
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    }, { threshold: 0.2 });
 
-/* Story Cards */
-.about-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.8rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.about-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-}
-
-.about-icon {
-  font-size: 2rem;
-  color: #6a11cb;
-  flex-shrink: 0;
-}
-
-/* Highlighted Final Card */
-.about-card.highlight {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
-}
-
-.about-card.highlight .about-icon {
-  color: #fff;
-}
-
-/* Buttons */
-.about-buttons {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  background: #6a11cb;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-  background: #2575fc;
-  transform: translateY(-3px);
-}
-
-/* Footer */
-.footer {
-  background: #f9f9f9;
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 3rem;
-}
-
-.footer a {
-  color: #6a11cb;
-  text-decoration: none;
-  margin: 0 0.3rem;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-/* Animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .about-wrapper {
-    padding: 0 1rem;
-  }
-
-  .about-hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .about-hero h2 {
-    font-size: 1.2rem;
-  }
-
-  .about-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+    faders.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>

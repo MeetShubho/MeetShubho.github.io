@@ -90,3 +90,11 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+// Career Toggle Buttons
+document.querySelectorAll(".toggle-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const content = btn.nextElementSibling;
+    content.classList.toggle("active");
+    btn.textContent = content.classList.contains("active") ? "Show Less" : "Show More";
+  });
+});

@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Rotating Roles
+  // =============================
+  // Rotating Roles (Hero Section)
+  // =============================
   const roles = ["a Program Manager", "a Product Manager", "an Agile Coach"];
   let roleIndex = 0, charIndex = 0, isDeleting = false;
   const typingSpeed = 100, erasingSpeed = 50, delayBetweenRoles = 1200;
@@ -30,13 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   typeRole();
 
-  // Fade-in for Subhead
+  // =============================
+  // Fade-in for Hero Subhead
+  // =============================
   const subhead = document.querySelector(".hero-subhead");
   setTimeout(() => {
-    subhead.classList.add("visible");
+    if (subhead) subhead.classList.add("visible");
   }, 2000);
-});
-
 
   // =============================
   // Certifications Scroll Reveal
@@ -58,12 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const observer = new IntersectionObserver(revealCertItem, observerOptions);
-  certItems.forEach(item => observer.observe(item));
+  if (certItems.length > 0) {
+    const observer = new IntersectionObserver(revealCertItem, observerOptions);
+    certItems.forEach(item => observer.observe(item));
+  }
 });
 
 // =============================
-// Scroll Animations
+// Global Scroll Animations
 // =============================
 window.addEventListener("scroll", () => {
   // Fade-in animations

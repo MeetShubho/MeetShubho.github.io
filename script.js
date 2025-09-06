@@ -1,22 +1,8 @@
-// =============================  
-// Rotating Roles on Home Page
-// =============================
 document.addEventListener("DOMContentLoaded", () => {
-  const roles = [
-    "a Project Manager",
-    "a Program Manager",
-    "an Agile Coach",
-    "a Product Manager",
-    "an AI/ML Enthusiast",
-    "a Father"
-  ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingSpeed = 100;
-  const erasingSpeed = 50;
-  const delayBetweenRoles = 1500;
+  // Rotating Roles
+  const roles = ["a Program Manager", "a Product Manager", "an Agile Coach"];
+  let roleIndex = 0, charIndex = 0, isDeleting = false;
+  const typingSpeed = 100, erasingSpeed = 50, delayBetweenRoles = 1200;
   const roleElement = document.querySelector(".role-highlight");
 
   function typeRole() {
@@ -28,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (charIndex < 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        charIndex = 0;
         setTimeout(typeRole, typingSpeed);
         return;
       }
@@ -40,11 +25,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
     }
-
     setTimeout(typeRole, isDeleting ? erasingSpeed : typingSpeed);
   }
 
   typeRole();
+
+  // Fade-in for Subhead
+  const subhead = document.querySelector(".hero-subhead");
+  setTimeout(() => {
+    subhead.classList.add("visible");
+  }, 2000);
+});
+
 
   // =============================
   // Certifications Scroll Reveal

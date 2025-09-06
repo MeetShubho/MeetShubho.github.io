@@ -22,6 +22,48 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+<!-- Futuristic Background -->
+<svg class="bg-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Gradient Mesh -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="50%" stop-color="#4a148c"/>
+      <stop offset="100%" stop-color="#0d47a1"/>
+    </linearGradient>
+
+    <!-- Circuit Shimmer Gradient -->
+    <linearGradient id="lineShimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)" />
+      <stop offset="50%" stop-color="rgba(255,255,255,0.4)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+      <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="2 0" dur="6s" repeatCount="indefinite" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Rectangle -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)" />
+
+  <!-- Circuit Lines (shimmer effect applied) -->
+  <g stroke="url(#lineShimmer)" stroke-width="1.5">
+    <line x1="200" y1="200" x2="600" y2="200"/>
+    <line x1="600" y1="200" x2="900" y2="400"/>
+    <line x1="900" y1="400" x2="1400" y2="300"/>
+    <line x1="1400" y1="300" x2="1700" y2="500"/>
+    <line x1="400" y1="600" x2="800" y2="800"/>
+    <line x1="800" y1="800" x2="1200" y2="700"/>
+  </g>
+
+  <!-- Glowing Nodes -->
+  <circle class="node" cx="200" cy="200" r="6"/>
+  <circle class="node" cx="600" cy="200" r="6"/>
+  <circle class="node" cx="900" cy="400" r="6"/>
+  <circle class="node" cx="1400" cy="300" r="6"/>
+  <circle class="node" cx="1700" cy="500" r="6"/>
+  <circle class="node" cx="400" cy="600" r="6"/>
+  <circle class="node" cx="800" cy="800" r="6"/>
+  <circle class="node" cx="1200" cy="700" r="6"/>
+</svg>
 
   <!-- ===== HEADER / NAVBAR ===== -->
   <header>

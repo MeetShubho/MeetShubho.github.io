@@ -253,3 +253,30 @@ body {
     transform: translate(-50%, -50%);
   }
 }
+/* Highlight for Current Education */
+.current-edu .highlight-card {
+  transform: scale(1.03);
+  box-shadow: 0 8px 22px rgba(0, 120, 215, 0.3);
+  border: 2px solid #0078d7;
+}
+
+/* Current Study Badge */
+.badge {
+  background: #0078d7;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  margin-left: 0.5rem;
+  border-radius: 12px;
+  vertical-align: middle;
+}
+
+/* Ongoing note above year circle */
+.edu-status {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffdd57;
+  margin-bottom: 4px;
+}

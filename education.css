@@ -17,15 +17,9 @@ body {
   background: linear-gradient(90deg, #6a11cb, #0078d7);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center align menu */
   align-items: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.nav-brand {
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #fff;
 }
 
 .navbar ul {
@@ -38,20 +32,39 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
-  padding-bottom: 2px;
+  position: relative;
+  padding: 0.3rem 0;
+  transition: color 0.3s ease;
+}
+
+/* Sliding underline effect */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffdd57;
+  transition: width 0.3s ease;
 }
 
 .navbar a:hover {
   color: #ffdd57;
-  border-bottom: 3px solid #ffdd57;
+}
+
+.navbar a:hover::after {
+  width: 100%;
 }
 
 /* Active menu item */
 .navbar a.active {
   font-weight: 800;
   color: #ffdd57;
-  border-bottom: 3px solid #ffdd57;
+}
+
+.navbar a.active::after {
+  width: 100%;
 }
 
 /* Hero */
@@ -253,6 +266,7 @@ body {
     transform: translate(-50%, -50%);
   }
 }
+
 /* Highlight for Current Education */
 .current-edu .highlight-card {
   transform: scale(1.03);

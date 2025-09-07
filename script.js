@@ -95,15 +95,18 @@ window.addEventListener("scroll", () => {
   });
 
   // Timeline line animation
-  const timelineLine = document.querySelector(".timeline-line");
-  if (timelineLine) {
-    const timeline = document.querySelector(".career-timeline");
+  const timeline = document.querySelector(".career-timeline");
+  const line = document.querySelector(".timeline-line");
+  if (timeline && line) {
     const rect = timeline.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
     if (rect.top < windowHeight && rect.bottom > 0) {
-      const visibleHeight = Math.min(windowHeight - rect.top, rect.height);
-      timelineLine.style.height = `${visibleHeight}px`;
+      const visibleHeight = Math.min(
+        Math.max(windowHeight - rect.top, 0),
+        rect.height
+      );
+      line.style.height = visibleHeight + "px";
     }
   }
 });

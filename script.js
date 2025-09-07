@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 2000);
 
   // =============================
-  // Certifications Scroll Reveal
+  // Scroll Reveal for Certifications & Career
   // =============================
-  const certItems = document.querySelectorAll(".cert-item");
+  const revealItems = document.querySelectorAll(".cert-item, .career-item");
 
   const observerOptions = {
     root: null,
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     threshold: 0.1
   };
 
-  const revealCertItem = (entries, observer) => {
+  const revealItem = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
@@ -60,10 +60,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  if (certItems.length > 0) {
-    const observer = new IntersectionObserver(revealCertItem, observerOptions);
-    certItems.forEach(item => observer.observe(item));
+  if (revealItems.length > 0) {
+    const observer = new IntersectionObserver(revealItem, observerOptions);
+    revealItems.forEach(item => observer.observe(item));
   }
+
+  // =============================
+  // Career Toggle Buttons
+  // =============================
+  document.querySelectorAll(".toggle-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const content = btn.nextElementSibling;
+      content.classList.toggle("active");
+      btn.textContent = content.classList.contains("active") 
+        ? "Show Less" 
+        : "Show More";
+    });
+  });
 });
 
 // =============================
@@ -81,20 +94,16 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  // Timeline items (career, education, certifications, etc.)
-  const scrollItems = document.querySelectorAll(".timeline-item, .cert-item");
-  scrollItems.forEach(item => {
-    const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50) {
-      item.classList.add("show");
+  // Timeline line animation
+  const timelineLine = document.querySelector(".timeline-line");
+  if (timelineLine) {
+    const timeline = document.querySelector(".career-timeline");
+    const rect = timeline.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const visibleHeight = Math.min(windowHeight - rect.top, rect.height);
+      timelineLine.style.height = `${visibleHeight}px`;
     }
-  });
-});
-// Career Toggle Buttons
-document.querySelectorAll(".toggle-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const content = btn.nextElementSibling;
-    content.classList.toggle("active");
-    btn.textContent = content.classList.contains("active") ? "Show Less" : "Show More";
-  });
+  }
 });

@@ -39,17 +39,19 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
+  padding-bottom: 2px;
 }
 
 .navbar a:hover {
   color: #ffdd57;
+  border-bottom: 3px solid #ffdd57;
 }
 
+/* Active menu item */
 .navbar a.active {
-  background: #ffdd57;
-  color: #222;
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
+  font-weight: 800;
+  color: #ffdd57;
+  border-bottom: 3px solid #ffdd57;
 }
 
 /* Hero */

@@ -1,255 +1,115 @@
-/* Reset + Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education - Subhabrata Chattopadhyay</title>
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f4f7fb;
-  color: #222;
-  line-height: 1.6;
-}
+  <!-- Page-specific CSS + Font Awesome -->
+  <link rel="stylesheet" href="education.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-/* Navbar */
-.navbar {
-  background: linear-gradient(90deg, #6a11cb, #0078d7);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">Subhabrata</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="career.html">Professional Career</a></li>
+        <li><a href="education.html" class="active">Education</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-.nav-brand {
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #fff;
-}
+  <!-- Content -->
+  <main class="edu-wrapper">
+    <!-- Page Title -->
+    <header class="edu-hero">
+      <h1>Education</h1>
+    </header>
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
+    <!-- Vertical Timeline -->
+    <section class="edu-timeline">
+      <!-- ✅ NEW ENTRY: IIT Guwahati -->
+    <div class="edu-item left show">
+      <div class="edu-date">
+        <i class="fas fa-graduation-cap"></i>
+        2025–2026
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <img src="assets/logos/iitg.png" alt="IIT Guwahati Logo" class="edu-logo">
+          <h3>Indian Institute of Technology Guwahati (IIT-G)</h3>
+        </div>
+        <p class="edu-full-date">Executive Program in Product Management</p>
+      </div>
+    </div>
+      <!-- MBA -->
+      <div class="edu-item right show">
+        <div class="edu-date">
+          <i class="fas fa-graduation-cap"></i>
+          <span>2012–2013</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-header">
+            <img class="edu-logo" src="assets/logos/leibniz.png" alt="Leibniz University" />
+            <div>
+              <h3>Leibniz University, Hannover, Germany</h3>
+              <p>Master of Business Administration (MBA)</p>
+            </div>
+          </div>
+          <p class="edu-full-date">July 2012 – August 2013</p>
+        </div>
+      </div>
+      
+      <!-- BE -->
+      <div class="edu-item left show">
+        <div class="edu-date">
+          <i class="fas fa-university"></i>
+          <span>2004–2008</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-header">
+            <img class="edu-logo" src="assets/logos/rgpv.png" alt="Rajiv Gandhi Technical University" />
+            <div>
+              <h3>Rajiv Gandhi Technical University, India</h3>
+              <p>Bachelor of Engineering (Electronics & Communication)</p>
+            </div>
+          </div>
+          <p class="edu-full-date">September 2004 – June 2008</p>
+        </div>
+      </div>
 
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-  padding-bottom: 2px;
-}
+    </section>
+  </main>
 
-.navbar a:hover {
-  color: #ffdd57;
-  border-bottom: 3px solid #ffdd57;
-}
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Subhabrata Chattopadhyay | 
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
+      <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+    </p>
+  </footer>
 
-/* Active menu item */
-.navbar a.active {
-  font-weight: 800;
-  color: #ffdd57;
-  border-bottom: 3px solid #ffdd57;
-}
+  <!-- Scroll Animations -->
+  <script>
+    const items = document.querySelectorAll('.edu-item');
 
-/* Hero */
-.edu-hero h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin: 2.5rem 0;
-  color: #1a1a1a;
-  position: relative;
-}
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-.edu-hero h1::after {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, #6a11cb, #0078d7);
-  margin: 1rem auto 0;
-  border-radius: 3px;
-}
-
-/* Timeline */
-.edu-timeline {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem 0;
-}
-
-.edu-timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #6a11cb, #0078d7);
-  opacity: 0;
-  animation: growLine 2s forwards;
-}
-
-@keyframes growLine {
-  from { height: 0; opacity: 1; }
-  to { height: 100%; opacity: 1; }
-}
-
-/* Items */
-.edu-item {
-  position: relative;
-  width: 50%;
-  padding: 2rem 2.5rem;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-out;
-}
-
-.edu-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.edu-item.left {
-  left: 0;
-  text-align: right;
-}
-
-.edu-item.right {
-  left: 50%;
-  text-align: left;
-}
-
-/* Card */
-.edu-card {
-  background: #fff;
-  padding: 1.2rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.edu-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-}
-
-.edu-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.edu-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.edu-logo:hover {
-  transform: scale(1.15);
-}
-
-.edu-card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.edu-full-date {
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Date Circles */
-.edu-date {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scale(0.8);
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #6a11cb, #0078d7);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  opacity: 0;
-  transition: all 0.6s ease-out;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.edu-date i {
-  font-size: 1.2rem;
-  margin-bottom: 4px;
-}
-
-.edu-item.show .edu-date {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-  animation: bounceIn 0.8s ease;
-}
-
-.edu-item.left .edu-date {
-  right: -40px;
-}
-
-.edu-item.right .edu-date {
-  left: -40px;
-}
-
-/* Bounce Animation */
-@keyframes bounceIn {
-  0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
-  60% { transform: translateY(-50%) scale(1.2); opacity: 1; }
-  100% { transform: translateY(-50%) scale(1); }
-}
-
-/* Footer */
-.footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  border-top: 4px solid #6a11cb;
-}
-
-.footer a {
-  color: #ffdd57;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .edu-item {
-    width: 100%;
-    padding: 2rem 4rem;
-    text-align: left;
-  }
-
-  .edu-item.left, .edu-item.right {
-    left: 0;
-  }
-
-  .edu-date {
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
+    items.forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>

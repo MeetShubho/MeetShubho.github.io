@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Certifications — Subhabrata Chattopadhyay</title>
 
-  <!-- Page-specific CSS + Font Awesome -->
+  <!-- Shared Header CSS + Page-specific CSS -->
+  <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="certifications.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -13,13 +14,16 @@
   <!-- navbar -->
   <header>
     <nav class="navbar">
-      <div class="nav-brand">Subhabrata</div>
+      <!-- Hamburger for mobile -->
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="career.html">Professional Career</a></li>
         <li><a href="education.html">Education</a></li>
-        <li><a href="certifications.html" class="active">Certifications</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -27,14 +31,13 @@
 
   <!-- content -->
   <main class="cert-wrapper">
-    <!-- Page Title -->
     <header class="cert-hero">
       <h1>Certifications</h1>
     </header>
 
-    <!-- Vertical Timeline -->
+    <!-- Timeline -->
     <section class="cert-timeline">
-      <div class="timeline-line"></div> <!-- animated vertical line -->
+      <div class="timeline-line"></div>
 
       <!-- PMP -->
       <div class="cert-item left">
@@ -107,7 +110,6 @@
           <p class="cert-full-date">October 2024</p>
         </div>
       </div>
-
     </section>
   </main>
 
@@ -120,37 +122,33 @@
   </footer>
 
   <!-- scripts -->
+  <script src="header.js"></script>
   <script>
-  // Card + date animations
-  const items = document.querySelectorAll('.cert-item');
+    // Card + date animations
+    const items = document.querySelectorAll('.cert-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    items.forEach(item => observer.observe(item));
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
+    // Timeline line drawing
+    const timeline = document.querySelector('.cert-timeline');
+    const line = document.querySelector('.timeline-line');
+    window.addEventListener('scroll', () => {
+      const rect = timeline.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const totalHeight = rect.height;
+        const visibleHeight = Math.min(windowHeight - rect.top, totalHeight);
+        const percentage = Math.max(0, visibleHeight / totalHeight);
+        line.style.height = (percentage * 100) + "%";
       }
     });
-  }, { threshold: 0.2 });
-
-  items.forEach(item => observer.observe(item));
-
-  // Timeline line drawing
-  const timeline = document.querySelector('.cert-timeline');
-  const line = document.querySelector('.timeline-line');
-
-  window.addEventListener('scroll', () => {
-    const rect = timeline.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      const totalHeight = rect.height;
-      const visibleHeight = Math.min(windowHeight - rect.top, totalHeight);
-      const percentage = Math.max(0, visibleHeight / totalHeight);
-
-      line.style.height = (percentage * 100) + "%";
-    }
-  });
   </script>
 </body>
 </html>

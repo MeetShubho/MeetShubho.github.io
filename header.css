@@ -1,31 +1,44 @@
-/* ===== Shared Header Styles ===== */
+/* ========================================
+   Shared Header (Site-wide)
+   Matches Education Page Style Exactly
+   ======================================== */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Sticky Header */
 header {
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 1000;
 }
 
-/* Full-width gradient bar */
+/* Navbar Core */
 .navbar {
-  width: 100%;
   background: linear-gradient(90deg, #6a11cb, #0078d7);
-  display: flex;
-  justify-content: center; /* ✅ Center align links */
-  align-items: center;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center; /* ✅ Center align */
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 100%;
 }
 
-/* Navbar links */
+/* Navigation List */
 .navbar ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.navbar a {
+/* Links */
+.navbar ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -34,8 +47,8 @@ header {
   transition: color 0.3s ease;
 }
 
-/* Hover + active underline effect */
-.navbar a::after {
+/* Hover underline animation */
+.navbar ul li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -46,83 +59,85 @@ header {
   transition: width 0.3s ease;
 }
 
-/* Hover color + underline */
-.navbar a:hover {
+.navbar ul li a:hover {
   color: #ffdd57;
 }
-.navbar a:hover::after {
+
+.navbar ul li a:hover::after {
   width: 100%;
 }
 
-/* Active page style */
-.navbar a.active {
+/* Active link - matches Education page exactly */
+.navbar ul li a.active {
   font-weight: 800;
   color: #ffdd57;
 }
-.navbar a.active::after {
+
+.navbar ul li a.active::after {
   width: 100%;
 }
 
-/* Hamburger menu (mobile) */
-.hamburger {
+/* Hide old brand slot */
+.nav-brand {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 18px;
-  cursor: pointer;
 }
 
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Responsive menu overlay */
+/* Mobile / Tablet */
 @media (max-width: 768px) {
   .navbar {
     justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(106, 17, 203, 0.95);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .navbar ul.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out forwards;
   }
 
   .hamburger {
     display: flex;
-  }
-
-  .navbar ul {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100vh;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.85); /* ✅ Translucent overlay */
-    backdrop-filter: blur(6px);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: left 0.4s ease;
-    gap: 2rem;
+    gap: 5px;
+    cursor: pointer;
   }
 
-  .navbar ul.active {
-    left: 0;
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 
-  .navbar a {
-    font-size: 1.3rem;
+  @keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
+}
 
-  /* Animate hamburger to X */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
+/* Hamburger X animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
 }

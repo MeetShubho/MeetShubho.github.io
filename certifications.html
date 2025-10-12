@@ -5,31 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Certifications — Subhabrata Chattopadhyay</title>
 
-  <!-- Shared Header CSS + Page-specific CSS -->
+  <!-- Shared Header + Page CSS -->
   <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="certifications.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- navbar -->
-  <header>
-    <nav class="navbar">
-      <!-- Hamburger for mobile -->
-      <div class="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="career.html">Professional Career</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="certifications.html">Certifications</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- content -->
+  <!-- Header will be dynamically injected by header.js -->
+
+  <!-- Page Content -->
   <main class="cert-wrapper">
     <header class="cert-hero">
       <h1>Certifications</h1>
@@ -113,16 +98,20 @@
     </section>
   </main>
 
-  <!-- footer -->
+  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Subhabrata Chattopadhyay | 
-      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
-      <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a> | 
+      <a href="mailto:subhabratachattopadhyay07@gmail.com">
+        <i class="fas fa-envelope"></i> Contact
+      </a>
     </p>
   </footer>
 
-  <!-- scripts -->
-  <script src="header.js"></script>
+  <!-- Shared Header + Page Scripts -->
+  <script src="header.js" defer></script>
   <script>
     // Card + date animations
     const items = document.querySelectorAll('.cert-item');

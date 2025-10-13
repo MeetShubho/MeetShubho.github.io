@@ -28,7 +28,7 @@ header {
 }
 
 /* Navigation List */
-.navbar ul {
+.nav-list {
   list-style: none;
   display: flex;
   gap: 1.5rem;
@@ -38,7 +38,7 @@ header {
 }
 
 /* Links */
-.navbar ul li a {
+.nav-list li a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -48,7 +48,7 @@ header {
 }
 
 /* Hover underline animation */
-.navbar ul li a::after {
+.nav-list li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -59,27 +59,44 @@ header {
   transition: width 0.3s ease;
 }
 
-.navbar ul li a:hover {
+.nav-list li a:hover {
   color: #ffdd57;
 }
 
-.navbar ul li a:hover::after {
+.nav-list li a:hover::after {
   width: 100%;
 }
 
-/* Active link - matches Education page exactly */
-.navbar ul li a.active {
+/* Active link - same as Education page */
+.nav-list li a.active {
   font-weight: 800;
   color: #ffdd57;
 }
 
-.navbar ul li a.active::after {
+.nav-list li a.active::after {
   width: 100%;
 }
 
 /* Hide old brand slot */
 .nav-brand {
   display: none;
+}
+
+/* Overlay for mobile menu */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 900;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.navbar.open + .nav-overlay {
+  display: block;
+  opacity: 1;
 }
 
 /* Mobile / Tablet */
@@ -89,20 +106,20 @@ header {
     padding: 1rem;
   }
 
-  .navbar ul {
+  .nav-list {
     display: none;
     flex-direction: column;
-    position: fixed;
-    top: 60px;
+    align-items: center;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
     background: rgba(106, 17, 203, 0.95);
-    backdrop-filter: blur(6px);
-    text-align: center;
-    padding: 1rem 0;
+    backdrop-filter: blur(8px);
+    padding: 1.5rem 0;
   }
 
-  .navbar ul.active {
+  .navbar.open .nav-list {
     display: flex;
     animation: slideDown 0.3s ease-out forwards;
   }
@@ -129,15 +146,13 @@ header {
   }
 }
 
-/* Hamburger X animation */
+/* Hamburger "X" animation */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
 }
-
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translateY(-8px);
 }

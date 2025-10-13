@@ -1,7 +1,7 @@
-/* ========================================
+/* =========================================================
    Shared Header (Site-wide)
-   Matches Education Page Style Exactly
-   ======================================== */
+   Matches Education Page — Final Production Version
+   ========================================================= */
 
 * {
   margin: 0;
@@ -14,6 +14,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
 }
 
 /* Navbar Core */
@@ -21,9 +22,9 @@ header {
   background: linear-gradient(90deg, #6a11cb, #0078d7);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: center; /* ✅ Center align */
+  justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
 
@@ -38,7 +39,7 @@ header {
 }
 
 /* Links */
-.nav-list li a {
+.nav-list a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -48,7 +49,7 @@ header {
 }
 
 /* Hover underline animation */
-.nav-list li a::after {
+.nav-list a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -59,100 +60,110 @@ header {
   transition: width 0.3s ease;
 }
 
-.nav-list li a:hover {
+.nav-list a:hover {
   color: #ffdd57;
 }
 
-.nav-list li a:hover::after {
+.nav-list a:hover::after {
   width: 100%;
 }
 
-/* Active link - same as Education page */
-.nav-list li a.active {
+/* Active link (matches Education page exactly) */
+.nav-list a.active {
   font-weight: 800;
   color: #ffdd57;
 }
 
-.nav-list li a.active::after {
+.nav-list a.active::after {
   width: 100%;
 }
 
-/* Hide old brand slot */
-.nav-brand {
+/* Mobile Styles */
+.hamburger {
   display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
 }
 
-/* Overlay for mobile menu */
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Overlay for mobile slide-down */
 .nav-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 900;
-  transition: opacity 0.3s ease;
+  z-index: 998;
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.navbar.open + .nav-overlay {
+.nav-overlay.visible {
   display: block;
   opacity: 1;
 }
 
-/* Mobile / Tablet */
+/* Mobile Menu */
 @media (max-width: 768px) {
   .navbar {
     justify-content: space-between;
-    padding: 1rem;
-  }
-
-  .nav-list {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(106, 17, 203, 0.95);
-    backdrop-filter: blur(8px);
-    padding: 1.5rem 0;
-  }
-
-  .navbar.open .nav-list {
-    display: flex;
-    animation: slideDown 0.3s ease-out forwards;
+    padding: 1rem 1.2rem;
   }
 
   .hamburger {
     display: flex;
+    z-index: 1001;
+  }
+
+  .nav-list {
+    display: flex;
     flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(106, 17, 203, 0.96);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    padding-top: 80px;
+    transform: translateY(-100%);
+    opacity: 0;
+    z-index: 999;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    height: 100vh;
   }
 
-  .hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
+  .navbar.open .nav-list {
+    transform: translateY(0);
+    opacity: 1;
   }
 
-  @keyframes slideDown {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  /* Hamburger Animation */
+  .navbar.open .hamburger .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
   }
-}
 
-/* Hamburger "X" animation */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
+  .navbar.open .hamburger .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar.open .hamburger .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+
+  .nav-list a {
+    font-size: 1.2rem;
+    margin: 0.8rem 0;
+  }
 }

@@ -10,17 +10,22 @@
   <link rel="stylesheet" href="certifications.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+
 <body>
+  <!-- Shared Header (injected by header.js) -->
   <header></header>
 
+  <!-- Main content -->
   <main class="cert-wrapper">
-    <header class="cert-hero">
+    <section class="cert-hero">
       <h1>Certifications</h1>
-    </header>
+    </section>
 
+    <!-- Timeline Section -->
     <section class="cert-timeline">
       <div class="timeline-line"></div>
 
+      <!-- PMP -->
       <div class="cert-item left">
         <div class="cert-date">2014</div>
         <div class="cert-card">
@@ -32,6 +37,7 @@
         </div>
       </div>
 
+      <!-- PMI-ACP -->
       <div class="cert-item right">
         <div class="cert-date">2019</div>
         <div class="cert-card">
@@ -43,6 +49,7 @@
         </div>
       </div>
 
+      <!-- ICP-ACC -->
       <div class="cert-item left">
         <div class="cert-date">2021</div>
         <div class="cert-card">
@@ -54,6 +61,7 @@
         </div>
       </div>
 
+      <!-- SAFe -->
       <div class="cert-item right">
         <div class="cert-date">2021</div>
         <div class="cert-card">
@@ -65,6 +73,7 @@
         </div>
       </div>
 
+      <!-- PSM I -->
       <div class="cert-item left">
         <div class="cert-date">2022</div>
         <div class="cert-card">
@@ -76,6 +85,7 @@
         </div>
       </div>
 
+      <!-- PSPO I -->
       <div class="cert-item right">
         <div class="cert-date">2024</div>
         <div class="cert-card">
@@ -89,16 +99,24 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Subhabrata Chattopadhyay | 
-      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
-      <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a> | 
+      <a href="mailto:subhabratachattopadhyay07@gmail.com">
+        <i class="fas fa-envelope"></i> Contact
+      </a>
     </p>
   </footer>
 
+  <!-- Shared Header Script -->
   <script src="header.js"></script>
+
+  <!-- Page-Specific Animations -->
   <script>
-    // Animate timeline line + reveal
+    // Animate timeline appearance and progressive line
     const items = document.querySelectorAll('.cert-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -108,6 +126,7 @@
         }
       });
     }, { threshold: 0.2 });
+
     items.forEach(item => observer.observe(item));
 
     const timeline = document.querySelector('.cert-timeline');

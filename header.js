@@ -1,5 +1,6 @@
-// header.js — Shared Sticky Header
-// Injects a centered navbar with active underline + mobile dropdown overlay
+// ============================================
+// header.js — Shared Dynamic Header Injection
+// ============================================
 
 (function () {
   const NAV_LINKS = [
@@ -15,10 +16,9 @@
     return `
       <nav class="navbar" role="navigation" aria-label="Main navigation">
         <button class="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
-
-        <ul class="nav-list" id="primary-nav">
+        <ul class="nav-list">
           ${NAV_LINKS.map(link => `<li><a href="${link.href}">${link.label}</a></li>`).join("")}
         </ul>
       </nav>
@@ -26,63 +26,74 @@
     `;
   }
 
-  function markActiveLink(navRoot) {
-    const current = window.location.pathname.split("/").pop() || "index.html";
-    navRoot.querySelectorAll("a").forEach(a => {
-      const href = a.getAttribute("href");
-      if (href && href.endsWith(current)) {
-        a.classList.add("active");
+  function getCurrentPage() {
+    const path = window.location.pathname;
+    let file = path.substring(path.lastIndexOf("/") + 1);
+    if (!file) file = "index.html";
+    return file;
+  }
+
+  function highlightActiveLink(header) {
+    const current = getCurrentPage();
+    const links = header.querySelectorAll(".nav-list a");
+    links.forEach(link => {
+      const hrefFile = link.getAttribute("href").split("/").pop();
+      if (hrefFile === current) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.classList.remove("active");
+        link.removeAttribute("aria-current");
       }
     });
   }
 
-  function setupMenuBehavior(navbar) {
-    const hamburger = navbar.querySelector(".hamburger");
-    const overlay = document.querySelector(".nav-overlay");
+  function setupMobileMenu(header) {
+    const hamburger = header.querySelector(".hamburger");
+    const navList = header.querySelector(".nav-list");
+    const overlay = header.querySelector(".nav-overlay");
+
+    function openMenu() {
+      header.classList.add("open");
+      hamburger.setAttribute("aria-expanded", "true");
+      overlay.classList.add("visible");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      header.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      overlay.classList.remove("visible");
+      document.body.style.overflow = "";
+    }
 
     hamburger.addEventListener("click", () => {
-      const isOpen = navbar.classList.toggle("open");
-      hamburger.classList.toggle("active", isOpen);
-      hamburger.setAttribute("aria-expanded", isOpen);
-      document.body.style.overflow = isOpen ? "hidden" : "";
+      const expanded = hamburger.getAttribute("aria-expanded") === "true";
+      expanded ? closeMenu() : openMenu();
     });
 
-    overlay.addEventListener("click", () => {
-      navbar.classList.remove("open");
-      hamburger.classList.remove("active");
-      hamburger.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    });
-
-    // Close menu on link click (for mobile)
-    navbar.querySelectorAll(".nav-list a").forEach(link => {
-      link.addEventListener("click", () => {
-        navbar.classList.remove("open");
-        hamburger.classList.remove("active");
-        hamburger.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
-      });
+    overlay.addEventListener("click", closeMenu);
+    navList.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) closeMenu();
     });
   }
 
-  function initHeader() {
-    let headerEl = document.querySelector("header");
-    const headerHTML = createHeaderHTML();
-
-    if (!headerEl) {
-      headerEl = document.createElement("header");
-      document.body.prepend(headerEl);
+  function injectHeader() {
+    let header = document.querySelector("header");
+    if (!header) {
+      header = document.createElement("header");
+      document.body.prepend(header);
     }
-    headerEl.innerHTML = headerHTML;
+    header.innerHTML = createHeaderHTML();
 
-    const navbar = headerEl.querySelector(".navbar");
-    markActiveLink(navbar);
-    setupMenuBehavior(navbar);
+    highlightActiveLink(header);
+    setupMobileMenu(header);
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHeader);
+    document.addEventListener("DOMContentLoaded", injectHeader);
   } else {
-    initHeader();
+    injectHeader();
   }
 })();

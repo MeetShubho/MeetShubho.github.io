@@ -1,7 +1,3 @@
-/* ==========================================
-   Certifications Page — Final Version
-   ========================================== */
-
 /* Reset + Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -12,16 +8,9 @@ body {
   line-height: 1.6;
 }
 
-/* Ensure header overlap fix */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Prevent heading from colliding with sticky header */
-main.cert-wrapper {
-  margin-top: 80px; /* Adjust if header height changes */
+/* Offset for Sticky Header */
+main {
+  padding-top: 90px; /* prevents hero from colliding with header */
 }
 
 /* Hero */
@@ -29,10 +18,9 @@ main.cert-wrapper {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
-  margin: 2.5rem 0 2rem;
+  margin: 2.5rem 0;
   color: #1a1a1a;
   position: relative;
-  z-index: 1; /* ensures it sits above timeline background */
 }
 
 .cert-hero h1::after {
@@ -62,7 +50,6 @@ main.cert-wrapper {
   width: 4px;
   height: 100%;
   background: rgba(0,0,0,0.1);
-  z-index: 0;
 }
 
 .timeline-line {
@@ -75,7 +62,6 @@ main.cert-wrapper {
   background: linear-gradient(180deg, #6a11cb, #0078d7);
   border-radius: 2px;
   transition: height 0.2s ease-out;
-  z-index: 0;
 }
 
 /* Items */
@@ -86,13 +72,9 @@ main.cert-wrapper {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease-out;
-  z-index: 1;
 }
 
-.cert-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.cert-item.show { opacity: 1; transform: translateY(0); }
 
 .cert-item.left { left: 0; text-align: right; }
 .cert-item.right { left: 50%; text-align: left; }
@@ -124,9 +106,7 @@ main.cert-wrapper {
   transition: transform 0.3s;
 }
 
-.cert-logo:hover {
-  transform: scale(1.15);
-}
+.cert-logo:hover { transform: scale(1.15); }
 
 .cert-card h3 {
   font-size: 1.1rem;
@@ -157,7 +137,6 @@ main.cert-wrapper {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   opacity: 0;
   transition: all 0.6s ease-out;
-  z-index: 1;
 }
 
 .cert-item.show .cert-date {
@@ -186,15 +165,6 @@ main.cert-wrapper {
   border-top: 4px solid #6a11cb;
 }
 
-.footer a {
-  color: #ffdd57;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .cert-item {
@@ -203,17 +173,14 @@ main.cert-wrapper {
     text-align: left;
   }
 
-  .cert-item.left,
-  .cert-item.right {
-    left: 0;
-  }
+  .cert-item.left, .cert-item.right { left: 0; }
 
   .cert-date {
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  main.cert-wrapper {
-    margin-top: 100px; /* Slightly more offset on mobile since header taller */
+  main {
+    padding-top: 100px; /* slightly larger offset for taller mobile headers */
   }
 }

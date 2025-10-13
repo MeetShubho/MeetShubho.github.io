@@ -6,27 +6,21 @@
   <title>Certifications — Subhabrata Chattopadhyay</title>
 
   <!-- Shared Header + Page CSS -->
-  <link rel="stylesheet" href="certifications.css">
-  <link rel="stylesheet" href="header.css">
-  <script src="header.js"></script>
-
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="certifications.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+  <header></header>
 
-  <!-- Header will be dynamically injected by header.js -->
-
-  <!-- Page Content -->
   <main class="cert-wrapper">
     <header class="cert-hero">
       <h1>Certifications</h1>
     </header>
 
-    <!-- Timeline -->
     <section class="cert-timeline">
       <div class="timeline-line"></div>
 
-      <!-- PMP -->
       <div class="cert-item left">
         <div class="cert-date">2014</div>
         <div class="cert-card">
@@ -38,7 +32,6 @@
         </div>
       </div>
 
-      <!-- PMI-ACP -->
       <div class="cert-item right">
         <div class="cert-date">2019</div>
         <div class="cert-card">
@@ -50,7 +43,6 @@
         </div>
       </div>
 
-      <!-- ICP-ACC -->
       <div class="cert-item left">
         <div class="cert-date">2021</div>
         <div class="cert-card">
@@ -62,7 +54,6 @@
         </div>
       </div>
 
-      <!-- SAFe -->
       <div class="cert-item right">
         <div class="cert-date">2021</div>
         <div class="cert-card">
@@ -74,25 +65,23 @@
         </div>
       </div>
 
-      <!-- PSM I -->
       <div class="cert-item left">
         <div class="cert-date">2022</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/psm.png" alt="Scrum.org logo - PSM I" />
-            <h3>Professional Scrum Master I (PSM-1)</h3>
+            <h3>Professional Scrum Master I (PSM I)</h3>
           </div>
           <p class="cert-full-date">July 2022</p>
         </div>
       </div>
 
-      <!-- PSPO I -->
       <div class="cert-item right">
         <div class="cert-date">2024</div>
         <div class="cert-card">
           <div class="cert-header">
             <img class="cert-logo" src="assets/logos/pspo.png" alt="Scrum.org logo - PSPO I" />
-            <h3>Professional Scrum Product Owner I (PSPO-1)</h3>
+            <h3>Professional Scrum Product Owner I (PSPO I)</h3>
           </div>
           <p class="cert-full-date">October 2024</p>
         </div>
@@ -100,22 +89,16 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Subhabrata Chattopadhyay | 
-      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a> | 
-      <a href="mailto:subhabratachattopadhyay07@gmail.com">
-        <i class="fas fa-envelope"></i> Contact
-      </a>
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
+      <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
     </p>
   </footer>
 
-  <!-- Shared Header + Page Scripts -->
-  <script src="header.js" defer></script>
+  <script src="header.js"></script>
   <script>
-    // Card + date animations
+    // Animate timeline line + reveal
     const items = document.querySelectorAll('.cert-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -127,17 +110,14 @@
     }, { threshold: 0.2 });
     items.forEach(item => observer.observe(item));
 
-    // Timeline line drawing
     const timeline = document.querySelector('.cert-timeline');
     const line = document.querySelector('.timeline-line');
     window.addEventListener('scroll', () => {
       const rect = timeline.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        const totalHeight = rect.height;
-        const visibleHeight = Math.min(windowHeight - rect.top, totalHeight);
-        const percentage = Math.max(0, visibleHeight / totalHeight);
-        line.style.height = (percentage * 100) + "%";
+      const winH = window.innerHeight;
+      if (rect.top < winH && rect.bottom > 0) {
+        const pct = Math.min(1, (winH - rect.top) / rect.height);
+        line.style.height = pct * 100 + '%';
       }
     });
   </script>

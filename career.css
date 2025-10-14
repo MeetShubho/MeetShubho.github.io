@@ -14,25 +14,28 @@ body {
   background: #f4f7fb;
   color: #222;
   line-height: 1.6;
-}
-
-/* Offset for sticky header */
-.career-wrapper {
-  padding-top: 90px; /* ensures title doesn’t overlap header */
+  overflow-x: hidden;
 }
 
 /* --- HERO --- */
+.career-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
 .career-hero {
   text-align: center;
   margin-bottom: 2rem;
+  padding-top: 4rem; /* ensures enough breathing space */
 }
 
 .career-hero h1 {
   font-size: 2.5rem;
   font-weight: 800;
   color: #1a1a1a;
-  margin: 2.5rem 0 1.5rem;
+  margin: 3.5rem 0 1.5rem;
   position: relative;
+  z-index: 0;
 }
 
 .career-hero h1::after {
@@ -51,6 +54,7 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 2rem 0;
+  z-index: 0;
 }
 
 .career-timeline::before {
@@ -62,6 +66,7 @@ body {
   width: 4px;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
+  z-index: -1;
 }
 
 .timeline-line {
@@ -121,6 +126,7 @@ body {
   transition: all 0.6s ease-out;
   text-align: center;
   line-height: 1.2;
+  z-index: 1;
 }
 
 .career-item.show .career-date {

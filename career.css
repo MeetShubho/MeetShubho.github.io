@@ -1,5 +1,13 @@
+/* =========================================
+   Career Page - Consistent with Education & Certifications
+   ========================================= */
+
 /* Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Segoe UI", sans-serif;
@@ -8,17 +16,22 @@ body {
   line-height: 1.6;
 }
 
+/* Offset for sticky header */
+.career-wrapper {
+  padding-top: 90px; /* ensures title doesn’t overlap header */
+}
+
 /* --- HERO --- */
 .career-hero {
   text-align: center;
-  margin-top: 90px; /* prevent overlap with sticky header */
+  margin-bottom: 2rem;
 }
 
 .career-hero h1 {
   font-size: 2.5rem;
   font-weight: 800;
   color: #1a1a1a;
-  margin: 2.5rem 0;
+  margin: 2.5rem 0 1.5rem;
   position: relative;
 }
 
@@ -48,7 +61,7 @@ body {
   transform: translateX(-50%);
   width: 4px;
   height: 100%;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .timeline-line {
@@ -60,10 +73,10 @@ body {
   height: 0;
   background: linear-gradient(180deg, #6a11cb, #0078d7);
   border-radius: 2px;
-  transition: height 0.3s ease-out;
+  transition: height 0.2s ease-out;
 }
 
-/* --- ITEMS --- */
+/* --- TIMELINE ITEMS --- */
 .career-item {
   position: relative;
   width: 50%;
@@ -73,23 +86,69 @@ body {
   transition: all 0.8s ease-out;
 }
 
-.career-item.show { opacity: 1; transform: translateY(0); }
+.career-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-.career-item.left { left: 0; text-align: right; }
-.career-item.right { left: 50%; text-align: left; }
+.career-item.left {
+  left: 0;
+  text-align: right;
+}
 
-/* --- CARDS --- */
+.career-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* --- DATE CIRCLES --- */
+.career-date {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #6a11cb, #0078d7);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: all 0.6s ease-out;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.career-item.show .career-date {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  animation: bounceIn 0.8s ease;
+}
+
+.career-item.left .career-date {
+  right: -35px;
+}
+
+.career-item.right .career-date {
+  left: -35px;
+}
+
+/* --- CARD --- */
 .career-card {
   background: #fff;
   padding: 1.2rem 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .career-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .career-header {
@@ -105,51 +164,16 @@ body {
   transition: transform 0.3s;
 }
 
-.career-logo:hover { transform: scale(1.15); }
+.career-logo:hover {
+  transform: scale(1.15);
+}
 
 .career-card h3 {
   font-size: 1.1rem;
   font-weight: 700;
 }
 
-/* --- DATES --- */
-.career-date {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scale(0.8);
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, #6a11cb, #0078d7);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  opacity: 0;
-  transition: all 0.6s ease-out;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.career-item.show .career-date {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-  animation: bounceIn 0.8s ease;
-}
-
-.career-item.left .career-date { right: -35px; }
-.career-item.right .career-date { left: -35px; }
-
-@keyframes bounceIn {
-  0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
-  60% { transform: translateY(-50%) scale(1.2); opacity: 1; }
-  100% { transform: translateY(-50%) scale(1); }
-}
-
-/* --- TOGGLE --- */
+/* --- TOGGLE BUTTON --- */
 .toggle-btn {
   display: inline-block;
   margin: 1rem 0 0;
@@ -170,13 +194,16 @@ body {
   box-shadow: 0 0 12px #6a11cb, 0 0 24px #0078d7;
 }
 
+/* --- CARD CONTENT --- */
 .career-content {
   margin-top: 1rem;
   display: none;
   text-align: justify;
 }
 
-.career-content.active { display: block; }
+.career-content.active {
+  display: block;
+}
 
 /* --- FOOTER --- */
 .footer {
@@ -189,8 +216,12 @@ body {
   border-top: 4px solid #6a11cb;
 }
 
-.footer a { color: #ffdd57; text-decoration: none; }
-.footer a:hover { text-decoration: underline; }
+/* --- ANIMATIONS --- */
+@keyframes bounceIn {
+  0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
+  60% { transform: translateY(-50%) scale(1.2); opacity: 1; }
+  100% { transform: translateY(-50%) scale(1); }
+}
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
@@ -200,11 +231,12 @@ body {
     text-align: left;
   }
 
-  .career-item.left, .career-item.right { left: 0; }
+  .career-item.left, .career-item.right {
+    left: 0;
+  }
 
   .career-date {
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
   }
 }

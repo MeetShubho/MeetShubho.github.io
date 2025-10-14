@@ -1,8 +1,9 @@
-/* =========================================
-   Career Page - Consistent with Education & Certifications
-   ========================================= */
+/* ========================================
+   Professional Career — Unified Design
+   Matches Education & Certifications Pages
+   ======================================== */
 
-/* Reset */
+/* Reset + Base */
 * {
   margin: 0;
   padding: 0;
@@ -14,28 +15,22 @@ body {
   background: #f4f7fb;
   color: #222;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
-/* --- HERO --- */
+/* Wrapper ensures hero spacing under sticky header */
 .career-wrapper {
-  position: relative;
-  z-index: 1;
+  padding-top: 5rem; /* prevent header collision */
 }
 
-.career-hero {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-top: 4rem; /* ensures enough breathing space */
-}
-
+/* Hero */
 .career-hero h1 {
+  text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
+  margin: 2.5rem 0 3.5rem; /* added extra bottom margin to prevent overlap */
   color: #1a1a1a;
-  margin: 3.5rem 0 1.5rem;
   position: relative;
-  z-index: 0;
+  z-index: 1; /* ensure it scrolls behind header */
 }
 
 .career-hero h1::after {
@@ -48,13 +43,12 @@ body {
   border-radius: 3px;
 }
 
-/* --- TIMELINE --- */
+/* Timeline */
 .career-timeline {
   position: relative;
   max-width: 900px;
   margin: auto;
   padding: 2rem 0;
-  z-index: 0;
 }
 
 .career-timeline::before {
@@ -66,7 +60,6 @@ body {
   width: 4px;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  z-index: -1;
 }
 
 .timeline-line {
@@ -78,10 +71,10 @@ body {
   height: 0;
   background: linear-gradient(180deg, #6a11cb, #0078d7);
   border-radius: 2px;
-  transition: height 0.2s ease-out;
+  transition: height 0.3s ease-out;
 }
 
-/* --- TIMELINE ITEMS --- */
+/* Items */
 .career-item {
   position: relative;
   width: 50%;
@@ -106,7 +99,44 @@ body {
   text-align: left;
 }
 
-/* --- DATE CIRCLES --- */
+/* Career Card */
+.career-card {
+  background: #fff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.career-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.career-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.career-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.career-logo:hover {
+  transform: scale(1.15);
+}
+
+.career-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Year Circles */
 .career-date {
   position: absolute;
   top: 50%;
@@ -116,7 +146,7 @@ body {
   background: linear-gradient(135deg, #6a11cb, #0078d7);
   color: #fff;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,9 +154,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   opacity: 0;
   transition: all 0.6s ease-out;
-  text-align: center;
-  line-height: 1.2;
-  z-index: 1;
 }
 
 .career-item.show .career-date {
@@ -143,47 +170,25 @@ body {
   left: -35px;
 }
 
-/* --- CARD --- */
-.career-card {
-  background: #fff;
-  padding: 1.2rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-50%) scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
 }
 
-.career-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
-
-.career-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.career-logo {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.career-logo:hover {
-  transform: scale(1.15);
-}
-
-.career-card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-/* --- TOGGLE BUTTON --- */
+/* Toggle Button */
 .toggle-btn {
   display: inline-block;
   margin: 1rem 0 0;
-  padding: 0.4rem 0.8rem;
+  padding: 0.45rem 0.9rem;
   font-size: 0.85rem;
   font-weight: 600;
   color: #0078d7;
@@ -200,7 +205,7 @@ body {
   box-shadow: 0 0 12px #6a11cb, 0 0 24px #0078d7;
 }
 
-/* --- CARD CONTENT --- */
+/* Expanded Content */
 .career-content {
   margin-top: 1rem;
   display: none;
@@ -211,7 +216,7 @@ body {
   display: block;
 }
 
-/* --- FOOTER --- */
+/* Footer */
 .footer {
   background: #222;
   color: #fff;
@@ -222,14 +227,7 @@ body {
   border-top: 4px solid #6a11cb;
 }
 
-/* --- ANIMATIONS --- */
-@keyframes bounceIn {
-  0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
-  60% { transform: translateY(-50%) scale(1.2); opacity: 1; }
-  100% { transform: translateY(-50%) scale(1); }
-}
-
-/* --- RESPONSIVE --- */
+/* Responsive */
 @media (max-width: 768px) {
   .career-item {
     width: 100%;
@@ -237,12 +235,16 @@ body {
     text-align: left;
   }
 
-  .career-item.left, .career-item.right {
+  .career-item.left,
+  .career-item.right {
     left: 0;
   }
 
   .career-date {
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin: 0 auto 1rem;
+    left: auto;
+    top: auto;
+    transform: none;
   }
 }

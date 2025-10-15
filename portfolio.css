@@ -35,12 +35,13 @@ body {
 /* ===== Tabs ===== */
 .portfolio-tabs {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* ✅ Center alignment */
   align-items: center;
   margin-top: 2.5rem;
   border-bottom: 3px solid #e0e0e0;
   position: relative;
-  gap: 1.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -55,33 +56,41 @@ body {
   transition: color 0.3s ease;
 }
 
+/* Hover effect with subtle underline preview */
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0078d7, #00c6a7);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
 .tab-btn:hover {
   color: #0078d7;
+}
+
+.tab-btn:hover::after {
+  width: 100%;
 }
 
 .tab-btn.active {
   color: #0078d7;
 }
 
+/* Active tab underline animation */
 .tab-btn.active::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #0078d7, #00c6a7);
-  border-radius: 2px;
-  animation: underlineSlide 0.4s ease;
+  animation: underlineSlideCenter 0.4s ease forwards;
 }
 
-@keyframes underlineSlide {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+@keyframes underlineSlideCenter {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 /* ===== Tab Content ===== */

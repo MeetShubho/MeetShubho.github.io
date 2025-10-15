@@ -9,6 +9,7 @@
     { href: "career.html", label: "Professional Career" },
     { href: "education.html", label: "Education" },
     { href: "certifications.html", label: "Certifications" },
+    { href: "portfolio.html", label: "Portfolio" },
     { href: "contact.html", label: "Contact" }
   ];
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Subhabrata Chattopadhyay</title>
+
+  <!-- Shared Header + Page CSS -->
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="portfolio.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header></header>
+
+  <main class="portfolio-wrapper">
+    <!-- Hero -->
+    <section class="portfolio-hero">
+      <h1>Portfolio</h1>
+      <p>Explore my key projects across AI/ML and Product Management domains.</p>
+    </section>
+
+    <!-- Tabs -->
+    <div class="portfolio-tabs">
+      <button class="tab-btn active" data-tab="ai">AI / ML Projects</button>
+      <button class="tab-btn" data-tab="product">Product Management</button>
+    </div>
+
+    <!-- Tab Content -->
+    <section class="tab-content active" id="ai">
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <h3>FinAI — Predictive Financial Advisor</h3>
+          <p>AI-driven portfolio optimization engine using reinforcement learning and sentiment data from market news.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Transformers</span><span>Fintech</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <h3>ChatAssist — GPT-powered Helpdesk Bot</h3>
+          <p>Custom fine-tuned chatbot for IT service management integrated with Jira and Confluence APIs.</p>
+          <div class="project-tags">
+            <span>OpenAI API</span><span>Flask</span><span>Automation</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-content" id="product">
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <h3>InstaCollab — Brand & Influencer Collaboration</h3>
+          <p>Designed an integrated Instagram feature enabling brands to manage influencer partnerships natively.</p>
+          <div class="project-tags">
+            <span>Product Strategy</span><span>UX Flow</span><span>Roadmap</span>
+          </div>
+          <a href="#" class="project-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <h3>ParentPay 2.0 — School Payments Platform</h3>
+          <p>Led a platform redesign improving onboarding flow and cutting transaction friction by 30%.</p>
+          <div class="project-tags">
+            <span>Agile</span><span>Design Thinking</span><span>PM Leadership</span>
+          </div>
+          <a href="#" class="project-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Subhabrata Chattopadhyay |
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn</a> |
+      <a href="mailto:subhabratachattopadhyay07@gmail.com">
+        <i class="fas fa-envelope"></i> Contact</a>
+    </p>
+  </footer>
+
+  <script src="header.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+</html>

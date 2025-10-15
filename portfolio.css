@@ -15,7 +15,7 @@ body {
 /* ===== Hero Section ===== */
 .portfolio-hero {
   text-align: center;
-  padding: 6rem 1rem 2rem;
+  padding: 6rem 1rem 1rem;
   position: relative;
   z-index: 1;
 }
@@ -37,11 +37,13 @@ body {
   display: flex;
   justify-content: center; /* ✅ Center alignment */
   align-items: center;
-  margin-top: 2.5rem;
+  margin: 2rem auto 0;
+  width: 100%;
+  max-width: 600px; /* ✅ Keeps the tab area compact under title */
   border-bottom: 3px solid #e0e0e0;
-  position: relative;
   gap: 2rem;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .tab-btn {
@@ -56,7 +58,7 @@ body {
   transition: color 0.3s ease;
 }
 
-/* Hover effect with subtle underline preview */
+/* Hover underline preview */
 .tab-btn::after {
   content: "";
   position: absolute;
@@ -82,7 +84,6 @@ body {
   color: #0078d7;
 }
 
-/* Active tab underline animation */
 .tab-btn.active::after {
   width: 100%;
   animation: underlineSlideCenter 0.4s ease forwards;
@@ -210,6 +211,11 @@ body {
 
   .tab-btn {
     font-size: 1rem;
+  }
+
+  .portfolio-tabs {
+    max-width: 90%;
+    gap: 1.5rem;
   }
 
   .portfolio-grid {

@@ -8,13 +8,10 @@
   <!-- Shared Header + Page CSS -->
   <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="portfolio.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Header will be dynamically injected -->
+  <!-- Header (Injected by JS) -->
   <header></header>
 
   <main class="portfolio-wrapper">
@@ -28,33 +25,38 @@
 
     <!-- Tabs Section -->
     <section class="tabs-section">
-      <div class="tabs-container">
+      <div class="portfolio-tabs">
         <button class="tab-btn active">AI / ML Projects</button>
         <button class="tab-btn">Product Management</button>
-        <div class="tab-underline"></div>
       </div>
 
-      <!-- Tabs Content -->
-      <div class="tab-content-container">
-        <!-- AI / ML Projects -->
-        <div class="tab-content active">
-          <div class="portfolio-card">
+      <!-- Tab Contents -->
+      <div class="tab-content active">
+        <div class="portfolio-grid">
+          <!-- Sentiment Analysis Dashboard -->
+          <div class="project-card">
+            <img src="assets/Profile/SentimentAnalysis.png" alt="Sentiment Analysis Dashboard" class="project-image" />
             <h3><i class="fas fa-brain"></i> Sentiment Analysis Dashboard</h3>
             <p>
-              Designed and built an AI-powered sentiment dashboard using <strong>Python, Hugging Face Transformers</strong>, and <strong>Plotly</strong>.
-              Deployed on Streamlit for real-time brand reputation insights.
+              Designed and built an AI-powered sentiment dashboard using <strong>Python</strong>,
+              <strong>Hugging Face Transformers</strong>, and <strong>Plotly</strong>. Deployed on Streamlit for
+              real-time brand reputation insights.
             </p>
           </div>
 
-          <div class="portfolio-card">
+          <!-- ChatGPT PMO Assistant -->
+          <div class="project-card">
+            <img src="assets/Profile/PMOAssistant.png" alt="ChatGPT PMO Assistant" class="project-image" />
             <h3><i class="fas fa-robot"></i> ChatGPT Integration for Agile PMO</h3>
             <p>
-              Created a <strong>custom GPT-based Agile assistant</strong> that automates stand-up summaries and sprint reports.
-              Integrated via <strong>OpenAI API</strong> and <strong>Notion SDK</strong>.
+              Created a <strong>custom GPT-based Agile assistant</strong> that automates stand-up summaries and sprint
+              reports. Integrated via <strong>OpenAI API</strong> and <strong>Notion SDK</strong>.
             </p>
           </div>
 
-          <div class="portfolio-card">
+          <!-- Predictive Project Delivery Model -->
+          <div class="project-card">
+            <img src="assets/Profile/DeliveryModel.png" alt="Predictive Project Delivery Model" class="project-image" />
             <h3><i class="fas fa-chart-line"></i> Predictive Project Delivery Model</h3>
             <p>
               Built a machine learning model predicting project delivery risk based on sprint velocity trends.
@@ -62,10 +64,14 @@
             </p>
           </div>
         </div>
+      </div>
 
-        <!-- Product Management Projects -->
-        <div class="tab-content">
-          <div class="portfolio-card">
+      <!-- Product Management Projects -->
+      <div class="tab-content">
+        <div class="portfolio-grid">
+          <!-- Instagram Collab -->
+          <div class="project-card">
+            <img src="assets/Profile/IGColab.png" alt="Instagram Collaboration Feature" class="project-image" />
             <h3><i class="fas fa-lightbulb"></i> Instagram Collab Feature (Case Study)</h3>
             <p>
               Conceptualized a <strong>native influencer-brand collaboration feature</strong> within Instagram.
@@ -73,19 +79,23 @@
             </p>
           </div>
 
-          <div class="portfolio-card">
+          <!-- ConsumeGood -->
+          <div class="project-card">
+            <img src="assets/Profile/ConsumeGood.png" alt="ConsumeGood Haircare Strategy" class="project-image" />
             <h3><i class="fas fa-users"></i> ConsumeGood Haircare Strategy</h3>
             <p>
-              Developed market entry and positioning strategy for an <strong>FMCG startup</strong> competing with P&G and HUL.
-              Led vision, mission, and Product Vision Board creation.
+              Developed market entry and positioning strategy for an <strong>FMCG startup</strong> competing with P&G
+              and HUL. Led vision, mission, and Product Vision Board creation.
             </p>
           </div>
 
-          <div class="portfolio-card">
+          <!-- Transformation Playbook -->
+          <div class="project-card">
+            <img src="assets/Profile/TransformationPlaybook.png" alt="Agile Transformation Playbook" class="project-image" />
             <h3><i class="fas fa-cogs"></i> Agile Transformation Playbook</h3>
             <p>
-              Authored a <strong>cross-functional Agile playbook</strong> covering product lifecycle, OKRs, and release governance.
-              Used by 3 delivery units across 2 continents.
+              Authored a <strong>cross-functional Agile playbook</strong> covering product lifecycle, OKRs, and release
+              governance. Used by 3 delivery units across 2 continents.
             </p>
           </div>
         </div>
@@ -97,15 +107,13 @@
   <footer class="footer">
     <p>
       &copy; 2025 Subhabrata Chattopadhyay |
-      <a
-        href="https://www.linkedin.com/in/subhabratachattopadhyay/"
-        target="_blank"
-        ><i class="fab fa-linkedin"></i> LinkedIn</a
-      >
+      <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
       |
-      <a href="mailto:subhabratachattopadhyay07@gmail.com"
-        ><i class="fas fa-envelope"></i> Contact</a
-      >
+      <a href="mailto:subhabratachattopadhyay07@gmail.com">
+        <i class="fas fa-envelope"></i> Contact
+      </a>
     </p>
   </footer>
 

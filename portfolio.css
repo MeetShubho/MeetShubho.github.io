@@ -10,6 +10,7 @@ body {
   background: #f4f7fb;
   color: #222;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* ===== Hero Section ===== */
@@ -21,29 +22,31 @@ body {
 }
 
 .portfolio-hero h1 {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 800;
   color: #1a1a1a;
+  letter-spacing: 0.5px;
 }
 
 .portfolio-hero p {
   font-size: 1.1rem;
   margin-top: 0.8rem;
   color: #555;
+  max-width: 700px;
+  margin-inline: auto;
 }
 
-/* ===== Tabs ===== */
-.portfolio-tabs {
+/* ===== Tabs Section ===== */
+.tabs-container {
   display: flex;
-  justify-content: center; /* ✅ Center alignment */
+  justify-content: center;
   align-items: center;
-  margin: 2rem auto 0;
-  width: 100%;
-  max-width: 600px; /* ✅ Keeps the tab area compact under title */
+  gap: 2.5rem;
+  margin: 2.5rem auto;
   border-bottom: 3px solid #e0e0e0;
-  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
   flex-wrap: wrap;
-  text-align: center;
 }
 
 .tab-btn {
@@ -58,7 +61,6 @@ body {
   transition: color 0.3s ease;
 }
 
-/* Hover underline preview */
 .tab-btn::after {
   content: "";
   position: absolute;
@@ -111,72 +113,74 @@ body {
   transform: translateY(0);
 }
 
-/* ===== Grid ===== */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
 /* ===== Project Cards ===== */
-.project-card {
+.portfolio-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 1.8rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease forwards;
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+.portfolio-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 120, 215, 0.15);
 }
 
-.project-card h3 {
-  font-size: 1.3rem;
+/* ===== Card Image ===== */
+.card-image {
+  width: 100%;
+  height: 180px;
+  background: #eaf1fa;
+  border-radius: 10px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.portfolio-card h3 {
+  font-size: 1.25rem;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
-.project-card p {
+.portfolio-card h3 i {
+  color: #0078d7;
+  margin-right: 0.5rem;
+}
+
+.portfolio-card p {
   font-size: 0.95rem;
   color: #555;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
 }
 
-/* ===== Tags ===== */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.2rem;
-}
-
-.project-tags span {
-  background: rgba(0, 120, 215, 0.1);
-  color: #0078d7;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.3rem 0.7rem;
-  border-radius: 5px;
-}
-
-/* ===== Links ===== */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #0078d7;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.project-link:hover {
-  color: #00c6a7;
+/* ===== Animation ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== Footer ===== */
@@ -206,19 +210,23 @@ body {
   }
 
   .portfolio-hero h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .tab-btn {
     font-size: 1rem;
   }
 
-  .portfolio-tabs {
+  .tabs-container {
     max-width: 90%;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
-  .portfolio-grid {
-    gap: 1.5rem;
+  .portfolio-card {
+    padding: 1.2rem;
+  }
+
+  .card-image {
+    height: 160px;
   }
 }

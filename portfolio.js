@@ -1,59 +1,140 @@
-// ===== Portfolio Tabs Logic (Outer + Inner) =====
+// portfolio.js
+// Tabs + inner-tabs + accessible behavior + staggered reveal + card keyboard click
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------- Outer Tabs ---------- */
-  const outerTabs = document.querySelectorAll(".tab-btn");
-  const outerContents = document.querySelectorAll(".tab-content");
+  // Top-level tabs
+  const tabs = Array.from(document.querySelectorAll(".tab-btn"));
+  const contents = Array.from(document.querySelectorAll(".tab-content"));
 
-  // Activate first outer tab by default
-  if (outerTabs.length > 0) {
-    outerTabs[0].classList.add("active");
-    outerContents[0].classList.add("active");
+  // inner tabs
+  const innerTabs = Array.from(document.querySelectorAll(".inner-tab-btn"));
+  const innerContents = Array.from(document.querySelectorAll(".inner-tab-content"));
+
+  // set initial states (first active)
+  if (tabs.length) {
+    tabs.forEach((t, i) => {
+      const panel = contents[i];
+      t.setAttribute("role", "tab");
+      if (i === 0) {
+        t.classList.add("active");
+        t.setAttribute("aria-selected", "true");
+        panel.classList.add("active");
+        panel.setAttribute("aria-hidden", "false");
+      } else {
+        t.setAttribute("aria-selected", "false");
+        panel.setAttribute("aria-hidden", "true");
+      }
+    });
   }
 
-  outerTabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => {
-      // Reset all outer tabs & contents
-      outerTabs.forEach((t) => t.classList.remove("active"));
-      outerContents.forEach((c) => c.classList.remove("active"));
-
-      // Activate clicked outer tab
-      tab.classList.add("active");
-      outerContents[index].classList.add("active");
-
-      // Smooth scroll back to the hero section
-      const scrollTarget = document.querySelector(".portfolio-hero");
-      if (scrollTarget) {
-        scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+  tabs.forEach((tab, idx) => {
+    tab.addEventListener("click", () => activateTab(tab, idx));
+    tab.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+        prev.focus();
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        const next = tabs[(idx + 1) % tabs.length];
+        next.focus();
+      } else if (e.key === "Enter" || e.key === " ") {
+        activateTab(tab, idx);
       }
     });
   });
 
-  /* ---------- Inner Tabs (Product Management only) ---------- */
-  const innerTabs = document.querySelectorAll(".inner-tab-btn");
-  const innerContents = document.querySelectorAll(".inner-tab-content");
+  function activateTab(tab, idx) {
+    tabs.forEach((t, i) => {
+      const panel = contents[i];
+      const active = t === tab;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
+      panel.classList.toggle("active", active);
+      panel.setAttribute("aria-hidden", active ? "false" : "true");
+    });
 
-  if (innerTabs.length > 0) {
-    // Activate first inner tab by default
-    innerTabs[0].classList.add("active");
-    innerContents[0].classList.add("active");
+    // scroll hero into view for context on mobile
+    const hero = document.querySelector(".portfolio-hero");
+    if (hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
+    // reset inner tabs to default for the newly shown content
+    resetInnerTabs();
+    // re-run reveal observer for newly active content
+    runRevealObserver();
+  }
 
-    innerTabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => {
-        // Reset inner tabs & contents
-        innerTabs.forEach((t) => t.classList.remove("active"));
-        innerContents.forEach((c) => c.classList.remove("active"));
-
-        // Activate clicked inner tab
-        tab.classList.add("active");
-        innerContents[index].classList.add("active");
-
-        // Optional: smooth scroll to the start of Product Management content
-        const productSection = document.querySelector(".tab-content.active");
-        if (productSection) {
-          productSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+  // Inner Tabs logic
+  if (innerTabs.length) {
+    innerTabs.forEach((btn, i) => {
+      btn.setAttribute("role", "tab");
+      const panel = innerContents[i];
+      if (i === 0) { btn.classList.add("active"); panel.classList.add("active"); panel.setAttribute("aria-hidden", "false'); }
+      else panel.setAttribute("aria-hidden", "true");
+      btn.addEventListener("click", () => {
+        innerTabs.forEach((b, j) => {
+          innerContents[j].classList.toggle("active", b === btn);
+          b.classList.toggle("active", b === btn);
+          innerContents[j].setAttribute("aria-hidden", b === btn ? "false" : "true");
+        });
+        runRevealObserver();
       });
     });
   }
+
+  function resetInnerTabs() {
+    innerTabs.forEach((b, i) => {
+      const panel = innerContents[i];
+      if (i === 0) {
+        b.classList.add("active");
+        panel.classList.add("active");
+        panel.setAttribute("aria-hidden", "false");
+      } else {
+        b.classList.remove("active");
+        panel.classList.remove("active");
+        panel.setAttribute("aria-hidden", "true");
+      }
+    });
+  }
+
+  // Make cards clickable & keyboard friendly
+  document.querySelectorAll(".project-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      const href = card.getAttribute("data-detail");
+      if (href) window.location.href = href;
+    });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const href = card.getAttribute("data-detail");
+        if (href) window.location.href = href;
+      }
+    });
+  });
+
+  // Reveal animation for cards using IntersectionObserver + stagger
+  const runRevealObserver = () => {
+    const visibleCards = document.querySelectorAll(".tab-content.active .project-card, .inner-tab-content.active .project-card");
+    const options = { root: null, rootMargin: "0px", threshold: 0.12 };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // apply staggered delay using index
+          const list = Array.from(entry.target.parentElement.querySelectorAll(".project-card"));
+          list.forEach((c, i) => {
+            // only reveal those in the same container
+            if (!c.classList.contains("revealed")) {
+              setTimeout(() => c.classList.add("revealed"), i * 120 + 60);
+            }
+          });
+          obs.disconnect();
+        }
+      });
+    }, options);
+
+    visibleCards.forEach(card => observer.observe(card));
+  };
+
+  // initial run
+  runRevealObserver();
+
+  // re-run on resize/orientation
+  window.addEventListener("resize", () => runRevealObserver());
 });

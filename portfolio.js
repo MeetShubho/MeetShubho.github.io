@@ -1,21 +1,3 @@
-🔧 Debug portfolio.js (with console logs)
-document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
-  console.log("Tabs found:", tabs.length, "Contents found:", contents.length);
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => {
-      console.log("Tab clicked:", tab, "index", index);
-      tabs.forEach((t) => t.classList.remove("active"));
-      contents.forEach((c) => c.classList.remove("active"));
-      tab.classList.add("active");
-      contents[index].classList.add("active");
-      const hero = document.querySelector(".portfolio-hero");
-      if (hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-})
 // portfolio.js
 // Tabs + inner-tabs + accessible behavior + staggered reveal + card keyboard click
 
@@ -70,12 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
       panel.setAttribute("aria-hidden", active ? "false" : "true");
     });
 
-    // scroll hero into view for context on mobile
     const hero = document.querySelector(".portfolio-hero");
     if (hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
-    // reset inner tabs to default for the newly shown content
     resetInnerTabs();
-    // re-run reveal observer for newly active content
     runRevealObserver();
   }
 
@@ -84,13 +63,20 @@ document.addEventListener("DOMContentLoaded", () => {
     innerTabs.forEach((btn, i) => {
       btn.setAttribute("role", "tab");
       const panel = innerContents[i];
-      if (i === 0) { btn.classList.add("active"); panel.classList.add("active"); panel.setAttribute("aria-hidden", "false"); }
-      else panel.setAttribute("aria-hidden", "true");
+      if (i === 0) {
+        btn.classList.add("active");
+        panel.classList.add("active");
+        panel.setAttribute("aria-hidden", "false");
+      } else {
+        panel.setAttribute("aria-hidden", "true");
+      }
+
       btn.addEventListener("click", () => {
         innerTabs.forEach((b, j) => {
-          innerContents[j].classList.toggle("active", b === btn);
-          b.classList.toggle("active", b === btn);
-          innerContents[j].setAttribute("aria-hidden", b === btn ? "false" : "true");
+          const active = b === btn;
+          b.classList.toggle("active", active);
+          innerContents[j].classList.toggle("active", active);
+          innerContents[j].setAttribute("aria-hidden", active ? "false" : "true");
         });
         runRevealObserver();
       });
@@ -114,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Make cards clickable & keyboard friendly
   document.querySelectorAll(".project-card").forEach(card => {
-    card.addEventListener("click", (e) => {
+    card.addEventListener("click", () => {
       const href = card.getAttribute("data-detail");
       if (href) window.location.href = href;
     });
@@ -134,10 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // apply staggered delay using index
           const list = Array.from(entry.target.parentElement.querySelectorAll(".project-card"));
           list.forEach((c, i) => {
-            // only reveal those in the same container
             if (!c.classList.contains("revealed")) {
               setTimeout(() => c.classList.add("revealed"), i * 120 + 60);
             }
@@ -150,9 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
     visibleCards.forEach(card => observer.observe(card));
   };
 
-  // initial run
   runRevealObserver();
-
-  // re-run on resize/orientation
-  window.addEventListener("resize", () => runRevealObserver());
+  window.addEventListener("resize", runRevealObserver);
 });

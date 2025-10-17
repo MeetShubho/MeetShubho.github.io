@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     innerTabs.forEach((btn, i) => {
       btn.setAttribute("role", "tab");
       const panel = innerContents[i];
-      if (i === 0) { btn.classList.add("active"); panel.classList.add("active"); panel.setAttribute("aria-hidden", "false'); }
+      if (i === 0) { btn.classList.add("active"); panel.classList.add("active"); panel.setAttribute("aria-hidden", "false"); }
       else panel.setAttribute("aria-hidden", "true");
       btn.addEventListener("click", () => {
         innerTabs.forEach((b, j) => {

@@ -1,31 +1,59 @@
-// ===== Portfolio Tabs Logic =====
+// ===== Portfolio Tabs Logic (Outer + Inner) =====
 
-// Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
+  /* ---------- Outer Tabs ---------- */
+  const outerTabs = document.querySelectorAll(".tab-btn");
+  const outerContents = document.querySelectorAll(".tab-content");
 
-  // Set the first tab active by default
-  if (tabs.length > 0) {
-    tabs[0].classList.add("active");
-    contents[0].classList.add("active");
+  // Activate first outer tab by default
+  if (outerTabs.length > 0) {
+    outerTabs[0].classList.add("active");
+    outerContents[0].classList.add("active");
   }
 
-  tabs.forEach((tab, index) => {
+  outerTabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
-      // Remove active states from all tabs & contents
-      tabs.forEach((t) => t.classList.remove("active"));
-      contents.forEach((c) => c.classList.remove("active"));
+      // Reset all outer tabs & contents
+      outerTabs.forEach((t) => t.classList.remove("active"));
+      outerContents.forEach((c) => c.classList.remove("active"));
 
-      // Add active states to clicked tab & its corresponding content
+      // Activate clicked outer tab
       tab.classList.add("active");
-      contents[index].classList.add("active");
+      outerContents[index].classList.add("active");
 
-      // Smooth scroll to top of portfolio content when switching tabs
+      // Smooth scroll back to the hero section
       const scrollTarget = document.querySelector(".portfolio-hero");
       if (scrollTarget) {
         scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
+
+  /* ---------- Inner Tabs (Product Management only) ---------- */
+  const innerTabs = document.querySelectorAll(".inner-tab-btn");
+  const innerContents = document.querySelectorAll(".inner-tab-content");
+
+  if (innerTabs.length > 0) {
+    // Activate first inner tab by default
+    innerTabs[0].classList.add("active");
+    innerContents[0].classList.add("active");
+
+    innerTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        // Reset inner tabs & contents
+        innerTabs.forEach((t) => t.classList.remove("active"));
+        innerContents.forEach((c) => c.classList.remove("active"));
+
+        // Activate clicked inner tab
+        tab.classList.add("active");
+        innerContents[index].classList.add("active");
+
+        // Optional: smooth scroll to the start of Product Management content
+        const productSection = document.querySelector(".tab-content.active");
+        if (productSection) {
+          productSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  }
 });

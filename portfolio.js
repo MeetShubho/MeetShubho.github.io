@@ -1,3 +1,21 @@
+🔧 Debug portfolio.js (with console logs)
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+  console.log("Tabs found:", tabs.length, "Contents found:", contents.length);
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      console.log("Tab clicked:", tab, "index", index);
+      tabs.forEach((t) => t.classList.remove("active"));
+      contents.forEach((c) => c.classList.remove("active"));
+      tab.classList.add("active");
+      contents[index].classList.add("active");
+      const hero = document.querySelector(".portfolio-hero");
+      if (hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+})
 // portfolio.js
 // Tabs + inner-tabs + accessible behavior + staggered reveal + card keyboard click
 

@@ -8,7 +8,10 @@
   <!-- Shared Header + Page CSS -->
   <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="portfolio.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
 </head>
 
 <body>
@@ -23,7 +26,7 @@
 
     <!-- Tabs Section -->
     <section class="tabs-section">
-      <div class="tabs-container">
+      <div class="portfolio-tabs">
         <button class="tab-btn active" data-tab="ai">AI / ML Projects</button>
         <button class="tab-btn" data-tab="pm">Product Management</button>
       </div>
@@ -32,28 +35,24 @@
       <div class="tab-content-container">
         <!-- AI / ML Projects -->
         <div class="tab-content active" id="ai">
-          <div class="portfolio-card">
-            <div class="card-image">
-              <img src="/assets/Profile/SentimentAnalysis.png" alt="Sentiment Dashboard">
+          <div class="portfolio-grid">
+            <div class="project-card">
+              <img class="project-image" src="/assets/Profile/SentimentAnalysis.png" alt="Sentiment Analysis Dashboard" />
+              <h3><i class="fas fa-brain"></i> Sentiment Analysis Dashboard</h3>
+              <p>Built an AI-powered sentiment dashboard using <strong>Python</strong> and <strong>Hugging Face Transformers</strong>, visualized via <strong>Plotly</strong>, deployed on Streamlit for real-time brand sentiment tracking.</p>
             </div>
-            <h3><i class="fas fa-brain"></i> Sentiment Analysis Dashboard</h3>
-            <p>Built an AI-powered sentiment dashboard using <strong>Python</strong> and <strong>Hugging Face Transformers</strong>, visualized via <strong>Plotly</strong>, deployed on Streamlit for real-time reputation tracking.</p>
-          </div>
 
-          <div class="portfolio-card">
-            <div class="card-image">
-              <img src="/assets/Profile/ChatGPTIntegration.png" alt="ChatGPT Integration">
+            <div class="project-card">
+              <img class="project-image" src="/assets/Profile/ChatGPTIntegration.png" alt="ChatGPT Integration" />
+              <h3><i class="fas fa-robot"></i> ChatGPT Integration for Agile PMO</h3>
+              <p>Developed a <strong>custom GPT-based Agile assistant</strong> automating sprint summaries and backlog reports via <strong>OpenAI API</strong> and <strong>Notion SDK</strong>.</p>
             </div>
-            <h3><i class="fas fa-robot"></i> ChatGPT Integration for Agile PMO</h3>
-            <p>Created a <strong>custom GPT-based Agile assistant</strong> automating sprint reports and stand-ups via <strong>OpenAI API</strong> and <strong>Notion SDK</strong>.</p>
-          </div>
 
-          <div class="portfolio-card">
-            <div class="card-image">
-              <img src="/assets/Profile/PredictiveDelivery.png" alt="Predictive Delivery Model">
+            <div class="project-card">
+              <img class="project-image" src="/assets/Profile/PredictiveDelivery.png" alt="Predictive Project Delivery Model" />
+              <h3><i class="fas fa-chart-line"></i> Predictive Project Delivery Model</h3>
+              <p>Created an ML model predicting project delivery risk using <strong>Random Forest</strong> and <strong>XGBoost</strong>, achieving <strong>87% accuracy</strong> on velocity-based datasets.</p>
             </div>
-            <h3><i class="fas fa-chart-line"></i> Predictive Project Delivery Model</h3>
-            <p>Developed an ML model predicting project delivery risk using <strong>Random Forest</strong> and <strong>XGBoost</strong> with 87% accuracy.</p>
           </div>
         </div>
 
@@ -67,63 +66,53 @@
 
           <!-- Case Studies -->
           <div class="inner-tab-content active" id="case">
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/InstagramCollab.png" alt="Instagram Collab">
+            <div class="portfolio-grid">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/InstagramCollab.png" alt="Instagram Collab Feature" />
+                <h3><i class="fas fa-lightbulb"></i> Instagram Collab Feature (Case Study)</h3>
+                <p>Conceptualized a <strong>native influencer-brand collaboration feature</strong> within Instagram. Designed <strong>wireframes</strong>, user journeys, and a 3-phase roadmap using Figma and Miro.</p>
               </div>
-              <h3><i class="fas fa-lightbulb"></i> Instagram Collab Feature (Case Study)</h3>
-              <p>Conceptualized a <strong>native influencer-brand collaboration</strong> feature within Instagram. Designed <strong>wireframes</strong>, user journeys, and product roadmap using Figma & Miro.</p>
-            </div>
 
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/ConsumeGood.png" alt="ConsumeGood Strategy">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/ConsumeGood.png" alt="ConsumeGood Strategy" />
+                <h3><i class="fas fa-users"></i> ConsumeGood Haircare Strategy</h3>
+                <p>Developed a <strong>go-to-market strategy</strong> for an FMCG startup competing with P&G and HUL. Defined brand vision, mission, and Product Vision Board for differentiation and positioning.</p>
               </div>
-              <h3><i class="fas fa-users"></i> ConsumeGood Haircare Strategy</h3>
-              <p>Developed a <strong>go-to-market strategy</strong> for an FMCG startup competing with P&G and HUL. Defined vision, mission, and Product Vision Board for brand differentiation.</p>
-            </div>
 
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/AgilePlaybook.png" alt="Agile Playbook">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/AgilePlaybook.png" alt="Agile Playbook" />
+                <h3><i class="fas fa-cogs"></i> Agile Transformation Playbook</h3>
+                <p>Authored a <strong>cross-functional Agile playbook</strong> covering lifecycle, OKRs, and governance frameworks. Adopted by 3 delivery units across 2 continents.</p>
               </div>
-              <h3><i class="fas fa-cogs"></i> Agile Transformation Playbook</h3>
-              <p>Authored a <strong>cross-functional Agile playbook</strong> covering product lifecycle, OKRs, and governance. Adopted by 3 delivery units globally.</p>
             </div>
           </div>
 
           <!-- Product Teardowns -->
           <div class="inner-tab-content" id="teardown">
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/NotionAI.png" alt="Notion AI">
+            <div class="portfolio-grid">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/NotionAI.png" alt="Notion AI" />
+                <h3><i class="fas fa-brain"></i> Notion AI</h3>
+                <p>Integrated generative AI directly within workspaces — reinforcing Notion’s mission as the “all-in-one thinking tool.” A study in <strong>contextual UX blending</strong> and human-AI synergy.</p>
               </div>
-              <h3><i class="fas fa-brain"></i> Notion AI</h3>
-              <p>Integrated generative AI directly within workspaces. Reinforced Notion’s mission as the “all-in-one thinking tool.” Focus on <strong>UX blending</strong> and contextual AI.</p>
-            </div>
 
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/SpotifyWrapped.png" alt="Spotify Wrapped">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/SpotifyWrapped.png" alt="Spotify Wrapped" />
+                <h3><i class="fas fa-music"></i> Spotify Wrapped</h3>
+                <p>Transformed user data into storytelling and virality — a masterclass in <strong>data-driven marketing</strong> and <strong>retention through nostalgia</strong>.</p>
               </div>
-              <h3><i class="fas fa-music"></i> Spotify Wrapped</h3>
-              <p>Turned user data into storytelling and social virality. A case study in <strong>data-driven marketing</strong> and <strong>retention through nostalgia</strong>.</p>
-            </div>
 
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/Duolingo.png" alt="Duolingo Gamification">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/Duolingo.png" alt="Duolingo Gamification" />
+                <h3><i class="fas fa-gamepad"></i> Duolingo Gamification</h3>
+                <p>Gamified learning with streaks, leaderboards, and loops — driving <strong>habit formation</strong> and consistent engagement across 500M+ users.</p>
               </div>
-              <h3><i class="fas fa-gamepad"></i> Duolingo Gamification</h3>
-              <p>Gamified language learning with streaks, leaderboards, and progress loops — driving daily engagement through <strong>habit formation</strong>.</p>
-            </div>
 
-            <div class="portfolio-card">
-              <div class="card-image">
-                <img src="/assets/Profile/ChatGPTMobile.png" alt="ChatGPT Mobile">
+              <div class="project-card">
+                <img class="project-image" src="/assets/Profile/ChatGPTMobile.png" alt="ChatGPT Mobile App" />
+                <h3><i class="fas fa-mobile-alt"></i> ChatGPT Mobile App</h3>
+                <p>Delivered frictionless conversational UX with voice input, minimal onboarding, and context sync — setting the standard for <strong>mobile-first AI design</strong>.</p>
               </div>
-              <h3><i class="fas fa-mobile-alt"></i> ChatGPT Mobile App</h3>
-              <p>Delivered frictionless conversational UX with voice input, fast onboarding, and context-sync. A masterclass in <strong>mobile-first AI design</strong>.</p>
             </div>
           </div>
         </div>
@@ -132,7 +121,7 @@
   </main>
 
   <footer class="footer">
-    <p>&copy; 2025 Subhabrata Chattopadhyay | 
+    <p>&copy; 2025 Subhabrata Chattopadhyay |
       <a href="https://www.linkedin.com/in/subhabratachattopadhyay/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
       <a href="mailto:subhabratachattopadhyay07@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
     </p>

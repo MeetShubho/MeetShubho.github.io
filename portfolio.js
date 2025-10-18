@@ -1,14 +1,15 @@
-// portfolio.js — Fully Fixed (2025 release)
-// Handles main + inner tabs, accessibility, smooth scroll & reveal animations
+// portfolio.js — Diagnostic Version (2025)
+// Logs everything about tab activation and DOM bindings
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOM fully loaded. Running portfolio.js diagnostics...");
 
   /* ===== TOP-LEVEL TABS ===== */
   const tabs = Array.from(document.querySelectorAll(".tab-btn"));
   const contents = Array.from(document.querySelectorAll(".tab-content"));
+  console.log("🔹 Found top-level tabs:", tabs.length, "contents:", contents.length);
 
   if (tabs.length && contents.length) {
-    // Initialize first tab as active
     tabs.forEach((tab, i) => {
       const panel = contents[i];
       const active = i === 0;
@@ -21,12 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => activateTab(i));
-      tab.addEventListener("keydown", (e) => {
-        const key = e.key;
-        if (key === "ArrowLeft" || key === "ArrowUp") tabs[(i - 1 + tabs.length) % tabs.length].focus();
-        else if (key === "ArrowRight" || key === "ArrowDown") tabs[(i + 1) % tabs.length].focus();
-        else if (key === "Enter" || key === " ") activateTab(i);
+      tab.addEventListener("click", () => {
+        console.log("👉 Outer tab clicked:", tab.textContent.trim());
+        activateTab(i);
       });
     });
 
@@ -38,86 +36,86 @@ document.addEventListener("DOMContentLoaded", () => {
         t.setAttribute("aria-selected", active);
         panel.classList.toggle("active", active);
         panel.setAttribute("aria-hidden", !active);
+        console.log(`   ↳ [Outer ${t.textContent.trim()}] active=${active}`);
       });
 
-      // Smooth scroll to hero section for context on mobile
       document.querySelector(".portfolio-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      // Rebind inner tabs for the active section
-      const activePanel = contents[index];
-      if (activePanel.querySelector(".inner-tabs")) {
-        setupInnerTabs(activePanel);
-      }
-
+      resetAllInnerTabs();
       runRevealObserver();
     }
   }
 
   /* ===== INNER-TABS (Scoped per Section) ===== */
-  function setupInnerTabs(section) {
-    const innerTabs = Array.from(section.querySelectorAll(".inner-tab-btn"));
-    const innerContents = Array.from(section.querySelectorAll(".inner-tab-content"));
-    if (!innerTabs.length || !innerContents.length) return;
+  const allInnerTabGroups = document.querySelectorAll(".inner-tabs");
+  console.log("🔹 Found inner-tab groups:", allInnerTabGroups.length);
 
-    // Reset all
-    innerTabs.forEach(btn => btn.classList.remove("active"));
-    innerContents.forEach(c => {
-      c.classList.remove("active");
-      c.setAttribute("aria-hidden", "true");
-    });
+  allInnerTabGroups.forEach((group, groupIndex) => {
+    const innerTabs = group.querySelectorAll(".inner-tab-btn");
+    const innerContents = group.parentElement.querySelectorAll(".inner-tab-content");
 
-    // Activate the first inner tab
-    innerTabs[0].classList.add("active");
-    innerContents[0].classList.add("active");
-    innerContents[0].setAttribute("aria-hidden", "false");
+    console.log(`   ↳ Group ${groupIndex + 1}:`, innerTabs.length, "buttons,", innerContents.length, "contents");
 
-    // Add event listeners (use data-inner-tab mapping)
-    innerTabs.forEach(btn => {
-      const targetId = btn.getAttribute("data-inner-tab");
-      const panel = section.querySelector(`#${targetId}`);
-      if (!panel) return;
+    innerTabs.forEach((btn, i) => {
+      const tabName = btn.dataset.innerTab;
+      const panel = innerContents[i];
+      if (!panel) {
+        console.warn(`⚠️ No matching content panel for inner tab '${tabName}' at index ${i}`);
+        return;
+      }
+
+      const active = i === 0;
+      btn.classList.toggle("active", active);
+      panel.classList.toggle("active", active);
+      panel.setAttribute("aria-hidden", !active);
 
       btn.addEventListener("click", () => {
-        innerTabs.forEach(b => b.classList.remove("active"));
-        innerContents.forEach(pc => {
-          pc.classList.remove("active");
-          pc.setAttribute("aria-hidden", "true");
+        console.log(`👉 Inner tab clicked: '${tabName}' (index ${i})`);
+        innerTabs.forEach((b, j) => {
+          const isActive = b === btn;
+          b.classList.toggle("active", isActive);
+          innerContents[j].classList.toggle("active", isActive);
+          innerContents[j].setAttribute("aria-hidden", !isActive);
+          console.log(`   ↳ [${b.dataset.innerTab}] active=${isActive}`);
         });
-
-        btn.classList.add("active");
-        panel.classList.add("active");
-        panel.setAttribute("aria-hidden", "false");
-
-        console.log("Inner tab switched →", targetId);
         runRevealObserver();
+      });
+    });
+  });
+
+  function resetAllInnerTabs() {
+    console.log("🔄 Resetting inner tabs to default (first active)");
+    document.querySelectorAll(".inner-tabs").forEach((group) => {
+      const buttons = group.querySelectorAll(".inner-tab-btn");
+      const panels = group.parentElement.querySelectorAll(".inner-tab-content");
+      buttons.forEach((btn, i) => {
+        const active = i === 0;
+        btn.classList.toggle("active", active);
+        panels[i].classList.toggle("active", active);
+        panels[i].setAttribute("aria-hidden", !active);
       });
     });
   }
 
-  // Initialize inner-tabs for default active section (first one)
-  const initialActive = document.querySelector(".tab-content.active");
-  if (initialActive && initialActive.querySelector(".inner-tabs")) {
-    setupInnerTabs(initialActive);
-  }
-
-  /* ===== CLICKABLE PROJECT CARDS ===== */
-  document.querySelectorAll(".project-card").forEach((card) => {
+  /* ===== CARD CLICKABILITY ===== */
+  const cards = document.querySelectorAll(".project-card");
+  console.log("🔹 Found project cards:", cards.length);
+  cards.forEach((card) => {
     const href = card.getAttribute("data-detail");
-    if (!href) return;
-    const openDetail = () => (window.location.href = href);
-
-    card.addEventListener("click", openDetail);
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openDetail();
-      }
-    });
+    if (href) {
+      card.addEventListener("click", () => console.log("🧭 Navigating to:", href));
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          console.log("🧭 Keyboard nav to:", href);
+        }
+      });
+    }
   });
 
-  /* ===== REVEAL ANIMATIONS ===== */
+  /* ===== REVEAL ANIMATION ===== */
   function runRevealObserver() {
     const cards = document.querySelectorAll(".tab-content.active .project-card, .inner-tab-content.active .project-card");
+    console.log("✨ Reveal observer running — cards visible:", cards.length);
     if (!cards.length) return;
 
     const observer = new IntersectionObserver((entries, obs) => {
@@ -139,4 +137,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   runRevealObserver();
   window.addEventListener("resize", runRevealObserver);
+
+  /* ===== GLOBAL CLICK LOGGER ===== */
+  document.addEventListener("click", (e) => {
+    if (e.target.matches(".inner-tab-btn")) {
+      console.log("🟢 Global listener detected inner-tab click:", e.target.dataset.innerTab);
+    }
+  });
 });

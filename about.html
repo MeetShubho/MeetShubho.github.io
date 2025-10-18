@@ -4,23 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me — Subhabrata Chattopadhyay</title>
+
+  <!-- Common Header Styles -->
+  <link rel="stylesheet" href="header.css" />
+
+  <!-- Page-Specific Styles -->
   <link rel="stylesheet" href="about.css" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
+
 <body>
-  <!-- Navbar -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Me</a></li>
-        <li><a href="career.html">Professional Career</a></li>
-        <li><a href="certifications.html">Certifications</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Shared Header (injected dynamically via header.js) -->
+  <header></header>
 
   <!-- Hero -->
   <section class="hero">
@@ -130,5 +127,8 @@
 
   <!-- Floating Button -->
   <a href="contact.html" class="float-btn"><i class="fa-solid fa-comments"></i></a>
+
+  <!-- Common Header Script -->
+  <script src="header.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-// portfolio.js — Clean & Stable Version (2025 Optimized)
-// Handles tab switching, nested inner-tabs, accessibility, and card animations.
+// portfolio.js — Stable & Fixed (Product Teardowns Click Issue Solved)
+// Handles main tabs, nested inner tabs, accessibility, and card animations.
 
 document.addEventListener("DOMContentLoaded", () => {
   /* ===== TOP-LEVEL TABS ===== */
@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const contents = Array.from(document.querySelectorAll(".tab-content"));
 
   if (tabs.length && contents.length) {
-    // Initialize first tab as active
     tabs.forEach((tab, i) => {
       const panel = contents[i];
       const active = i === 0;
@@ -19,14 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
       panel.classList.toggle("active", active);
     });
 
-    // Handle tab clicks and keyboard navigation
     tabs.forEach((tab, i) => {
       tab.addEventListener("click", () => activateTab(i));
       tab.addEventListener("keydown", (e) => {
-        const key = e.key;
-        if (key === "ArrowLeft" || key === "ArrowUp") tabs[(i - 1 + tabs.length) % tabs.length].focus();
-        else if (key === "ArrowRight" || key === "ArrowDown") tabs[(i + 1) % tabs.length].focus();
-        else if (key === "Enter" || key === " ") activateTab(i);
+        if (["ArrowLeft", "ArrowUp"].includes(e.key))
+          tabs[(i - 1 + tabs.length) % tabs.length].focus();
+        else if (["ArrowRight", "ArrowDown"].includes(e.key))
+          tabs[(i + 1) % tabs.length].focus();
+        else if (["Enter", " "].includes(e.key))
+          activateTab(i);
       });
     });
 
@@ -40,24 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
         panel.setAttribute("aria-hidden", !active);
       });
 
-      // Smooth scroll for context on mobile
-      document.querySelector(".portfolio-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Scroll to hero for context (mobile)
+      document.querySelector(".portfolio-hero")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
 
-      // Reset nested inner-tabs to default state
-      resetAllInnerTabs();
+      // Reset nested inner tabs for this section only
+      const activeSection = contents[index];
+      resetInnerTabs(activeSection);
 
-      // Trigger animation for newly active section
+      // Trigger reveal animations
       runRevealObserver();
     }
   }
 
-  /* ===== INNER-TABS (Scoped per Section) ===== */
-  document.querySelectorAll(".tab-content").forEach((section) => {
-    const innerTabs = section.querySelectorAll(".inner-tab-btn");
-    const innerContents = section.querySelectorAll(".inner-tab-content");
+  /* ===== INNER TABS (Scoped properly) ===== */
+  function initInnerTabs() {
+    document.querySelectorAll(".tab-content").forEach((section) => {
+      const innerTabs = section.querySelectorAll(".inner-tab-btn");
+      const innerContents = section.querySelectorAll(".inner-tab-content");
 
-    if (innerTabs.length && innerContents.length) {
-      // Initialize defaults
+      if (!innerTabs.length || !innerContents.length) return;
+
       innerTabs.forEach((btn, i) => {
         const panel = innerContents[i];
         const active = i === 0;
@@ -74,59 +79,69 @@ document.addEventListener("DOMContentLoaded", () => {
             innerContents[j].classList.toggle("active", isActive);
             innerContents[j].setAttribute("aria-hidden", !isActive);
           });
+
+          // Refresh animations when switching inner tabs
           runRevealObserver();
         });
-      });
-    }
-  });
-
-  function resetAllInnerTabs() {
-    document.querySelectorAll(".inner-tabs").forEach((group) => {
-      const buttons = group.querySelectorAll(".inner-tab-btn");
-      const panels = group.parentElement.querySelectorAll(".inner-tab-content");
-      buttons.forEach((btn, i) => {
-        const active = i === 0;
-        btn.classList.toggle("active", active);
-        panels[i].classList.toggle("active", active);
-        panels[i].setAttribute("aria-hidden", !active);
       });
     });
   }
 
-  /* ===== MAKE PROJECT CARDS CLICKABLE ===== */
+  function resetInnerTabs(section) {
+    if (!section) return;
+    const innerTabs = section.querySelectorAll(".inner-tab-btn");
+    const innerContents = section.querySelectorAll(".inner-tab-content");
+    innerTabs.forEach((btn, i) => {
+      const active = i === 0;
+      btn.classList.toggle("active", active);
+      innerContents[i].classList.toggle("active", active);
+      innerContents[i].setAttribute("aria-hidden", !active);
+    });
+  }
+
+  initInnerTabs();
+
+  /* ===== CLICKABLE PROJECT CARDS ===== */
   document.querySelectorAll(".project-card").forEach((card) => {
     const href = card.getAttribute("data-detail");
     if (!href) return;
 
-    const openDetail = () => window.location.href = href;
+    const openDetail = () => (window.location.href = href);
 
     card.addEventListener("click", openDetail);
     card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
+      if (["Enter", " "].includes(e.key)) {
         e.preventDefault();
         openDetail();
       }
     });
   });
 
-  /* ===== REVEAL ANIMATIONS ===== */
+  /* ===== REVEAL ANIMATION ===== */
   function runRevealObserver() {
-    const cards = document.querySelectorAll(".tab-content.active .project-card, .inner-tab-content.active .project-card");
+    const cards = document.querySelectorAll(
+      ".tab-content.active .project-card, .inner-tab-content.active .project-card"
+    );
     if (!cards.length) return;
 
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const containerCards = Array.from(entry.target.parentElement.querySelectorAll(".project-card"));
-          containerCards.forEach((c, i) => {
-            if (!c.classList.contains("revealed")) {
-              setTimeout(() => c.classList.add("revealed"), i * 100);
-            }
-          });
-          obs.disconnect();
-        }
-      });
-    }, { threshold: 0.12 });
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const siblings = Array.from(
+              entry.target.parentElement.querySelectorAll(".project-card")
+            );
+            siblings.forEach((c, i) => {
+              if (!c.classList.contains("revealed")) {
+                setTimeout(() => c.classList.add("revealed"), i * 100);
+              }
+            });
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
     cards.forEach((card) => observer.observe(card));
   }

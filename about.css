@@ -9,7 +9,7 @@ body {
 
 /* Compensate for sticky shared header (from header.css) */
 body {
-  padding-top: 10px; /* adjust if header height changes */
+  padding-top: 1px; /* adjust if header height changes */
 }
 
 /* Remove old hardcoded navbar styles that conflict */
